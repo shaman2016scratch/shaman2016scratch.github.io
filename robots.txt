@@ -1,4 +1,4 @@
-User-agent: Yandex
+User-agent: *
 Disallow: /shaman2016.github.io/disallow.txt
 Disallow: /shaman2016.github.io/400
 Disallow: /shaman2016.github.io/403
