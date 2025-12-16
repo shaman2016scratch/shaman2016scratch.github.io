@@ -14,9 +14,9 @@
     "proto": "Site-https",
     "host": "github.com",
     "hosting": "github.io",
-  }
+  },
   "client": {},
   "8787Browser-config": {
     "version": "1.0",
   }
-  }
+}
