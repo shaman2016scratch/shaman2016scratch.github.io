@@ -1,1 +1,19 @@
-{}
+{
+  "site": "shaman2016scratch.github.io",
+  "host": "github.com",
+  "creator": "SHAMAN2016",
+  "proto": "https",
+  "nlink": {
+    "host": "https://shaman2016scratch.github.io",
+    "main": "/shaman2016.github.io",
+  },
+  "links": {
+    "shaman2016News": "/Shaman2016News",
+  },
+  "server": {
+    "proto": "Site-https",
+    "host": "github.com",
+    "hosting": "github.io",
+  }
+}  ient"
+}
