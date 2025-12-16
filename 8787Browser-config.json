@@ -15,5 +15,8 @@
     "host": "github.com",
     "hosting": "github.io",
   }
-}  ient"
-}
+  "client": {},
+  "8787Browser-config": {
+    "version": "1.0",
+  }
+  }
