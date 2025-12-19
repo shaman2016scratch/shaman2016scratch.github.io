@@ -7,15 +7,18 @@
 <meta property="og:url" content="https://shaman2016scratch.github.io/notepad.html">
 <meta property="og:description" content="Блокнот">
 <meta property="og:image" content="https://shaman2016scratch.github.io/shaman2016.github.io/files/favicon%20(1).jpg">
-<meta name="description" content="Локальный блокнот с возможносью сохранения текста">
-<meta name="keywords" content="блокнот, notepad, сохраняемый блокнот, текст, текстовый редактор, text editor, editor text, text, txt, editor, редактор">
+<meta name="description" content="Бесплатный блокнот с возможносью сохранения текста (Локально)">
+<meta name="keywords" content="блокнот, notepad, сохраняемый блокнот, текст, текстовый редактор, text editor, editor text, text, txt, editor, редактор, free editor, text free, бесплатный редактой, бесплатный текст">
 </head>
 <body>
 <textarea id="txt" placeholder="Your text" rows="30" cols="100"></textarea>
 <h1>Настройки</h1>
-<textarea id="name" placeholder="file name" rows="1" cols="20"></textarea><br><button onclick="txt.save()">Сохранить</button><button onclick="txt.load()">Загрузить</button>
-<textarea id="xy" placeholder="30x100" rows="1" cols="8"></textarea><br><button onclick="txt.xy()">Обновить</button>
-<script>document.getElementById('name').input = 'text.txt'; document.getElementById('xy').input = "30x100";</script>
+<textarea id="name" placeholder="file name" rows="1" cols="20"></textarea><button onclick="txt.save()">Сохранить</button><button onclick="txt.load()">Загрузить</button>
+<br><textarea id="xy" placeholder="30x100" rows="1" cols="8"></textarea><button onclick="txt.xy()">Обновить</button>
+<script>
+document.getElementById('name').input = 'text.txt'
+document.getElementById('xy').input = '30x100'
+</script>
 <script src="notepad.js"></script>
 </body>
 </html>
