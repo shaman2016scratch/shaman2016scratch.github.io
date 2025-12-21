@@ -1,2 +1,6 @@
-let russiaSQL_data = {}
-const russiaSQL = {}
+russiaSQL_data = {}
+const russiaSQL = {
+  "run": function() {},
+  "on": {},
+  "off": {}
+}
