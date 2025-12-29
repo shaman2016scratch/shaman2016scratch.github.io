@@ -13,7 +13,7 @@ Disallow: /shaman2016.github.io/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%287%29.h
 Disallow: /shaman2016.github.io/%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80/Yandex.html
 Disallow: /shaman2016.github.io/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%2811%29%20%282%29.html
 Disallow: /shaman2016.github.io/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%2811%29%20%282%29.html
-Disallow: /Shaman2016News/profile
-Disallow: /Shaman2016News/profile.html?*
+Disallow: /Shaman2016News/profile*
+Disallow: /Shaman2016News/profile.html
 Sitemap: https://shaman2016scratch.github.io/shaman2016.github.io/sitemap.txt
 Clean-param: _ym_status-check&_ym_lang&_ym_debug /shaman2016.github.io/
