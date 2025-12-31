@@ -3,7 +3,8 @@ try {
   let menu = document.getElementById('menu')
   let name = document.getElementById('username')
   class Game {}
-  function start() {}
+  function start() { new Game() }
+  document.addEventListener('DOMContentLoaded', start);
 } catch (err) {
-  alert(`Error: ${err.message}`); console.error('')
+  alert(`Error: ${err.message}`); console.error(`Error: ${err.message}`)
 }
