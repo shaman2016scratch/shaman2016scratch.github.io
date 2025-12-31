@@ -1,0 +1,1 @@
+print("GameCreat CLI VERSION")
