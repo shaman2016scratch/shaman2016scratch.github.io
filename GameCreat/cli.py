@@ -1,1 +1,1 @@
-print("GameCreat CLI VERSION")
+print("GameCreat CLI")
