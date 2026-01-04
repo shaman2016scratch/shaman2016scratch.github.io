@@ -15,5 +15,6 @@ Disallow: /shaman2016.github.io/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%2811%29%
 Disallow: /shaman2016.github.io/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20%2811%29%20%282%29.html
 Disallow: /Shaman2016News/profile?*
 Disallow: /Shaman2016News/profile
+Disallow: /Shaman2016News/profile.html
 Sitemap: https://shaman2016scratch.github.io/shaman2016.github.io/sitemap.txt
 Clean-param: _ym_status-check&_ym_lang&_ym_debug /shaman2016.github.io/
