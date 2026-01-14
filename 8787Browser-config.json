@@ -5,18 +5,19 @@
   "proto": "https",
   "nlink": {
     "host": "https://shaman2016scratch.github.io",
-    "main": "/shaman2016.github.io",
+    "main": "/shaman2016.github.io"
   },
   "links": {
-    "shaman2016News": "/Shaman2016News",
+    "shaman2016News": "/Shaman2016News"
   },
   "server": {
     "proto": "Site-https",
     "host": "github.com",
     "hosting": "github.io",
+    "domain": "https://shaman2016scratch.github.io"
   },
   "client": {},
   "8787Browser-config": {
-    "version": "1.0",
+    "version": "1.0"
   }
 }
