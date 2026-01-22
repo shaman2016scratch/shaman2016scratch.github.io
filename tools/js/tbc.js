@@ -1,1 +1,1 @@
-
+const screen = document.getElementById
