@@ -2,7 +2,8 @@ try {
   const screen = document.getElementById("content")
   const token = document.getElementById("bot")
   let chats = []
-  let chat_info = {}
+  let chatInfo = {}
+  let openChat = {}
   screen.innerHTML = `
     <h1>Chats</h1>
     <div id="chats">loading...</div>
@@ -23,6 +24,24 @@ try {
           chats.push(messages[i].chat.id)
         }
       }
+    }
+    getChats()
+    await function addChats() {
+      screen.innerHTML = `
+        <div id="chats"><h1>Chats</h1></div>
+      `
+      for(let i = 0; i < chats.length; i++) {
+        let chatsList = document.getElementById("chats")
+        chatsList.innerHTML = `${chatList.innerHTML}
+        <h1 onclick="openChat.${i}()"><img src="${chatInfo[chats[i]].icon}">${chatInfo[chats[i]].name}</h1>`
+        openChat[i] = new Function(`
+          chat(chats[i])
+        `)
+      }
+    }
+    addChats()
+    await function chat() {
+      // Подождите...
     }
   }
 } catch (err) {
