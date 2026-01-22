@@ -31,7 +31,7 @@ try {
       }
     }
     getChats()
-    await function addChats() {
+    async function addChats() {
       screen.innerHTML = `
         <div id="chats"><h1>Chats</h1></div>
       `
@@ -45,7 +45,7 @@ try {
       }
     }
     addChats()
-    await function chat(id) {
+    async function chat(id) {
       screen.innerHTML = `
         <h1><img src="${chatInfo[id].icon}">${chatInfo[id].name}</h1>
         <div id="messages">Loading...</div>
