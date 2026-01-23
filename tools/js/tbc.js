@@ -32,10 +32,12 @@ async function start() {
             "icon": "https://placehold.co/100x100"
           }
           let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${messages[i][messHead].chat.id}`)).json()
-          icoon = icoon.result.photo.big_file_id
-          icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
-          icoon = icoon.result.file_path
-          chatInfo[messages[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+          if(icoon.result.photo.big_file_id) {
+            icoon = icoon.result.photo.big_file_id
+            icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+            icoon = icoon.result.file_path
+            chatInfo[messages[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+          }
         }
       }
     }
