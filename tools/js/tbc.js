@@ -99,3 +99,6 @@ async function chat(id) {
     //console.error(err.message)
   //}
 }
+async function sendMessage(chat) {
+  fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+}
