@@ -1,5 +1,5 @@
 let screen = document.getElementById("content")
-let token = document.getElementById("bot").value
+let token = document.getElementById("bot")
 let chats = []
 let chatInfo = {}
 let openChat = {}
@@ -15,7 +15,7 @@ function load() {
 }
 async function start() {
   try {
-    let messages = await (await fetch(`https://api.telegram.org/bot${token}/getUpdates`)).json().result
+    let messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json().result
     async function getChats() {
       for(let i = 0; i < messages.length; i++) {
         if (!chats.includes(messages[i].chat.id)) {
@@ -26,9 +26,9 @@ async function start() {
           "name": messages[i].chat.title,
           "icon": "https://placehold.co/100x100"
         }
-        let icoon = await (await fetch(`https://api.telegram.org/bot${token}/getChat/`)).json().result.photo.big_file_id
-        icoon = await (await fetch(`https://api.telegram.org/bot${token}/getFile?file_id=${icoon}`)).json()
-        chatInfo[messages[i].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token}/${icoon}`)).blob()
+        let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat/`)).json().result.photo.big_file_id
+        icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+        chatInfo[messages[i].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
       }
     }
     await getChats()
