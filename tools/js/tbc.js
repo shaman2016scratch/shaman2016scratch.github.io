@@ -49,7 +49,7 @@ async function start() {
       let chatsList = document.getElementById("chats")
       for(let i = 0; i < chats.length; i++) {
         chatsList.innerHTML += `
-          <h1 onclick="openChat[${i}]()"><img src="${chatInfo[chats[i]].icon}">${chatInfo[chats[i]].name}</h1>
+          <h1 onclick="openChat[${i}]()"><img src="${chatInfo[chats[i]].icon}" width="100" height="100">${chatInfo[chats[i]].name}</h1>
         `
         openChat[i] = new Function(`
           chat(${chats[i]})
@@ -65,7 +65,7 @@ async function start() {
 async function chat(id) {
   try {
     screen.innerHTML = `
-      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}">${chatInfo[id].name}</h1></div>
+      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="100" height="100">${chatInfo[id].name}</h1></div>
     `
     let messList = document.getElementById("messages")
     async function getMess() {
