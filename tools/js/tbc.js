@@ -15,7 +15,7 @@ function load() {
   // Не готово
 }
 async function start() {
-  try {
+  //try {
     messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json
     messages = messages.result
     async function getChats() {
@@ -49,10 +49,10 @@ async function start() {
       }
     }
     await addChats()
-  } catch (err) {
-    alert(`Error: ${err.message}`)
-    console.error(err.message)
-  }
+  //} catch (err) {
+    //alert(`Error: ${err.message}`)
+    //console.error(err.message)
+  //}
 }
 async function chat(id) {
   try {
