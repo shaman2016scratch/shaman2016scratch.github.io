@@ -1,17 +1,12 @@
-try {
-  const screen = document.getElementById("content")
-  const token = document.getElementById("bot").value
-  let chats = []
-  let chatInfo = {}
-  let openChat = {}
-  screen.innerHTML = `
-    <h1>Chats</h1>
-    <div id="chats">loading...</div>
-  `
-} catch (err) {
-  alert(`Error: ${err.message}`)
-  console.error(err.message)
-}
+const screen = document.getElementById("content")
+const token = document.getElementById("bot").value
+let chats = []
+let chatInfo = {}
+let openChat = {}
+screen.innerHTML = `
+  <h1>Chats</h1>
+  <div id="chats">loading...</div>
+`
 function save() {
   // Не готово
 }
