@@ -35,7 +35,7 @@ async function start() {
           icoon = icoon.result.photo.big_file_id
           icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
           icoon = icoon.result.file_path
-          chatInfo[messages[i][messHead].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
+          chatInfo[messages[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
         }
       }
     }
