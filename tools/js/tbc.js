@@ -33,7 +33,8 @@ async function start() {
           }
           let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${messages[i][messHead].chat.id}`)).json()
           icoon = icoon.result.photo.big_file_id
-          icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).text()
+          icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+          icoon = icoon.result.file_path
           chatInfo[messages[i][messHead].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
         }
       }
