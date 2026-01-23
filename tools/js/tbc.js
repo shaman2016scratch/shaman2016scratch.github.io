@@ -1,5 +1,5 @@
-const screen = document.getElementById("content")
-const token = document.getElementById("bot").value
+let screen = document.getElementById("content")
+let token = document.getElementById("bot").value
 let chats = []
 let chatInfo = {}
 let openChat = {}
