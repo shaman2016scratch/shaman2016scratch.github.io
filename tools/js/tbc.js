@@ -23,17 +23,17 @@ async function start() {
       for(let i = 0; i < messages.length; i++) {
         if (messages[i].message) { messHead = "message" } else if (messages[i].channel_post) { messHead = "channel_post" } else if (messages[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
         if (messHead !== "notSupport") {
-          if (!chats.includes(messages[i].[messHead].chat.id)) {
-            chats.push(messages[i].[messHead].chat.id)
+          if (!chats.includes(messages[i][messHead].chat.id)) {
+            chats.push(messages[i][messHead].chat.id)
           }
-          chatInfo[messages[i].[messHead].chat.id] = {
-            "username": messages[i].[messHead].chat.username,
-            "name": messages[i].[messHead].chat.title,
+          chatInfo[messages[i][messHead].chat.id] = {
+            "username": messages[i][messHead].chat.username,
+            "name": messages[i][messHead].chat.title,
             "icon": "https://placehold.co/100x100"
           }
           let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat/`)).json().result.photo.big_file_id
           icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).text()
-          chatInfo[messages[i].[messHead].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
+          chatInfo[messages[i][messHead].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
         }
       }
     }
