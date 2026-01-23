@@ -63,7 +63,7 @@ async function start() {
   //}
 }
 async function chat(id) {
-  try {
+  //try {
     screen.innerHTML = `
       <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name}</h1></div>
     `
@@ -90,8 +90,8 @@ async function chat(id) {
       }
     }
     await getMess()
-  } catch (err) {
-    alert(`Error: ${err.message}`)
-    console.error(err.message)
-  }
+  //} catch (err) {
+    //alert(`Error: ${err.message}`)
+    //console.error(err.message)
+  //}
 }
