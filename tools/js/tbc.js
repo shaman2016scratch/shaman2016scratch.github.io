@@ -70,24 +70,28 @@ async function chat(id) {
     let messList = document.getElementById("messages")
     async function getMess() {
       for(let i = 0; i < messages.length; i++) {
-        if(messHead !== "notSupport") {
-          if(messages[i].message.from.id !== 777000) {
-            if(messages[i].message.from.is_bot) {
+        if (messages[i].message) { messHead = "message" } else if (messages[i].channel_post) { messHead = "channel_post" } else if (messages[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
+        if(messHead !== "notSupport" && messages[i][messHead].chat.id !== id) {
+          if(messages[i][messHead].from.id !== 777000) {
+            if(messages[i][messHead].from.is_bot) {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [bot] <code>${messages[i][messHead].from.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
               `
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [user] <code>${messages[i][messHead].from.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
               `
             }
           } else {
             messList.innerHTML += `
-              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].sender_chat.title} [${messages[i][messHead].sender_chat.type}] <code>${messages[i][messHead].sender_chat.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
             `
           }
         }
       }
+      messList.innerHTML += `
+        <input id="messageText"><button onclick="sendMessage(${messages[i][messHead].chat.id})">send</button>
+      `
     }
     await getMess()
   //} catch (err) {
