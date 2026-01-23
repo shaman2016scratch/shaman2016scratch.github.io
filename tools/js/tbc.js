@@ -1,6 +1,6 @@
 try {
   const screen = document.getElementById("content")
-  const token = document.getElementById("bot")
+  const token = document.getElementById("bot").input
   let chats = []
   let chatInfo = {}
   let openChat = {}
