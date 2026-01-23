@@ -4,6 +4,7 @@ let chats = []
 let chatInfo = {}
 let openChat = {}
 let messages = []
+let messHead = ""
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
@@ -20,17 +21,20 @@ async function start() {
     messages = messages.result
     async function getChats() {
       for(let i = 0; i < messages.length; i++) {
-        if (!chats.includes(messages[i].message.chat.id)) {
-          chats.push(messages[i].message.chat.id)
+        if (messages[i].message) { messHead = "message" } else if (messages[i].channel_post) { messHead = "channel_post" } else if (messages[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
+        if (messHead !== "notSupport") {
+          if (!chats.includes(messages[i].[messHead].chat.id)) {
+            chats.push(messages[i].[messHead].chat.id)
+          }
+          chatInfo[messages[i].[messHead].chat.id] = {
+            "username": messages[i].[messHead].chat.username,
+            "name": messages[i].[messHead].chat.title,
+            "icon": "https://placehold.co/100x100"
+          }
+          let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat/`)).json().result.photo.big_file_id
+          icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).text()
+          chatInfo[messages[i].[messHead].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
         }
-        chatInfo[messages[i].message.chat.id] = {
-          "username": messages[i].message.chat.username,
-          "name": messages[i].message.chat.title,
-          "icon": "https://placehold.co/100x100"
-        }
-        let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat/`)).json().result.photo.big_file_id
-        icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).text()
-        chatInfo[messages[i].messages.chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token.value}/${icoon}`)).blob()
       }
     }
     await getChats()
@@ -62,20 +66,22 @@ async function chat(id) {
     let messList = document.getElementById("messages")
     async function getMess() {
       for(let i = 0; i < messages.length; i++) {
-        if(messages[i].message.from.id !== 777000) {
-          if(messages[i].message.from.is_bot) {
-            messList.innerHTML += `
-              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
-            `
+        if(messHead !== "notSupport") {
+          if(messages[i].message.from.id !== 777000) {
+            if(messages[i].message.from.is_bot) {
+              messList.innerHTML += `
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+              `
+            } else {
+              messList.innerHTML += `
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+              `
+            }
           } else {
             messList.innerHTML += `
-              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</div></div></div>
             `
           }
-        } else {
-          messList.innerHTML += `
-            <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</div></div></div>
-          `
         }
       }
     }
