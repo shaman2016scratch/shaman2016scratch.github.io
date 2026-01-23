@@ -16,7 +16,7 @@ function load() {
 }
 async function start() {
   //try {
-    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json
+    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
     messages = messages.result
     async function getChats() {
       for(let i = 0; i < messages.length; i++) {
