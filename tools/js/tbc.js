@@ -29,7 +29,7 @@ async function start() {
           chatInfo[messages[i][messHead].chat.id] = {
             "username": messages[i][messHead].chat.username || "",
             "name": messages[i][messHead].chat.title,
-            "icon": "https://placehold.co/100x100"
+            "icon": "https://placehold.co/25x25"
           }
           let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${messages[i][messHead].chat.id}`)).json()
           if(icoon.result.photo) {
@@ -49,7 +49,7 @@ async function start() {
       let chatsList = document.getElementById("chats")
       for(let i = 0; i < chats.length; i++) {
         chatsList.innerHTML += `
-          <h1 onclick="openChat[${i}]()"><img src="${chatInfo[chats[i]].icon}" width="100" height="100">${chatInfo[chats[i]].name}</h1>
+          <h1 onclick="openChat[${i}]()"><img src="${chatInfo[chats[i]].icon}" width="25" height="25">${chatInfo[chats[i]].name}</h1>
         `
         openChat[i] = new Function(`
           chat(${chats[i]})
@@ -65,7 +65,7 @@ async function start() {
 async function chat(id) {
   try {
     screen.innerHTML = `
-      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="100" height="100">${chatInfo[id].name}</h1></div>
+      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name}</h1></div>
     `
     let messList = document.getElementById("messages")
     async function getMess() {
@@ -74,16 +74,16 @@ async function chat(id) {
           if(messages[i].message.from.id !== 777000) {
             if(messages[i].message.from.is_bot) {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
               `
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</div></div></div>
               `
             }
           } else {
             messList.innerHTML += `
-              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/100x100"><div><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</div></div></div>
+              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</div></div></div>
             `
           }
         }
