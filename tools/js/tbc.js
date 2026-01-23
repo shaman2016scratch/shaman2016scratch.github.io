@@ -47,10 +47,22 @@ try {
     addChats()
     async function chat(id) {
       screen.innerHTML = `
-        <h1><img src="${chatInfo[id].icon}">${chatInfo[id].name}</h1>
-        <div id="messages">Loading...</div>
+        <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}">${chatInfo[id].name}</h1></div>
       `
       let messList = document.getElementById("messages")
+      async function getMess() {
+        for(let i = 0; i < messages.length; i++) {
+          if(messages[i].message.from.is_bot) {
+            messList.innerHTML `${messList.innerHTML}
+              <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
+            `
+          } else {
+            messList.innerHTML `${messList.innerHTML}
+              <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
+            `
+          }
+        }
+      }
     }
   }
 } catch (err) {
