@@ -26,6 +26,9 @@ try {
           "name": messages[i].chat.title,
           "icon": "https://placehold.co/100x100"
         }
+        let icoon = await (await fetch(`https://api.telegram.org/bot${token}/getChat/`)).json().result.photo.big_file_id
+        icoon = await (await fetch(`https://api.telegram.org/bot${token}/getFile?file_id=${icoon}`)).json()
+        chatInfo[messages[i].chat.id].icon = await (await fetch(`https://api.telegram.org/file/bot${token}/${icoon}`)).blob()
       }
     }
     await getChats()
