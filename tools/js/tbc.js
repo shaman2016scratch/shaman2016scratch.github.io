@@ -71,7 +71,7 @@ async function chat(id) {
     async function getMess() {
       for(let i = 0; i < messages.length; i++) {
         if (messages[i].message) { messHead = "message" } else if (messages[i].channel_post) { messHead = "channel_post" } else if (messages[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
-        if(messHead !== "notSupport" && messages[i][messHead].chat.id !== id) {
+        if(messHead !== "notSupport" && messages[i][messHead].chat.id === id) {
           if(messages[i][messHead].from.id !== 777000) {
             if(messages[i][messHead].from.is_bot) {
               messList.innerHTML += `
@@ -89,7 +89,7 @@ async function chat(id) {
           }
         }
       }
-      messList.innerHTML += `
+      screen.innerHTML += `
         <input id="messageText"><button onclick="sendMessage(${messages[i][messHead].chat.id})">send</button>
       `
     }
