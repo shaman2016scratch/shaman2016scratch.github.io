@@ -52,13 +52,19 @@ try {
       let messList = document.getElementById("messages")
       async function getMess() {
         for(let i = 0; i < messages.length; i++) {
-          if(messages[i].message.from.is_bot) {
-            messList.innerHTML `${messList.innerHTML}
-              <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
-            `
+          if(!messages[i].message.from.id === 777000) {
+            if(messages[i].message.from.is_bot) {
+              messList.innerHTML `${messList.innerHTML}
+                <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [bot] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
+              `
+            } else {
+              messList.innerHTML `${messList.innerHTML}
+                <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
+              `
+            }
           } else {
             messList.innerHTML `${messList.innerHTML}
-              <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.from.first_name} [user] <code>${messages[i].message.from.id}</code></h4><br>${messages[i].message.text}</p></p></div>
+              <div class="message" id="id${messages[i].update_id}"><p><img src="https://placehold.co/100x100"><p><h4>${messages[i].message.sender_chat.title} [${messages[i].message.sender_chat.type}] <code>${messages[i].message.sender_chat.id}</code></h4><br>${messages[i].message.text}</p></p></div>
             `
           }
         }
