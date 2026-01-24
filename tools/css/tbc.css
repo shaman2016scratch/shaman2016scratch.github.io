@@ -40,8 +40,8 @@ body {
 .message {
   margin: 20px;
   width: 80%;
-  background-color: #494949;
-  border: 1px solid #ffffff;
+  background-color: gray;
+  border: 1px solid white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -50,3 +50,8 @@ button, input, textarea {
   color: #ffffff;
   border-color: #c6c6c6;
 }
+ .messages {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ }
