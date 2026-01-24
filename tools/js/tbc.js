@@ -10,10 +10,15 @@ screen.innerHTML = `
   <div id="chats">loading...</div>
 `
 function save() {
-  // Не готово
+  localStorage.set("tools-tbc-conf", {
+    "token": token.value,
+    "chats": chats,
+    "chatInfo": chatInfo,
+    "openChat": openChat
+  })
 }
 function load() {
-  // Не готово
+  let conf = localStorage.get("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat;
 }
 async function start() {
   //try {
@@ -28,7 +33,7 @@ async function start() {
           }
           chatInfo[messages[i][messHead].chat.id] = {
             "username": messages[i][messHead].chat.username || "",
-            "name": messages[i][messHead].chat.title || "noname",
+            "name": messages[i][messHead].chat.title || messages[i][messHead].chat.first_name,
             "icon": "https://placehold.co/25x25",
             "type": "private"
           }
@@ -71,28 +76,30 @@ async function chat(id) {
     `
     let messList = document.getElementById("messages")
     async function getMess() {
-      for(let i = 0; i < messages.length; i++) {
+      let i = 0
+      for(i = 0; i < messages.length; i++) {
         if (messages[i].message) { messHead = "message" } else if (messages[i].channel_post) { messHead = "channel_post" } else if (messages[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
         if(messHead !== "notSupport" && messages[i][messHead].chat.id === id) {
           if(!messages[i][messHead].sender_chat) {
             if(messages[i][messHead].from.is_bot) {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [bot] <code>${messages[i][messHead].from.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [bot] <code>${messages[i][messHead].from.id}</code></h4><p id="id${messages[i].update_id}text">[error]</p></div></div></div>
               `
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [user] <code>${messages[i][messHead].from.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
+                <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].from.first_name} [user] <code>${messages[i][messHead].from.id}</code></h4><p id="id${messages[i].update_id}text">[error]</p></div></div></div>
               `
             }
           } else {
             messList.innerHTML += `
-              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].sender_chat.title} [${messages[i][messHead].sender_chat.type}] <code>${messages[i][messHead].sender_chat.id}</code></h4><br>${messages[i][messHead].text}</div></div></div>
+              <div class="message" id="id${messages[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${messages[i][messHead].sender_chat.title} [${messages[i][messHead].sender_chat.type}] <code>${messages[i][messHead].sender_chat.id}</code></h4><br><p id="id${messages[i].update_id}text">[error]</p></div></div></div>
             `
           }
+          document.getElementById(`id${messages[i].update_id}text`).textContent = messages[i][messHead].text
         }
       }
       screen.innerHTML += `
-        <input id="messageText"><button onclick="sendMessage(${messages[i][messHead].chat.id})">send</button>
+        <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
     await getMess()
