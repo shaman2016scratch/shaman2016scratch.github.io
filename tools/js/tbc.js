@@ -12,7 +12,8 @@ screen.innerHTML = `
   <div id="chats">loading...</div>
 `
 let vosdCode = function() {
-  conf = document.getElementById("vostCode").value
+  let conf = document.getElementById("vostCode").value
+  conf = JSON.parse(conf)
   token.value = conf.token
   chatInfo = conf.chatInfo
   openChat = conf.openChat
