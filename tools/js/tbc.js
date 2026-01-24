@@ -41,14 +41,6 @@ async function start() {
   //try {
     messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
     messages = messages.result
-    async function getMess() {
-      for(let i = 0; i < messages.length; i++) {
-        if(!realMessList.includes(messages[i].update_id)) {
-          realMessList.push(messages[i].update_id)
-          realMess.push(messages[i])
-        }
-      }
-    }
     await getMess()
     async function getChats() {
       for(let i = 0; i < realMess.length; i++) {
@@ -158,5 +150,16 @@ async function Chat(id) {
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  messages = messages.result
+  await getMess()
   Chat(chat)
+}
+async function getMess() {
+  for(let i = 0; i < messages.length; i++) {
+    if(!realMessList.includes(messages[i].update_id)) {
+      realMessList.push(messages[i].update_id)
+      realMess.push(messages[i])
+    }
+  }
 }
