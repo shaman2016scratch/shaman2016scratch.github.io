@@ -5,6 +5,8 @@ let chatInfo = {}
 let openChat = {}
 let messages = []
 let messHead = ""
+let realMessList = []
+let realMess = {}
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
@@ -14,11 +16,13 @@ function save() {
     "token": token.value,
     "chats": chats,
     "chatInfo": chatInfo,
-    "openChat": openChat
+    "openChat": openChat,
+    "messList": realMessList,
+    "mess": realMess
   })
 }
 function load() {
-  let conf = localStorage.get("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat;
+  let conf = localStorage.get("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat; realMessList = conf.messList; realMess = conf.mess;
 }
 async function start() {
   //try {
