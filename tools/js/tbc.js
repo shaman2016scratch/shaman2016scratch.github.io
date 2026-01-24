@@ -12,7 +12,8 @@ screen.innerHTML = `
   <div id="chats">loading...</div>
 `
 function save() {
-  localStorage.setItem("tools-tbc-conf", {
+  alert("Log in to the console and copy the latest log.")
+  console.log({
     "token": token.value,
     "chats": chats,
     "chatInfo": chatInfo,
@@ -22,7 +23,19 @@ function save() {
   })
 }
 function load() {
-  let conf = localStorage.getItem("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat; realMessList = conf.messList; realMess = conf.mess;
+  let vosdCode = `
+    conf = document.getElementById("vostCode").value
+    token.value = conf.token
+    chatInfo = conf.chatInfo
+    openChat = conf.openChat
+    realMessList = conf.messList
+    realMess = conf.mess
+  `
+  screen.innerHTML = `
+    <h3>Please enter the save object in the input field below and click on the button.</h3>
+    <textarea id="vostCode"></textarea>
+    <br><button onclick="${vosdCode}">Load</button>
+  `
 }
 async function start() {
   //try {
