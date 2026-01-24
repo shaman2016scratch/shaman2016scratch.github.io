@@ -125,5 +125,5 @@ async function Chat(id) {
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
-  Chat[chat]()
+  Chat(chat)
 }
