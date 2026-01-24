@@ -116,12 +116,12 @@ async function Chat(id) {
                 `
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
                 `
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><br><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><br><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
               `
             }
             document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
@@ -129,16 +129,16 @@ async function Chat(id) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
                 `
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p><a href="#idc${realMess[i][messHead].reply_to_message.message_id}">[message]</a></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
                 `
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4></div><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
               `
             }
             document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
