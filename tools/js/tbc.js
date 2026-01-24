@@ -112,7 +112,7 @@ async function Chat(id) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div></div>
                 `
               } else {
                 messList.innerHTML += `
