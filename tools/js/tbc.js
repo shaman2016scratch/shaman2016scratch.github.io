@@ -12,7 +12,7 @@ screen.innerHTML = `
   <div id="chats">loading...</div>
 `
 function save() {
-  localStorage.set("tools-tbc-conf", {
+  localStorage.setItem("tools-tbc-conf", {
     "token": token.value,
     "chats": chats,
     "chatInfo": chatInfo,
@@ -22,7 +22,7 @@ function save() {
   })
 }
 function load() {
-  let conf = localStorage.get("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat; realMessList = conf.messList; realMess = conf.mess;
+  let conf = localStorage.getItem("tools-tbc-conf"); token.value = conf.token; chats = conf.chats; chatInfo = conf.chatInfo; openChat = conf.openChat; realMessList = conf.messList; realMess = conf.mess;
 }
 async function start() {
   //try {
