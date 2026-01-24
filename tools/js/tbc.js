@@ -100,7 +100,7 @@ async function Chat(id) {
       let i = 0
       for(i = 0; i < realMess.length; i++) {
         if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
-        if(messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
+        if(messHead !== "notSupport" && realMess[i][messHead].chat.id === id && realMess[i][messHead].text) {
           if(!realMess[i][messHead].reply_to_message) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
@@ -139,7 +139,18 @@ async function Chat(id) {
             document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
-        }
+        } else {
+          if(realMess[i][messHead].new_chat_member && messHead !== "notSupport") {
+            if(realMess[i][messHead].new_chat_member.is_bot) {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [bot] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
+              `
+            } else {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [user] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
+              `
+            }
+          }
       } 
       screen.innerHTML += `
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
