@@ -84,8 +84,10 @@ async function start() {
 }
 async function chat(id) {
   //try {
+    members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
+    members = members.result
     screen.innerHTML = `
-      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name}</h1></div>
+      <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name} [${members}]</h1></div>
     `
     let messList = document.getElementById("messages")
     async function getMess() {
