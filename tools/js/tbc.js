@@ -11,6 +11,14 @@ screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
 `
+let vosdCode = function() {
+  conf = document.getElementById("vostCode").value
+  token.value = conf.token
+  chatInfo = conf.chatInfo
+  openChat = conf.openChat
+  realMessList = conf.messList
+  realMess = conf.mess
+}
 function save() {
   alert("Log in to the console and copy the latest log.")
   console.log({
@@ -23,18 +31,10 @@ function save() {
   })
 }
 function load() {
-  let vosdCode = `
-    conf = document.getElementById("vostCode").value
-    token.value = conf.token
-    chatInfo = conf.chatInfo
-    openChat = conf.openChat
-    realMessList = conf.messList
-    realMess = conf.mess
-  `
   screen.innerHTML = `
     <h3>Please enter the save object in the input field below and click on the button.</h3>
     <textarea id="vostCode"></textarea>
-    <br><button onclick="${vosdCode}">Load</button>
+    <br><button onclick="vosdCode()">Load</button>
   `
 }
 async function start() {
