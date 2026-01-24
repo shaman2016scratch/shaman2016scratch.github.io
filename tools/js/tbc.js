@@ -72,7 +72,7 @@ async function start() {
           <h1 onclick="openChat[${i}]()"><img src="${chatInfo[chats[i]].icon}" width="25" height="25">${chatInfo[chats[i]].name} [${chatInfo[chats[i]].type}]</h1>
         `
         openChat[i] = new Function(`
-          chat(${chats[i]})
+          Chat(${chats[i]})
         `)
       }
     }
@@ -82,7 +82,7 @@ async function start() {
     //console.error(err.message)
   //}
 }
-async function chat(id) {
+async function Chat(id) {
   //try {
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
@@ -125,5 +125,5 @@ async function chat(id) {
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
-  openChat[chat]()
+  Chat[chat]()
 }
