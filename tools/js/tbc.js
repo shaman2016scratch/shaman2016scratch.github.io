@@ -117,7 +117,7 @@ async function Chat(id) {
               `
             }
             document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
-            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i].update_id})">To answer</button>`
+            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           } else {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
@@ -136,7 +136,7 @@ async function Chat(id) {
             }
             document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
             document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text
-            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i].update_id})">To answer</button>`
+            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
         }
       } 
