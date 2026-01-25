@@ -189,6 +189,10 @@ async function sendReply(chat, mess) {
 }
 async function botScript() {
   screen.innerHTML = `
-    <p>It is already being developed...</p>
+    <textarea id="codebs" placeholder="Your code" rows="30" cols="50"></textarea>
+    <button onclick="codebsRun()">Start</button>
   `
+}
+async function codebsRun() {
+  let code = document.getElementById("codebs")
 }
