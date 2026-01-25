@@ -89,7 +89,6 @@ async function start() {
   //}
 }
 async function Chat(id) {
-  //try {
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
     screen.innerHTML = `
@@ -151,16 +150,13 @@ async function Chat(id) {
               `
             }
           }
+        }
       } 
       screen.innerHTML += `
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
     await getMess()
-  //} catch (err) {
-    //alert(`Error: ${err.message}`)
-    //console.error(err.message)
-  //}
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
