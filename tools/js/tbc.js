@@ -1,5 +1,6 @@
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
+let botn = document.getElementById("botname")
 let chats = []
 let chatInfo = {}
 let openChat = {}
@@ -40,7 +41,9 @@ function load() {
 }
 async function start() {
   //try {
-    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+    let boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
+    boteto = boteto.result
+    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
     messages = messages.result
     await getMess()
     async function getChats() {
