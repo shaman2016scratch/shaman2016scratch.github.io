@@ -76,6 +76,7 @@ async function start() {
     await getChats()
     async function addChats() {
       screen.innerHTML = `
+        <div class="message"><button onclick="botScript()">botScript</button></div>
         <div id="chats"><h1>Chats</h1></div>
       `
       let chatsList = document.getElementById("chats")
@@ -185,4 +186,9 @@ async function sendReply(chat, mess) {
   messages = messages.result
   await getMess()
   Chat(chat)
+}
+async function botScript() {
+  screen.innerHTML = `
+    <p>It is already being developed...</p>
+  `
 }
