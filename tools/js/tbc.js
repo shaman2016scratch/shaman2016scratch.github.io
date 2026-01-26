@@ -101,7 +101,7 @@ async function Chat(id) {
       <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name} [${members}]</h1></div>
     `
     let messList = document.getElementById("messages")
-    async function getMess() {
+    async function getMesss() {
       let i = 0
       for(i = 0; i < realMess.length; i++) {
         if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
@@ -162,10 +162,30 @@ async function Chat(id) {
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
-    await getMess()
+    await getMesss()
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+  idlastbot++
+  realMessList.push(`-544${idlastbot}`)
+  realMess.push({
+    "update_id": `-544${idlastbot}`,
+    "message": {
+      "message_id": "bot",
+      "from": {
+        "id": boteto.id,
+        "is_bot": true,
+        "first_name": boteto.first_name
+      },
+      "chat": {
+        "id": id,
+        "name": chatInfo[id].name,
+        "type": chatInfo[id].type
+      },
+      "date": null,
+      "text": document.getElementById("messageText").value
+    }
+  })
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
@@ -194,10 +214,11 @@ async function sendReply(chat, mess) {
       },
       "chat": {
         "id": id,
-        "name": chatInfo[id].n,
-        "type": chatInfo[id].t
+        "name": chatInfo[id].name,
+        "type": chatInfo[id].type
       },
-      "date": null
+      "date": null,
+      "text": document.getElementById("messageText").value
     }
   })
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
