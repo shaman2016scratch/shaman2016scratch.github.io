@@ -1,4 +1,4 @@
-let out = document.getElementById("output")
+let out = document.body
 const url = new URL(window.location)
 const input = url.searchParams
 if(!input.get("page") || input.get("page") === "main") {
