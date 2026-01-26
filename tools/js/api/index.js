@@ -13,8 +13,13 @@ if(!input.get("page") || input.get("page") === "main") {
       ],
       "code": "https://github.com/shaman2016scratch/shaman2016scratch.github.io/tree/main/tools",
       "version": {
-        "api": {},
-        "pages": {}
+        "api": {
+          "main": "1.1.0"
+        },
+        "pages": {
+          "tbc": "2.1.0",
+          "mini-brow": "alpha"
+        }
       }
     }
   }
