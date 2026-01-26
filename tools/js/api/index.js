@@ -14,5 +14,5 @@ if(!input.get("page") || input.get("page") === "main") {
       "code": "https://github.com/shaman2016scratch/shaman2016scratch.github.io/tree/main/tools"
     }
   }
-  out.innerHTML = JSON.stringify(ouut)
+  out.innerHTML = ouut
 }
