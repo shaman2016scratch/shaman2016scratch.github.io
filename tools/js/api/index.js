@@ -1,7 +1,7 @@
 let out = document.getElementById("output")
 const url = new URL(window.location)
 const input = url.searchParams
-if(input.length === 0 || input.get("page") === "main") {
+if(!input.get("page") || input.get("page") === "main") {
   out.textContent = {
     "ok": true,
     "result": {
