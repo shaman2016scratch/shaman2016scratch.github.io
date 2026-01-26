@@ -233,5 +233,12 @@ async function botScript() {
   `
 }
 async function codebsRun() {
-  let code = document.getElementById("codebs")
+  let code = document.getElementById("codebs").value
+  code = JSON.parse(code)
+  code2 = code.code
+  code2 = code2.split(";\n  ")
+  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  messages = messages.result
+  await getMess()
+  for(let i = 0; i < code2.length; i++) {}
 }
