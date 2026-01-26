@@ -178,7 +178,7 @@ async function sendMessage(chat) {
         "first_name": boteto.first_name
       },
       "chat": {
-        "id": id,
+        "id": chat,
         "name": chatInfo[id].name,
         "type": chatInfo[id].type
       },
@@ -213,7 +213,7 @@ async function sendReply(chat, mess) {
         "first_name": boteto.first_name
       },
       "chat": {
-        "id": id,
+        "id": chat,
         "name": chatInfo[id].name,
         "type": chatInfo[id].type
       },
