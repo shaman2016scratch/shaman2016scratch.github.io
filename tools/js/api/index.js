@@ -11,7 +11,11 @@ if(!input.get("page") || input.get("page") === "main") {
         "mini-brow.html",
         "search.html"
       ],
-      "code": "https://github.com/shaman2016scratch/shaman2016scratch.github.io/tree/main/tools"
+      "code": "https://github.com/shaman2016scratch/shaman2016scratch.github.io/tree/main/tools",
+      "version": {
+        "api": {},
+        "pages": {}
+      }
     }
   }
   out.innerHTML = `<p>${JSON.stringify(ouut)}</p>`
