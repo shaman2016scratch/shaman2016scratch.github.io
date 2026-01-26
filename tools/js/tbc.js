@@ -8,6 +8,8 @@ let messages = []
 let messHead = ""
 let realMessList = []
 let realMess = []
+let idlastbot = 0
+let boteto = ""
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
@@ -20,6 +22,7 @@ let vosdCode = function() {
   openChat = conf.openChat
   realMessList = conf.messList
   realMess = conf.mess
+  idlastbot = conf.ilb
 }
 function save() {
   alert("Log in to the console and copy the latest log.")
@@ -29,7 +32,8 @@ function save() {
     "chatInfo": chatInfo,
     "openChat": openChat,
     "messList": realMessList,
-    "mess": realMess
+    "mess": realMess,
+    "ilb": idlastbot
   })
 }
 function load() {
@@ -40,7 +44,7 @@ function load() {
   `
 }
 async function start() {
-    let boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
+    boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
     boteto = boteto.result
     botn.innerHTML = boteto.name
     messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
@@ -177,6 +181,25 @@ async function getMess() {
 }
 async function sendReply(chat, mess) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}`)
+  idlastbot++
+  realMessList.push(`-544${idlastbot}`)
+  realMess.push({
+    "update_id": `-544${idlastbot}`,
+    "message": {
+      "message_id": "bot",
+      "from": {
+        "id": boteto.id,
+        "is_bot": true,
+        "first_name": boteto.first_name
+      },
+      "chat": {
+        "id": id,
+        "name": chatInfo[id].n,
+        "type": chatInfo[id].t
+      },
+      "date": null
+    }
+  })
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
