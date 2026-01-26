@@ -18,7 +18,8 @@ if(!input.get("page") || input.get("page") === "main") {
         },
         "pages": {
           "tbc": "2.1.0",
-          "mini-brow": "alpha"
+          "mini-brow": "alpha",
+          "search": "alpha"
         }
       }
     }
