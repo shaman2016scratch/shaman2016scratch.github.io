@@ -40,7 +40,6 @@ function load() {
   `
 }
 async function start() {
-  //try {
     let boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
     boteto = boteto.result
     botn.innerHTML = boteto.name
@@ -90,10 +89,6 @@ async function start() {
       }
     }
     await addChats()
-  //} catch (err) {
-    //alert(`Error: ${err.message}`)
-    //console.error(err.message)
-  //}
 }
 async function Chat(id) {
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
