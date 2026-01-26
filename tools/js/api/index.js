@@ -2,7 +2,7 @@ let out = document.getElementById("output")
 const url = new URL(window.location)
 const input = url.searchParams
 if(!input.get("page") || input.get("page") === "main") {
-  out.textContent = {
+  out.jsonContent = {
     "ok": true,
     "result": {
       "pagesCount": 3,
