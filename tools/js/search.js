@@ -13,6 +13,10 @@ const page = {
   "https://github.com/": {},
   "https://shaman2016scratch.github.io/": {}
 }
+screen.innerHTML = `
+  <input placeholder="your request" id="req"></input><button onclick="search()">Search</button>
+`
 async function save() {}
 async function load() {}
 async function start() {}
+async function search() {}
