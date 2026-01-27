@@ -1,4 +1,4 @@
-let toolsApi = {
+const toolsApi = {
   "api": fetch("https://api-shaman2016.vercel.app/tools/").json(),
   "pagesNum": function() { return toolsApi.api.result.pagesCount },
   "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApi.api.result.pages[a]}` },
@@ -20,7 +20,6 @@ let idlastbot = 0
 let boteto = ""
 let lasupd = 0
 let bs = {}
-const toolsApi
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
