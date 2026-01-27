@@ -5,15 +5,15 @@ async function toolsApiUrlMainGet() {
 }
 toolsApiUrlMainGet()
 let toolsApi = {
-  "api": toolsApiUrlMain
+  "main": toolsApiUrlMain
 }
-const toolsApi = {
+const ToolsApi = {
   "pagesNum": function() { return toolsApi.api.result.pagesCount },
   "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApi.api.result.pages[a]}` },
   "vApi": function() { return toolsApi.api.result.version.api.main },
   "versionTool": function(a) { return toolsApi.api.result.version.pages[a] }
 }
-document.getElementById("v").textContent = `Version: ${toolsApi.versionTool("tbc")}`
+document.getElementById("v").textContent = `Version: ${ToolsApi.versionTool("tbc")}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
