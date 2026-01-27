@@ -11,6 +11,7 @@ let realMess = []
 let idlastbot = 0
 let boteto = ""
 let lasupd = 0
+let bs = {}
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
@@ -25,6 +26,7 @@ let vosdCode = function() {
   realMess = conf.mess
   idlastbot = conf.ilb
   lasupd = conf.upd + 1
+  bs = conf.bs
 }
 function save() {
   alert("Log in to the console and copy the latest log.")
@@ -36,7 +38,8 @@ function save() {
     "messList": realMessList,
     "mess": realMess,
     "ilb": idlastbot,
-    "upd": lasupd
+    "upd": lasupd,
+    "bs": bs
   })
 }
 function load() {
@@ -235,10 +238,14 @@ async function botScript() {
     <textarea id="codebs" placeholder="Your code" rows="30" cols="50"></textarea>
     <button onclick="codebsRun()">Start</button>
   `
+  let code = document.getElementById("codebs").value
+  if(bs.code){
+    code = bs.code
+  }
 }
 async function codebsRun() {
   let code = document.getElementById("codebs").value
-  code = JSON.parse(code)
+  bs.code = JSON.parse(code)
   code2 = code.code
   code2 = code2.split(";\n  ")
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
