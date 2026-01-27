@@ -54,7 +54,7 @@ async function start() {
     boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
     boteto = boteto.result
     botn.innerHTML = boteto.name
-    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getMessages`)).json()
+    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
     messages = messages.result
     await getMess()
     async function getChats() {
