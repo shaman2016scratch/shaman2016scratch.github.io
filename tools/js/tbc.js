@@ -25,7 +25,8 @@ let vosdCode = function() {
   realMessList = conf.messList
   realMess = conf.mess
   idlastbot = conf.ilb
-  lasupd = conf.upd + 1
+  lasupd = conf.upd
+  lasupd++
   bs = conf.bs
 }
 function save() {
