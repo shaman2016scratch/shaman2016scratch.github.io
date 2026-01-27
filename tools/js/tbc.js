@@ -1,5 +1,9 @@
-let toolsApiUrlMain = await fetch("https://api-shaman2016.vercel.app/tools/")
-toolsApiUrlMain = await toolsApiUrlMain.json()
+let toolsApiUrlMain = ""
+async function toolsApiUrlMainGet() {
+  toolsApiUrlMain = await fetch("https://api-shaman2016.vercel.app/tools/")
+  toolsApiUrlMain = await toolsApiUrlMain.json()
+}
+toolsApiUrlMainGet()
 const toolsApi = {
   "api": toolsApiUrlMain,
   "pagesNum": function() { return toolsApi.api.result.pagesCount },
