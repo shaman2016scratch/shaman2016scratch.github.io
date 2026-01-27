@@ -54,7 +54,7 @@ async function start() {
     boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
     boteto = boteto.result
     botn.innerHTML = boteto.name
-    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
+    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getMessages`)).json()
     messages = messages.result
     await getMess()
     async function getChats() {
@@ -187,8 +187,8 @@ async function sendMessage(chat) {
       },
       "chat": {
         "id": chat,
-        "name": chatInfo[id].name,
-        "type": chatInfo[id].type
+        "name": chatInfo[chat].name,
+        "type": chatInfo[chat].type
       },
       "date": null,
       "text": document.getElementById("messageText").value
@@ -222,8 +222,8 @@ async function sendReply(chat, mess) {
       },
       "chat": {
         "id": chat,
-        "name": chatInfo[id].name,
-        "type": chatInfo[id].type
+        "name": chatInfo[chat].name,
+        "type": chatInfo[chat].type
       },
       "date": null,
       "text": document.getElementById("messageText").value
