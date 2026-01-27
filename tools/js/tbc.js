@@ -1,4 +1,4 @@
-const toolsApi = {
+let toolsApi = {
   "api": fetch("https://api-shaman2016.vercel.app/tools/").json(),
   "pagesNum": function() { return toolsApi.api.result.pagesCount },
   "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApi.api.result.pages[a]}` },
