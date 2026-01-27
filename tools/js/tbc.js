@@ -1,3 +1,10 @@
+const toolsApi = {
+  "api": fetch("https://api-shaman2016.vercel.app/tools/").json(),
+  "pagesNum": function() { return toolsApi.api.result.pagesCount },
+  "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApi.api.result.pages[a]}` },
+  "vApi": function() { return toolsApi.api.result.version.api.main },
+  "versionTool": function(a) { return toolsApi.api.result.version.pages[a] }
+}
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
@@ -12,6 +19,7 @@ let idlastbot = 0
 let boteto = ""
 let lasupd = 0
 let bs = {}
+const toolsApi
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
