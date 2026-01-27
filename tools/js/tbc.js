@@ -10,6 +10,7 @@ let realMessList = []
 let realMess = []
 let idlastbot = 0
 let boteto = ""
+let lasupd = 0
 screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
@@ -23,6 +24,7 @@ let vosdCode = function() {
   realMessList = conf.messList
   realMess = conf.mess
   idlastbot = conf.ilb
+  lasupd = conf.upd + 1
 }
 function save() {
   alert("Log in to the console and copy the latest log.")
@@ -33,7 +35,8 @@ function save() {
     "openChat": openChat,
     "messList": realMessList,
     "mess": realMess,
-    "ilb": idlastbot
+    "ilb": idlastbot,
+    "upd": lasupd
   })
 }
 function load() {
@@ -57,12 +60,13 @@ async function start() {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
           }
-          if(!realMess[i][messHead].chat.id) {
+          if(!realMess[i][messHead].chat.id.upd < lasupd) {
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
               "icon": "https://placehold.co/25x25",
-              "type": "private"
+              "type": "private",
+              "upd": lasupd
             }
             let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
             if(icoon.result.photo) {
