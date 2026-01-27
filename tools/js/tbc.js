@@ -5,6 +5,7 @@ const toolsApi = {
   "vApi": function() { return toolsApi.api.result.version.api.main },
   "versionTool": function(a) { return toolsApi.api.result.version.pages[a] }
 }
+document.getElementById("v").textContent = `Version: ${toolsApi.versionTool("tbc")}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
