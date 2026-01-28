@@ -219,7 +219,6 @@ async function Chat(id) {
           let image = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[0].file_id}`)).json()
           image = image.result.file_path
           image = `https://api.telegram.org/file/bot${token.value}/${image}`
-          image = realMess[i][messHead].chat.type
           if(!realMess[i][messHead].reply_to_message || realMess[i][messHead].reply_to_message) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
