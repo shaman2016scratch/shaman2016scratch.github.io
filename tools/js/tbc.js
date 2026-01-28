@@ -3,15 +3,20 @@ async function toolsApiUrlMainGet() {
   toolsApiUrlMain = await fetch("https://api-shaman2016.vercel.app/tools/")
   console.log(toolsApiUrlMain)
   toolsApiUrlMain = await toolsApiUrlMain.json()
+  console.log(toolsApiUrlMain)
 }
-toolsApiUrlMainGet()
 console.log(toolsApiUrlMain)
-const ToolsApi = {
-  "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
-  "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
-  "vApi": function() { return toolsApiUrlMain.result.version.api.main },
-  "versionTools": function() { return toolsApiUrlMain.result.version.pages }
+async function ToolsApiInstall() {
+  await toolsApiUrlMainGet()
+  const ToolsApi = {
+    "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
+    "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
+    "vApi": function() { return toolsApiUrlMain.result.version.api.main },
+    "versionTools": function() { return toolsApiUrlMain.result.version.pages }
+  }
+  document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 }
+ToolsApiInstall()
 document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
