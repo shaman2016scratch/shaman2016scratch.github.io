@@ -5,7 +5,7 @@ async function toolsApiUrlMainGet() {
 }
 toolsApiUrlMainGet()
 let toolsApi = {
-  "main": toolsApiUrlMain
+  "api": toolsApiUrlMain
 }
 const ToolsApi = {
   "pagesNum": function() { return toolsApi.api.result.pagesCount },
