@@ -20,7 +20,6 @@ async function SetVersion() {
   document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 }
 SetVersion()
-document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
