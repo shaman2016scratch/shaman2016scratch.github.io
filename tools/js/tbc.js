@@ -14,9 +14,12 @@ async function ToolsApiInstall() {
     "vApi": function() { return toolsApiUrlMain.result.version.api.main },
     "versionTools": function() { return toolsApiUrlMain.result.version.pages }
   }
+}
+async function SetVersion() {
+  await ToolsApiInstall()
   document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 }
-ToolsApiInstall()
+SetVersion()
 document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
