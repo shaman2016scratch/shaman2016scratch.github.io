@@ -1,3 +1,4 @@
+let ToolsApi = {}
 let toolsApiUrlMain = ""
 async function toolsApiUrlMainGet() {
   toolsApiUrlMain = await fetch("https://api-shaman2016.vercel.app/tools/")
@@ -8,7 +9,7 @@ async function toolsApiUrlMainGet() {
 console.log(toolsApiUrlMain)
 async function ToolsApiInstall() {
   await toolsApiUrlMainGet()
-  const ToolsApi = {
+  ToolsApi = {
     "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
     "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
     "vApi": function() { return toolsApiUrlMain.result.version.api.main },
