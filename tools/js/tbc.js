@@ -1,6 +1,7 @@
 let toolsApiUrlMain = ""
 async function toolsApiUrlMainGet() {
   toolsApiUrlMain = await fetch("https://api-shaman2016.vercel.app/tools/")
+  console.log(toolsApiUrlMain)
   toolsApiUrlMain = await toolsApiUrlMain.json()
 }
 toolsApiUrlMainGet()
