@@ -201,8 +201,8 @@ async function Chat(id) {
                 <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div>
               `
             }
-            document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
-            document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text
+            document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text || realMess[i][messHead].caption
+            document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text || realMess[i][messHead].reply_to_message.caption
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
         } else {
