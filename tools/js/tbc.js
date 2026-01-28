@@ -52,6 +52,19 @@ let vosdCode = function() {
   lasupd++
   bs = conf.bs
 }
+let vosdCodeLoc = function() {
+  let conf = localStorage.get("tools-tbc")
+  conf = JSON.parse(conf)
+  token.value = conf.token
+  chatInfo = conf.chatInfo
+  openChat = conf.openChat
+  realMessList = conf.messList
+  realMess = conf.mess
+  idlastbot = conf.ilb
+  lasupd = conf.upd
+  lasupd++
+  bs = conf.bs
+}
 function save() {
   alert("Log in to the console and copy the latest log.")
   console.log({
@@ -72,6 +85,22 @@ function load() {
     <textarea id="vostCode"></textarea>
     <br><button onclick="vosdCode()">Load</button>
   `
+}
+function saveLoc() {
+  localStorage.set("tools-tbc", toString({
+    "token": token.value,
+    "chats": chats,
+    "chatInfo": chatInfo,
+    "openChat": openChat,
+    "messList": realMessList,
+    "mess": realMess,
+    "ilb": idlastbot,
+    "upd": lasupd,
+    "bs": bs
+  }))
+}
+function loadLoc() {
+  vosdCodeLoc()
 }
 async function start() {
     boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
