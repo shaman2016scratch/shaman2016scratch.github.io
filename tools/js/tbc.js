@@ -217,7 +217,7 @@ async function Chat(id) {
           }
         } else if(realMess[i][messHead].photo && messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
           let image = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[0].file_id}`)).json()
-          image = icoon.result.file_path
+          image = image.result.file_path
           image = `https://api.telegram.org/file/bot${token.value}/${image}`
           image = realMess[i][messHead].chat.type
           if(!realMess[i][messHead].reply_to_message || realMess[i][messHead].reply_to_message) {
