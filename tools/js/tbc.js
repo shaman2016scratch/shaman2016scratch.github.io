@@ -4,14 +4,11 @@ async function toolsApiUrlMainGet() {
   toolsApiUrlMain = await toolsApiUrlMain.json()
 }
 toolsApiUrlMainGet()
-let toolsApi = {
-  "api": toolsApiUrlMain
-}
 const ToolsApi = {
-  "pagesNum": function() { return toolsApi.api.result.pagesCount },
-  "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApi.api.result.pages[a]}` },
-  "vApi": function() { return toolsApi.api.result.version.api.main },
-  "versionTool": function(a) { return toolsApi.api.result.version.pages[a] }
+  "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
+  "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
+  "vApi": function() { return toolsApiUrlMain.result.version.api.main },
+  "versionTool": function(a) { return toolsApiUrlMain.result.version.pages[a] }
 }
 document.getElementById("v").textContent = `Version: ${ToolsApi.versionTool("tbc")}`
 let screen = document.getElementById("content")
