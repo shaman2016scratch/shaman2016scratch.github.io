@@ -49,6 +49,7 @@ let vosdCode = function() {
   realMess = conf.mess
   idlastbot = conf.ilb
   lasupd = conf.upd
+  console.log(conf.upd)
   lasupd++
   bs = conf.bs
 }
