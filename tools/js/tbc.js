@@ -8,9 +8,9 @@ const ToolsApi = {
   "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
   "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
   "vApi": function() { return toolsApiUrlMain.result.version.api.main },
-  "versionTool": function(a) { return toolsApiUrlMain.result.version.pages[a] }
+  "versionTools": function() { return toolsApiUrlMain.result.version.pages }
 }
-document.getElementById("v").textContent = `Version: ${ToolsApi.versionTool("tbc")}`
+document.getElementById("v").textContent = `Version: ${ToolsApi.versionTool().tbc}`
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
