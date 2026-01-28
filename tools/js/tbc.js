@@ -4,7 +4,7 @@ async function toolsApiUrlMainGet() {
   toolsApiUrlMain = await toolsApiUrlMain.json()
 }
 toolsApiUrlMainGet()
-console.log(toolsApiUrlMain.result)
+console.log(toolsApiUrlMain)
 const ToolsApi = {
   "pagesNum": function() { return toolsApiUrlMain.result.pagesCount },
   "pageUrl": function(a) { return `https://shaman2016scratch.github.io/tools/${toolsApiUrlMain.result.pages[a]}` },
