@@ -9,7 +9,7 @@ function ruTran() {
     <p>На <a href="code.js">этом сайте</a></p>
     <h2>Поддерживается ли он где-то кроме Dash?</h2>
     <p>Да, скорее всего он поддерживается в PenguinMod.</p>
-    <scirpt src="/ext-docs/JavaScriptRunner/js.js"></scirpt>
+    <script src="/ext-docs/JavaScriptRunner/js.js"></script>
   `
 }
 function enTran() {
@@ -23,6 +23,6 @@ function enTran() {
     <p>On <a href="code.js">this website</a></p>
     <h2>Is it supported anywhere other than Dash?</h2>
     <p>Yes, it is most likely supported in PenguinMod.</p>
-    <scirpt src="/ext-docs/JavaScriptRunner/js.js"></scirpt>
+    <script src="/ext-docs/JavaScriptRunner/js.js"></script>
   `
 }
