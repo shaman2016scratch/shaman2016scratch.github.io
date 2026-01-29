@@ -42,6 +42,7 @@ screen.innerHTML = `
 let vosdCode = function() {
   let conf = document.getElementById("vostCode").value
   conf = JSON.parse(conf)
+  chats = conf.chats
   token.value = conf.token
   chatInfo = conf.chatInfo
   openChat = conf.openChat
