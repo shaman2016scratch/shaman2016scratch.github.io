@@ -6,6 +6,7 @@ function ruTran() {
     <h2>Где его можно найти?</h2>
     <p>В <a href="https://dashblocks.github.io/extensions/">Галерее расширений Dash</a></p>
     <p>В <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dev-версия Dash</a></p>
+    <p>На <a href="code.js">этом сайте</a></p>
     <h2>Поддерживается ли он где-то кроме Dash?</h2>
     <p>Да, скорее всего он поддерживается в PenguinMod.</p>
     <scirpt src="/ext-docs/JavaScriptRunner/js.js"></scirpt>
@@ -19,6 +20,7 @@ function enTran() {
     <h2>Where can I find him?</h2>
     <p>In the <a href="https://dashblocks.github.io/extensions/">Dash extensions gallery</a></p>
     <p>In the <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dash Dev-version</a></p>
+    <p>On <a href="code.js">this website</a></p>
     <h2>Is it supported anywhere other than Dash?</h2>
     <p>Yes, it is most likely supported in PenguinMod.</p>
     <scirpt src="/ext-docs/JavaScriptRunner/js.js"></scirpt>
