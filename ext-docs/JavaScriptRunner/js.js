@@ -1,0 +1,3 @@
+function ruTran() {
+document..innerHTML = ``
+}
