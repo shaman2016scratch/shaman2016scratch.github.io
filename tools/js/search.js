@@ -1,4 +1,5 @@
 let screen = document.getElementById("content")
+fetch("https://api-shaman2016.vercel.app/tools/search/vhod/")
 const site = {
   "https://yandex.ru": {},
   "https://google.com": {},
@@ -55,6 +56,7 @@ async function search() {
   result = `
     <h2>Results</h2>
   `
+  fetch("https://api-shaman2016.vercel.app/tools/search/zapros/")
   for(let i = 0; i < results.length; i++) {
     if(page[results[i]].searches.include(zapros)) {
       result += `
