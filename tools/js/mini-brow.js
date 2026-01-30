@@ -1,5 +1,5 @@
 let screen = document.getElementById("content")
-let latsid = 0
+let lastid = 0
 async function load() {}
 async function save() {}
 async function start() {
