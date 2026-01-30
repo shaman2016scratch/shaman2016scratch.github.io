@@ -15,12 +15,16 @@ let vkl = {
       <div class="messages" id="vkl${lastid}">
         <button onclick="vkl.del(${lastid})">Delete</button>
         <button onclick="vkl.set(${lastid}, prompt('url'))">Update Url</button>
-        <iframe src="shaman2016scratch.github.io/tools/search.html"></iframe>
+        <button onclick="alert(document.getElementById('vkl${lastid}S').src)"></button>
+        <iframe src="shaman2016scratch.github.io/tools/search.html" id="vkl${lastid}S"></iframe>
       </div>
     `
     lastid++
   },
-  "del": async function(id) {},
-  "set": async function(id, url) {}
-
+  "del": async function(id) {
+    document.getElementById(`vkl${id}`).innerHTML = ""
+  },
+  "set": async function(id, url) {
+    document.getElementById(`vkl${id}S`).src = url
+  }
 }
