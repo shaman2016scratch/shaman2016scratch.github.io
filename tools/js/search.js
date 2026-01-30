@@ -26,6 +26,11 @@ const page = {
   "https://shaman2016scratch.github.io/": {
     "searches": ["shaman2016", "polzovatel_8787"],
     "title": "Official Site SHAMAN2016"
+  },
+  "https://shaman2016scratch.github.io/Shaman2016News/": {
+    "searches": ["Новости", "news", "источники", "shaman2016", "Shaman2016News"],
+    "title": "Shaman2016News",
+    "description": "Новостной источник от SHAMAN2016"
   }
 }
 screen.innerHTML = `
