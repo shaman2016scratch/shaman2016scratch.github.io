@@ -4,7 +4,8 @@ const site = {
   "https://google.com": {},
   "https://scratch.mit.edu": {},
   "https://github.com": {},
-  "https://shaman2016scratch.github.io": {}
+  "https://shaman2016scratch.github.io": {},
+  "https://tagir-scratch.github.io": {}
 }
 const page = {
   "https://yandex.ru/": {
@@ -31,6 +32,11 @@ const page = {
     "searches": ["Новости", "news", "источники", "shaman2016", "Shaman2016News"],
     "title": "Shaman2016News",
     "description": "Новостной источник от SHAMAN2016"
+  },
+  "https://tagir-scratch.github.io/": {
+    "searches": ["Тагир", "Tagir", "Tagir-Scratch", "Tagir14012014"],
+    "title": "Tagir14012014 || Оффициальный сайт Скретчера",
+    "description": "Я Tagir14012014. Увлеченный скретчер, который любит программировать! Узнать больше."
   }
 }
 screen.innerHTML = `
