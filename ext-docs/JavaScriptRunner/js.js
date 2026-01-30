@@ -5,8 +5,8 @@ function ruTran() {
     <p>JavaScript Runner — это расширение для запуска JavaScript-кода в <a href="https://dashblocks.github.io/">Dash</a></p>
     <h2>Где его можно найти?</h2>
     <p>В <a href="https://dashblocks.github.io/extensions/">Галерее расширений Dash</a></p>
-    <p>В <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dev-версия Dash</a></p>
-    <p>На <a href="code.js">этом сайте</a></p>
+    <p>В <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dev-версия Dash</a> (в редакторе, кнопка "выбрать дополнение")</p>
+    <p>На <a href="code.js">этом сайте</a> (код расширения)</p>
     <h2>Поддерживается ли он где-то кроме Dash?</h2>
     <p>Да, скорее всего он поддерживается в PenguinMod.</p>
     <script src="/ext-docs/JavaScriptRunner/js.js"></script>
@@ -19,8 +19,8 @@ function enTran() {
     <p>JavaScript Runner is an extension for <a href="https://dashblocks.github.io/">Dash</a> to run code directly in a project.</p>
     <h2>Where can I find him?</h2>
     <p>In the <a href="https://dashblocks.github.io/extensions/">Dash extensions gallery</a></p>
-    <p>In the <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dash Dev-version</a></p>
-    <p>On <a href="code.js">this website</a></p>
+    <p>In the <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dash Dev-version</a> (In the editor, button "select extension")</p>
+    <p>On <a href="code.js">this website</a> (his code)</p>
     <h2>Is it supported anywhere other than Dash?</h2>
     <p>Yes, it is most likely supported in PenguinMod.</p>
     <script src="/ext-docs/JavaScriptRunner/js.js"></script>
