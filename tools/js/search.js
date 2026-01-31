@@ -163,7 +163,14 @@ const zaprosInfo = {
   "wiki": "Wiki — это сохращение от Wikipedia (Ру. Википедия), Wikipedia это электронная энциклопедия",
   "wikis": "Wiki — это сохращение от Wikipedia (Ру. Википедия), Wikipedia это электронная энциклопедия",
   "OS": "OS расшифровывается как Operation System (Ру. Операционная система)",
-  "os": "OS расшифровывается как Operation System (Ру. операционная система)"
+  "os": "OS расшифровывается как Operation System (Ру. операционная система)",
+  "SHAMAN2016-WIKI": "SHAMAN2016-WIKI это википедия про скретчера SHAMAN2016 и некоторые его проекты",
+  "KirOS": "KirOS — это операционна система на Скретче",
+  "sosirsOS": "sosirsOS — это многофункциональная операционная система на Скретче которая очемюнь многое умеет",
+  "ScraJang": "ScraJang — это компания на Скретче",
+  "ScratchJang": "ScraJang — это компания на Скретче",
+  "Game": "Game переводится как игра. Игрв могут быть Настольными, коппьютерными и не только, например игры на природе или тихие игры",
+  "Games": "Games переводится как игры. Информацию о играх можно нафти по запросу 'Game'"
 }
 screen.innerHTML = `
   <input placeholder="your request" id="req"></input><button onclick="search()">Search</button>
