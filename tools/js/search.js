@@ -1,63 +1,75 @@
 let screen = document.getElementById("content")
 fetch("https://api-shaman2016.vercel.app/tools/search/vhod/")
 const site = {
-  "https://yandex.ru": {
+  "yandex.ru": {
     "title": "Yandex"
   },
-  "https://google.com": {
+  "google.com": {
     "title": "Google"
   },
-  "https://scratch.mit.edu": {
+  "scratch.mit.edu": {
     "title": "Scratch"
   },
-  "https://github.com": {
+  "github.com": {
     "title": "Github"
   },
-  "https://shaman2016scratch.github.io": {
-    "title": "SHAMAN2016 official website"
+  "shaman2016scratch.github.io": {
+    "title": "SHAMAN2016 official website",
+    "Verified": {
+      "official": true,
+      "comment": "This site is the Official resource of the creator of this search engine."
+    }
   },
-  "https://tagir-scratch.github.io": {
+  "tagir-scratch.github.io": {
     "title": "Tagir14012014 || Оффициальный сайт"
   },
-  "https://dashblocks.github.io": {
+  "dashblocks.github.io": {
     "title": "Dash — Scratch Modification"
   }
 }
 const page = {
   "https://yandex.ru/": {
     "searches": ["Yandex", "Яндекс"],
-    "title": "Яндекс — российский поисковик"
+    "title": "Яндекс — российский поисковик",
+    "site": "yandex.ru"
   },
   "https://google.com/": {
     "searches": ["Google", "гугл"],
-    "title": "Google"
+    "title": "Google",
+    "site": "google.com"
   },
   "https://scratch.mit.edu/": {
     "searches": ["Scratch", "Скретч", "Скратч"],
-    "title": "Scratch — create, program, explore!"
+    "title": "Scratch — create, program, explore!",
+    "site": "scratch.mit.edu"
   },
   "https://github.com/": {
     "searches": ["гитхаб", "github"],
-    "title": "Github is a convenient service for storing code"
+    "title": "Github is a convenient service for storing code",
+    "site": "github.com"
   },
   "https://shaman2016scratch.github.io/": {
     "searches": ["shaman2016", "polzovatel_8787"],
-    "title": "Official Site SHAMAN2016"
+    "title": "Official Site SHAMAN2016",
+    "site": "shaman2016scratch.github.io"
   },
   "https://shaman2016scratch.github.io/Shaman2016News/": {
     "searches": ["Новости", "news", "источники", "shaman2016", "Shaman2016News"],
     "title": "Shaman2016News",
-    "description": "Новостной источник от SHAMAN2016"
+    "description": "Новостной источник от SHAMAN2016",
+    "site": "shaman2016scratch.github.io"
   },
   "https://tagir-scratch.github.io/": {
     "searches": ["Тагир", "Tagir", "Tagir-Scratch", "Tagir14012014"],
     "title": "Tagir14012014 || Оффициальный сайт Скретчера",
-    "description": "Я Tagir14012014. Увлеченный скретчер, который любит программировать! Узнать больше."
+    "description": "Я Tagir14012014. Увлеченный скретчер, который любит программировать! Узнать больше.",
+    "site": "tagir-scratch.github.io"
   },
   "https://dashblocks.github.io/": {
     "searches": ["Scratch", "Dash", "Dashblocks"],
     "title": "Dash — More Blocks, Extensions and other",
-    "description": "Dash is the best Scratch modification"
+    "description": "Dash is the best Scratch modification",
+    "site": "dashblocks.github.io"
   }
 }
 screen.innerHTML = `
@@ -79,7 +91,7 @@ async function search() {
   fetch(`https://api-shaman2016.vercel.app/tools/search/zapros?text=${zapros}`)
   for(let i = 0; i < results.length; i++) {
     if(page[results[i]].searches.include(zapros)) {
-      result += `
+      if (!site[page[results[i]].site].Verified) result += `
         <div class="result">
           <h1>${page[results[i]].title}</h1>
           <p>${page[results[i]].description || "Без описания"}</p>
