@@ -1,12 +1,27 @@
 let screen = document.getElementById("content")
 fetch("https://api-shaman2016.vercel.app/tools/search/vhod/")
 const site = {
-  "https://yandex.ru": {},
-  "https://google.com": {},
-  "https://scratch.mit.edu": {},
-  "https://github.com": {},
-  "https://shaman2016scratch.github.io": {},
-  "https://tagir-scratch.github.io": {}
+  "https://yandex.ru": {
+    "title": "Yandex"
+  },
+  "https://google.com": {
+    "title": "Google"
+  },
+  "https://scratch.mit.edu": {
+    "title": "Scratch"
+  },
+  "https://github.com": {
+    "title": "Github"
+  },
+  "https://shaman2016scratch.github.io": {
+    "title": "SHAMAN2016 official website"
+  },
+  "https://tagir-scratch.github.io": {
+    "title": "Tagir14012014 || Оффициальный сайт"
+  },
+  "https://dashblocks.github.io": {
+    "title": "Dash — Scratch Modification"
+  }
 }
 const page = {
   "https://yandex.ru/": {
@@ -38,6 +53,11 @@ const page = {
     "searches": ["Тагир", "Tagir", "Tagir-Scratch", "Tagir14012014"],
     "title": "Tagir14012014 || Оффициальный сайт Скретчера",
     "description": "Я Tagir14012014. Увлеченный скретчер, который любит программировать! Узнать больше."
+  },
+  "https://dashblocks.github.io/": {
+    "searches": ["Scratch", "Dash", "Dashblocks"],
+    "title": "Dash — More Blocks, Extensions and other",
+    "description": "Dash is the best Scratch modification"
   }
 }
 screen.innerHTML = `
