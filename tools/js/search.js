@@ -21,10 +21,21 @@ const site = {
     }
   },
   "tagir-scratch.github.io": {
-    "title": "Tagir14012014 || Оффициальный сайт"
+    "title": "Tagir14012014 || Оффициальный сайт",
+    "Verified": {
+      "official": true,
+      "comment": "Оффициальный сайт"
+    }
   },
   "dashblocks.github.io": {
     "title": "Dash — Scratch Modification"
+  },
+  "daimondcat1234567.github.io": {
+    "title": "Хз",
+    "Verified": {
+      "official": true,
+      "comment": "Оффициальный сайт Скретчера DiamondCat1234567"
+    }
   }
 }
 const page = {
