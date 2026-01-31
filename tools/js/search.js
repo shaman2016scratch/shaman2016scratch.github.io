@@ -91,13 +91,24 @@ async function search() {
   fetch(`https://api-shaman2016.vercel.app/tools/search/zapros?text=${zapros}`)
   for(let i = 0; i < results.length; i++) {
     if(page[results[i]].searches.include(zapros)) {
-      if (!site[page[results[i]].site].Verified) result += `
-        <div class="result">
-          <h1>${page[results[i]].title}</h1>
-          <p>${page[results[i]].description || "Без описания"}</p>
-          <a href="${results[i]}">Open</a>
-        </div>
-      `
+      if (!site[page[results[i]].site].Verified) {
+        result += `
+          <div class="result" id="i${i}">
+            <h1>${page[results[i]].title}</h1>
+            <p>${page[results[i]].description || "Без описания"}</p>
+            <a href="${results[i]}">Open</a>
+          </div>
+        `
+      } else {
+        result += `
+          <div class="result" id="i${i}">
+            <h1>${page[results[i]].title}</h1>
+            <p>${page[results[i]].description || "Без описания"}</p>
+            <a href="${results[i]}">Open</a>
+            <p>${site[page[results[i]].site].Verified.comment}, official: ${site[page[results[i]].site].Verified.official}</p>
+          </div>
+        `
+      }
     }
   }
 }
