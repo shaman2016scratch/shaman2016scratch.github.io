@@ -2,50 +2,60 @@ let screen = document.getElementById("content")
 fetch("https://api-shaman2016.vercel.app/tools/search/vhod/")
 const site = {
   "yandex.ru": {
-    "title": "Yandex"
+    "title": "Yandex",
+    "host": "yandex.ru"
   },
   "google.com": {
-    "title": "Google"
+    "title": "Google",
+    "host": "google.com"
   },
   "scratch.mit.edu": {
-    "title": "Scratch"
+    "title": "Scratch",
+    "host": "scratch.mit.edu"
   },
   "github.com": {
-    "title": "Github"
+    "title": "Github",
+    "host": "github.com"
   },
   "shaman2016scratch.github.io": {
     "title": "SHAMAN2016 official website",
     "Verified": {
       "official": true,
       "comment": "This site is the Official resource of the creator of this search engine."
-    }
+    },
+    "host": "github.com"
   },
   "tagir-scratch.github.io": {
     "title": "Tagir14012014 || Оффициальный сайт",
     "Verified": {
       "official": true,
       "comment": "Оффициальный сайт"
-    }
+    },
+    "host": "github.com"
   },
   "dashblocks.github.io": {
-    "title": "Dash — Scratch Modification"
+    "title": "Dash — Scratch Modification",
+    "host": "github.com"
   },
   "daimondcat1234567.github.io": {
     "title": "Хз",
     "Verified": {
       "official": true,
       "comment": "Оффициальный сайт Скретчера DiamondCat1234567"
-    }
+    },
+    "host": "github"
   },
   "scrajang-studios.github.io": {
     "title": "ScraJang Web Site",
     "Verified": {
       "official": true,
       "comment": "Official Website"
-    }
+    },
+    "host": "github.com"
   },
   "turbowarp.org": {
-    "title": "TurboWarp"
+    "title": "TurboWarp",
+    "host": "turbowarp.org"
   }
 }
 const page = {
