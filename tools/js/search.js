@@ -38,7 +38,7 @@ const site = {
     "host": "github.com"
   },
   "daimondcat1234567.github.io": {
-    "title": "Хз",
+    "title": "DiamondCat1234567 Site",
     "Verified": {
       "official": true,
       "comment": "Оффициальный сайт Скретчера DiamondCat1234567"
@@ -56,6 +56,22 @@ const site = {
   "turbowarp.org": {
     "title": "TurboWarp",
     "host": "turbowarp.org"
+  },
+  "kiros-scratch.github.io": {
+    "title": "KirOS Website",
+    "Verified": {
+      "official": true,
+      "comment": "Official"
+    },
+    "host": "github.com"
+  },
+  "telegram.org": {
+    "title": "Telegram",
+    "Verified": {
+      "official": true,
+      "comment": "Official Telegram Website"
+    },
+    "host": "telegram.org"
   }
 }
 const page = {
@@ -106,6 +122,16 @@ const page = {
     "searches": ["Scratch", "TurboWarp"],
     "title": "TurboWarp Studio",
     "site": "turbowarp.org"
+  },
+  "https://telegram.org/": {
+    "searches": ["Telegram", "Телеграм", "Телега", "тг", "мессенджер", "общение"],
+    "title": "Telegram",
+    "site": "telegram.org"
+  },
+  "https://telegram.org/api/": {
+    "searches": ["Telegram Bot Api", "Bot", "tba"],
+    "title": "Telegram",
+    "site": "telegram.org"
   }
 }
 screen.innerHTML = `
