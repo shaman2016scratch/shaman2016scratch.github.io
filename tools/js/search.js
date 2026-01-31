@@ -159,6 +159,12 @@ const page = {
     "site": "shaman2016scratch.github.io"
   }
 }
+const zaprosInfo = {
+  "wiki": "Wiki — это сохращение от Wikipedia (Ру. Википедия), Wikipedia это электронная энциклопедия",
+  "wikis": "Wiki — это сохращение от Wikipedia (Ру. Википедия), Wikipedia это электронная энциклопедия",
+  "OS": "OS расшифровывается как Operation System (Ру. Операционная система)",
+  "os": "OS расшифровывается как Operation System (Ру. операционная система)"
+}
 screen.innerHTML = `
   <input placeholder="your request" id="req"></input><button onclick="search()">Search</button>
   <div id="results">
