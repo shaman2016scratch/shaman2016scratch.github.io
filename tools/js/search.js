@@ -132,6 +132,31 @@ const page = {
     "searches": ["Telegram Bot Api", "Bot", "tba"],
     "title": "Telegram",
     "site": "telegram.org"
+  },
+  "https://daimondcat1234567.github.io/": {
+    "searches": ["DiamondCat2026", "DiamondCat", "Diamond Cat", "Алмазный Кот", "DiamondCat1234567"],
+    "title": "DiamondCat1234567",
+    "site": "daimondcat1234567.github.io"
+  },
+  "https://scrajang-studios.github.io/": {
+    "searches": ["ScraJang", "ScratchJang", "Games", "Game"],
+    "title": "ScraJang Studios",
+    "site": "scrajang-studios.github.io"
+  },
+  "https://shaman2016scratch.github.io/shaman2016.github.io/wiki/sosirsOS/": {
+    "searches": ["sosirsOS", "OS", "os"],
+    "title": "sosirsOS",
+    "site": "shaman2016scratch.github.io"
+  },
+  "https://kiros-scratch.github.io/": {
+    "searches": ["KirOS", "OS"],
+    "title": "KirOS",
+    "site": "kiros-scratch.github.io"
+  },
+  "https://shaman2016scratch.github.io/shaman2016.github.io/wiki/": {
+    "searches": ["wiki", "wikis", "SHAMAN2016-WIKI"],
+    "title": "SHAMAN2016-WIKI",
+    "site": "shaman2016scratch.github.io"
   }
 }
 screen.innerHTML = `
