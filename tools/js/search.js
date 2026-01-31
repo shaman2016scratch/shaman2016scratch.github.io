@@ -36,6 +36,16 @@ const site = {
       "official": true,
       "comment": "Оффициальный сайт Скретчера DiamondCat1234567"
     }
+  },
+  "scrajang-studios.github.io": {
+    "title": "ScraJang Web Site",
+    "Verified": {
+      "official": true,
+      "comment": "Official Website"
+    }
+  },
+  "turbowarp.org": {
+    "title": "TurboWarp"
   }
 }
 const page = {
@@ -81,6 +91,11 @@ const page = {
     "title": "Dash — More Blocks, Extensions and other",
     "description": "Dash is the best Scratch modification",
     "site": "dashblocks.github.io"
+  },
+  "https://turbowarp.org/": {
+    "searches": ["Scratch", "TurboWarp"],
+    "title": "TurboWarp Studio",
+    "site": "turbowarp.org"
   }
 }
 screen.innerHTML = `
