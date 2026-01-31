@@ -56,7 +56,7 @@ async function search() {
   result = `
     <h2>Results</h2>
   `
-  fetch("https://api-shaman2016.vercel.app/tools/search/zapros/")
+  fetch(`https://api-shaman2016.vercel.app/tools/search/zapros?text=${zapros}`)
   for(let i = 0; i < results.length; i++) {
     if(page[results[i]].searches.include(zapros)) {
       result += `
