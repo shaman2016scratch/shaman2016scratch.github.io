@@ -14,7 +14,7 @@ let lib = {
       "docs": "Not"
       "blocks": [
         {
-          "type": blockina.blockType.blockType.COMMAND,
+          "type": blockina.blockType.COMMAND,
           "text": ["text", "input"],
           "elements": {
             "text": { "type": "txt", "text": "command" },
