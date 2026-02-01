@@ -25,6 +25,14 @@ let extensions = {
   "sensors": {},
   "data": {}
 }
+let blockina = {
+  "blockType": {
+    "COMMAND": "com"
+  },
+  "elementType": {
+    "TEXT": "txt"
+  }
+}
 async function start() {}
 async function sprite() {}
 async function code() {}
