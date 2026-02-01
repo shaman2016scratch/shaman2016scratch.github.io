@@ -7,6 +7,16 @@ screen.innerHTML = `
     <p>Select a section</p>
   </div>
 `
+let sprites = [
+  "background"
+]
+let code = {
+  "background": []
+}
+let costumes = {
+  "background": []
+}
+let extensions = []
 async function start() {}
 async function sprite() {}
 async function code() {}
