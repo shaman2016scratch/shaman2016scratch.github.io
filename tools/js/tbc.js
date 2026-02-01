@@ -325,5 +325,7 @@ async function codebsRun() {
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
-  for(let i = 0; i < code2.length; i++) {}
+  for(let i = 0; i < code2.length; i++) {
+    let i2 = code2[i]
+  }
 }
