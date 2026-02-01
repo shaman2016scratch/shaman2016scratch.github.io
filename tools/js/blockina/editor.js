@@ -16,7 +16,15 @@ let code = {
 let costumes = {
   "background": []
 }
-let extensions = []
+let extensions = {
+  "mowe": {},
+  "myView": {},
+  "management": {},
+  "events": {},
+  "operators": {},
+  "sensors": {},
+  "data": {}
+}
 async function start() {}
 async function sprite() {}
 async function code() {}
