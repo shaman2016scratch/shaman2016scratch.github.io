@@ -13,7 +13,15 @@ let lib = {
       },
       "docs": "Not"
       "blocks": [
-        {}
+        {
+          "type": blockina.blockType.blockType.COMMAND,
+          "text": ["text", "input"],
+          "elements": {
+            "text": { "type": "txt", "text": "command" },
+            "input": { "type": "inp", "text": "text, text, texter" }
+          },
+          "func": function(args) { console.log(`hi, text: ${args.input.text}`) }
+        }
       ]
     }
   ]
