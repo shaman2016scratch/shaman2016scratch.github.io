@@ -278,6 +278,7 @@ async function Chat(id) {
               }
             }
           }
+          document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
         }
       } 
       screen.innerHTML += `
