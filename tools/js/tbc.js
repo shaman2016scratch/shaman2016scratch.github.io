@@ -220,36 +220,39 @@ async function Chat(id) {
           let image = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
           image = image.result.file_path
           image = `https://api.telegram.org/file/bot${token.value}/${image}`
-          if(!realMess[i][messHead].reply_to_message) {
+          if(!realMess[i][messHead].reply_to_message.photo) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
               `
             }
           } else {
+            let imageOtvet = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].reply_to_message.photo[1].file_id}`)).json()
+            imageOtvet = imageOtvet.result.file_path
+            imageOtvet = `https://api.telegram.org/file/bot${token.value}/${imageOtvet}`
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
               `
             }
           }
@@ -263,6 +266,8 @@ async function Chat(id) {
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  messages = messages.result
   idlastbot++
   realMessList.push(`-544${idlastbot}`)
   realMess.push({
@@ -283,8 +288,6 @@ async function sendMessage(chat) {
       "text": document.getElementById("messageText").value
     }
   })
-  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
-  messages = messages.result
   await getMess()
   Chat(chat)
 }
@@ -298,6 +301,8 @@ async function getMess() {
 }
 async function sendReply(chat, mess) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}`)
+  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  messages = messages.result
   idlastbot++
   realMessList.push(`-544${idlastbot}`)
   realMess.push({
@@ -318,8 +323,6 @@ async function sendReply(chat, mess) {
       "text": document.getElementById("messageText").value
     }
   })
-  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
-  messages = messages.result
   await getMess()
   Chat(chat)
 }
