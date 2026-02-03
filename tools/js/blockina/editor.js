@@ -27,10 +27,19 @@ let extensions = {
 }
 let blockina = {
   "blockType": {
-    "COMMAND": "com"
+    "COMMAND": "com",
+    "REPORTER": "return",
+    "BOOLEAN": "return.bool",
+    "ARRAY": "return.json.array",
+    "OBJECT": "return.json.object",
+    "HAT": "com.hat",
+    "LABEL": "ui.label",
+    "BUTTON": "ui.button"
   },
   "elementType": {
-    "TEXT": "txt"
+    "TEXT": "txt",
+    "BOOLEAN": "logic.bool",
+    "JSON": "logic.json"
   }
 }
 async function start() {}
