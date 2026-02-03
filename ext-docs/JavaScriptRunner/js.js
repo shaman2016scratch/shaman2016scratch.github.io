@@ -9,6 +9,7 @@ function ruTran() {
     <p>На <a href="code.js">этом сайте</a> (код расширения)</p>
     <h2>Поддерживается ли он где-то кроме Dash?</h2>
     <p>Да, скорее всего он поддерживается в PenguinMod.</p>
+    <h2>Как с ним работать?</h2>
     <script src="/ext-docs/JavaScriptRunner/js.js"></script>
   `
 }
@@ -23,6 +24,7 @@ function enTran() {
     <p>On <a href="code.js">this website</a> (his code)</p>
     <h2>Is it supported anywhere other than Dash?</h2>
     <p>Yes, it is most likely supported in PenguinMod.</p>
+    <h2>How to work with it?</h2>
     <script src="/ext-docs/JavaScriptRunner/js.js"></script>
   `
 }
