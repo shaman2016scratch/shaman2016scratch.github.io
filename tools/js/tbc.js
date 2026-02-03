@@ -153,6 +153,10 @@ async function start() {
           Chat(${chats[i]})
         `)
       }
+      chatsList.innerHTML += `
+        <h3>Send a message to another chat</h3>
+        <input id="messageText"><input id="messageChatId"><button onclick="sendMessage(document.getElementById('messageChatId'))">send</button>
+      `
     }
     await addChats()
 }
