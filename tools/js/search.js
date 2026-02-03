@@ -157,6 +157,16 @@ const page = {
     "searches": ["wiki", "wikis", "SHAMAN2016-WIKI"],
     "title": "SHAMAN2016-WIKI",
     "site": "shaman2016scratch.github.io"
+  },
+  "https://shaman2016scratch.github.io/shaman2016.github.io/": {
+    "searches": ["shaman2016", "polzovatel_8787"],
+    "title": "Official Site SHAMAN2016",
+    "site": "shaman2016scratch.github.io"
+  },
+  "https://shaman2016scratch.github.io/tools/blockina/": {
+    "searches": ["blockina", "scratch", "code"],
+    "title": "Blockina — A block programming environment based on the idea of Scratch and Dash",
+    "site": "shaman2016scratch.github.io"
   }
 }
 const zaprosInfo = {
@@ -205,7 +215,7 @@ async function search() {
             <h1>${page[results[i]].title}</h1>
             <p>${page[results[i]].description || "Без описания"}</p>
             <a href="${results[i]}">Open</a>
-            <p>${site[page[results[i]].site].Verified.comment}, official: ${site[page[results[i]].site].Verified.official}</p>
+            <p>Information about the verification of the site on which this page is located: ${site[page[results[i]].site].Verified.comment}, official: ${site[page[results[i]].site].Verified.official}</p>
           </div>
         `
       }
