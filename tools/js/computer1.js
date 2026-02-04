@@ -108,6 +108,11 @@ const keys = [
   "Win",
   "Alt"
 ]
+const progLangs = {
+  "compeScript": {
+    "fileFormat": "cs"
+  }
+}
 screen.innerHTML = `
   <div class="message" id="screen">
     Start the Computer
