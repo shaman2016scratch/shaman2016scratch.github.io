@@ -1,4 +1,4 @@
-root = {}
+let root = {}
 root.doc = document.getElementById('root')
 strans = {
   1: `
@@ -9,5 +9,5 @@ strans = {
 }
 root.stran = 1
 function root() {
-  root.stran
+  root.doc.innerHTML = strans[root.stran]
 }
