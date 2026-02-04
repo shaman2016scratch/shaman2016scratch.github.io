@@ -120,3 +120,4 @@ screen.innerHTML = `
   <br><button>(</button><button>)</button><button>%</button><button>$</button><button>₽</button><button>⬅️</button><button>↖️</button><button>⬆️</button><button>↗️</button><button>➡️</button><button>↘️</button><button>⬇️</button><button>↙️</button><button>Ctrl</button><button>Fn</button><button>Win</button><button>Alt</button>
   <br><button>Whitespace</button><button>Open</button><button>Close</button><button>EXIT</button>
 `
+async function start() {}
