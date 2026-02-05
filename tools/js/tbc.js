@@ -113,7 +113,9 @@ async function start() {
     await getMess()
     async function getChats() {
       for(let i = 0; i < realMess.length; i++) {
+        console.log(i)
         if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
+        console.log(`${realMess[i]}\n${messHead}`)
         if (messHead !== "notSupport") {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
