@@ -126,7 +126,7 @@ async function start() {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
           }
-          if(!Object.keys(chatInfo).includes(toString(realMess[i][messHead].chat.id))) {
+          if(!Object.keys(chatInfo).includes(String(realMess[i][messHead].chat.id))) {
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
