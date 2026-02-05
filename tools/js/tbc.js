@@ -127,12 +127,20 @@ async function start() {
             chats.push(realMess[i][messHead].chat.id)
           }
           if(!Object.keys(chatInfo).includes(String(realMess[i][messHead].chat.id))) {
+            function isForum() {
+              if (!realMess[i][messHead].message_thread_id) {
+                return false
+              } else {
+                return true
+              }
+            }
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
               "icon": "https://placehold.co/25x25",
               "type": "private",
-              "upd": lasupd
+              "upd": lasupd,
+              "isForum": isForum()
             }
             let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
             if(icoon.result.photo) {
@@ -144,12 +152,20 @@ async function start() {
             }
           }
           if(chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
+            function isForum() {
+              if (!realMess[i][messHead].message_thread_id) {
+                return false
+              } else {
+                return true
+              }
+            }
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
               "icon": "https://placehold.co/25x25",
               "type": "private",
-              "upd": lasupd
+              "upd": lasupd,
+              "isForum": isForum()
             }
             let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
             if(icoon.result.photo) {
@@ -310,7 +326,13 @@ async function Chat(id) {
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
-    await getMesss()
+    async function getTopics() {}
+    async function getMessInTopic() {}
+    if (!chatInfo[realMess[i][messHead].chat.id].isForum) {
+      await getMesss()
+    } else {
+      await getMesss()
+    }
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
