@@ -114,13 +114,21 @@ async function start() {
     async function getChats() {
       for(let i = 0; i < realMess.length; i++) {
         console.log(i)
-        if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
+        if (realMess[i].message) {
+          messHead = "message"
+        } else if (realMess[i].channel_post) {
+          messHead = "channel_post"
+        } else if (realMess[i].edited_message) {
+          messHead = "edited_message"
+        } else {
+          messHead = "notSupport"
+        }
         console.log(`${realMess[i]}\n${messHead}`)
         if (messHead !== "notSupport") {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
           }
-          if(chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
+          if(chatInfo[realMess[i][messHead].chat.id] || chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
