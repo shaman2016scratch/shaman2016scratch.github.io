@@ -143,7 +143,7 @@ async function start() {
               chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
             }
           }
-          if(Object.keys(chatInfo).includes(realMess[i][messHead].chat.id) && chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
+          if(chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
