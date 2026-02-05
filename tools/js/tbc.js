@@ -128,7 +128,24 @@ async function start() {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
           }
-          if(Object.keys(chatInfo).includes(realMess[i][messHead].chat.id) || chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
+          if(!Object.keys(chatInfo).includes(realMess[i][messHead].chat.id)) {
+            chatInfo[realMess[i][messHead].chat.id] = {
+              "username": realMess[i][messHead].chat.username || "",
+              "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
+              "icon": "https://placehold.co/25x25",
+              "type": "private",
+              "upd": lasupd
+            }
+            let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
+            if(icoon.result.photo) {
+              icoon = icoon.result.photo.big_file_id
+              icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+              icoon = icoon.result.file_path
+              chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+              chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
+            }
+          }
+          if(Object.keys(chatInfo).includes(realMess[i][messHead].chat.id) && chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
             chatInfo[realMess[i][messHead].chat.id] = {
               "username": realMess[i][messHead].chat.username || "",
               "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
