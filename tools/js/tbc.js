@@ -327,7 +327,7 @@ async function Chat(id) {
       `
     }
     async function getTopics() {}
-    async function getMessInTopic() {}
+    async function getMessInTopic(topic) {}
     if (!chatInfo[realMess[i][messHead].chat.id].isForum) {
       await getMesss()
     } else {
