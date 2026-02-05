@@ -123,7 +123,7 @@ async function start() {
         } else {
           messHead = "notSupport"
         }
-        console.log(`${toSrting(realMess[i])}\n${messHead}`)
+        console.log(`${toString(realMess[i])}\n${messHead}`)
         if (messHead !== "notSupport") {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
