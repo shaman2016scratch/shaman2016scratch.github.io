@@ -10,39 +10,47 @@ let lib = {
       "links": {
         "github": "https://github.com/shaman2016scratch/",
         "scratch": "https://scratch.mit.edu/users/shaman2016/"
+      }
+    }
+  ],
+  "docs": "Not",
+  "blocks": [
+    {
+      "type": blockina.blockType.LABEL,
+      "text": [],
+      "elements": {
+        "text": "Variables"
+      }
+    },
+    {
+      "type": blockina.blockType.LABEL,
+      "text": [],
+      "elements": {
+        "text": "JSON Object"
+      }
+    },
+    {
+      "type": blockina.blockType.OBJECT,
+      "text": ["text"],
+      "elements": {
+        "text": { "type": "txt", "text": "new object" }
       },
-      "docs": "Not"
-      "blocks": [
-        {
-          "type": blockina.blockType.LABEL,
-          "text": [],
-          "elements": {
-            "text": "Variables"
-          }
-        },
-        {
-          "type": blockina.blockType
-          "text": [],
-          "elements": {
-            "text": "JSON Object"
-          }
-        },
-        {
-          "type": blockina.blockType.OBJECT,
-          "text": ["text"],
-          "elements": {
-            "text": { "type": "txt", "text": "new object" }
-          },
-          "func": function(args) { return {} }
-        },
-        {
-          "type": blockina.blockType.LABEL,
-          "text": [],
-          "elements": {
-            "text": "JSON Array"
-          }
-        }
-      ]
+      "func": function(args) { return {} }
+    },
+    {
+      "type": blockina.blockType.LABEL,
+      "text": [],
+      "elements": {
+        "text": "JSON Array"
+      }
+    },
+    {
+      "type": blockina.blockType.OBJECT,
+      "text": ["text"],
+      "elements": {
+        "text": { "type": "txt", "text": "new object" }
+      },
+      "func": function(args) { return {} }
     }
   ]
 }
