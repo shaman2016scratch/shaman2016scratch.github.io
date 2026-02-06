@@ -6,7 +6,22 @@ let RAM = {
     "1line": 20,
     "lines": 12
   },
-  "screenLines": []
+  "screenLines": [],
+  "screenLine": {
+    
+    0: 0,
+    1: 20,
+    2: 40,
+    3: 60,
+    4: 80,
+    5: 100,
+    6: 120,
+    7: 140,
+    8: 160,
+    9: 180,
+    10: 200,
+    11: 220
+  }
 }
 for(let i = 0; i < 20*12; i++) {
   RAM.screen.push(0)
@@ -39,7 +54,8 @@ async function updateScreen() {
     `
     RAM.screenLines[i] = document.getElementById(`line${i}`)
     for(let i2 = 0; i2 < RAM.screenData["1line"]; i2++) {
-      RAM.screenLines[i].textContent = RAM.screen[i*i2]
+      RAM.screenLines[i].textContent = RAM.screen[RAM.screenLine[i] + i2]
     }
   }
 }
+async function runCompeScript() {}
