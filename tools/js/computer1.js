@@ -1,5 +1,16 @@
 let screen = document.getElementById("content")
 const keys = ["Esc","F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","PrtSc","F11","F12","Del","Ё","OK",1,2,3,4,5,6,7,8,9,0,"-","+","=","—","{","}","Whitespace","~","Tab","Q","W","E","R","Y","U","I","O","P","[","]","|","\\","/","&","Open","`","Caps","A","S","D","F","G","X","J","K","L",":",";","\"","'","Enter","^","@","Close","Shift","Ft","Clone","X","Z","C","V","B","N","M",".",",","<",">","?","!","#","*","Exit","(",")","%","$","₽","arrow1","arrow1-2","arrow2","arrow2-3","arrow3","arrow3-4","arrow4","arrow4-1","Ctrl","Fn","Win", "Alt"]
+let RAM = {
+  "screen": [],
+  "screenData": {
+    "1line": 20,
+    "lines": 12
+  },
+  "screenLines": []
+}
+for(let i = 0; i < 20*12; i++) {
+  RAM.screen.push(0)
+}
 const progLangs = {
   "compeScript": {
     "fileFormat": "cs"
@@ -17,4 +28,18 @@ screen.innerHTML = `
   <br><button>(</button><button>)</button><button>%</button><button>$</button><button>₽</button><button>⬅️</button><button>↖️</button><button>⬆️</button><button>↗️</button><button>➡️</button><button>↘️</button><button>⬇️</button><button>↙️</button><button>Ctrl</button><button>Fn</button><button>Win</button><button>Alt</button>
   <br><button>Whitespace</button><button>Open</button><button>Close</button><button>EXIT</button>
 `
-async function start() {}
+let ecran = document.getElementById("screen")
+async function start() {
+  await updateScreen()
+}
+async function updateScreen() {
+  for(let i = 0; i < RAM.screenData.lines; i++) {
+    ecran.innerHTML += `
+      <p id="line${i}">|</p>
+    `
+    RAM.screenLines[i] = document.getElementById(`line${i}`)
+    for(let i2 = 0; i2 < RAM.screenData["1line"]; i2++) {
+      RAM.screenLines[i].textContent = RAM.screen[i*i2]
+    }
+  }
+}
