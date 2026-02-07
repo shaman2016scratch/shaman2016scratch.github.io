@@ -68,7 +68,11 @@ let events = {
   "messages": {}
 }
 let vm = {}
-let termHelp = {}
+let termHelp = {
+  "logs": [
+    { "type": "log", "text": "Hello, welcome to the Blockina terminal interface" }
+  ]
+}
 const startButton = document.querySelector('#startProj');
 startButton.addEventListener('mousedown', () => {
   events.sys.projStart = true;
