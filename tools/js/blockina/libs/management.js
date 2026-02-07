@@ -20,7 +20,7 @@ let lib = {
       "text": ["text", "input"],
       "elements": {
         "text": { "type": "txt", "text": "wait" },
-        "input": { "type": "inp", "text": "" }
+        "input": { "type": "inp", "text": 5 }
       },
       "func": async function(args) { await setTimeout(() => {}, args.input.text*1000) }
     }
