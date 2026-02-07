@@ -1,12 +1,14 @@
 let screen = document.getElementById("content")
 screen.innerHTML = `
   <a href="/tools/blockina/"><button>MAIN</button></a>
-  <iframe src="text/html"></iframe>
+  <br><button id="startProj">Start</button><button id="stopProj">Stop</button>
+  <iframe src="data:text/html," id="scene"></iframe>
   <button onclick="sprite()">Sprites</button><button onclick="code()">Code</button><button onclick="costum()">Costumes</button><button onclick="extLib()">ExtLib</button>
   <div id="codeCont">
     <p>Select a section</p>
   </div>
 `
+let scene = document.getElementById("scene")
 let sprites = [
   "background"
 ]
