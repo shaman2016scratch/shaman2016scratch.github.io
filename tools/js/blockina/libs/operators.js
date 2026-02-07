@@ -3,6 +3,7 @@ let lib = {
     "en": "Operators",
     "ru": "Операторы"
   },
+  "id": "operators",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/operators.svg",
   "creators": [
     {
