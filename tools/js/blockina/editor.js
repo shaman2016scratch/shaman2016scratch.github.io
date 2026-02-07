@@ -20,7 +20,7 @@ let code = {
       "x": 0,
       "y": 0,
       "blocks": [
-        { "ext": "terminal", "blockId": "print", "elements": {} }
+        { "ext": "terminal", "blockId": "send", "elements": {} }
       ]
     }
   ]
