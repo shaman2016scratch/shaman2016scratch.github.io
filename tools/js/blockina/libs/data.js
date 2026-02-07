@@ -3,6 +3,7 @@ let lib = {
     "en": "Data",
     "ru": "Данные"
   },
+  "id": "data",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/data.svg",
   "creators": [
     {
