@@ -22,7 +22,14 @@ let lib = {
         "text": { "type": "txt", "text": "print" },
         "input": { "type": "inp", "text": "Hello, World!" }
       },
-      "func": function(args) { termHelp.logs.push({ "type": "log", args.input.text }) }
+      "func": function(args) { termHelp.logs.push({ "type": "log", "text": args.input.text }) }
+    }, {
+      "type": blockina.blockType.COMMAND,
+      "text": ["text"],
+      "elements": {
+        "text": { "type": "txt", "text": "Clear" }
+      },
+      "func": function(args) { termHelp.logs = [] }
     }
   ]
 }
