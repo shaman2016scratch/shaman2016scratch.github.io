@@ -3,6 +3,7 @@ let lib = {
     "en": "Management",
     "ru": "Управление"
   },
+  "id": "management",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/manage.svg",
   "creators": [
     {
