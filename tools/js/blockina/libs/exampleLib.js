@@ -3,6 +3,7 @@ let lib = {
     "en": "Example Library",
     "ru": "Пример Библиотеки"
   },
+  "id": "exampleId",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/example.svg",
   "creators": [
     {
@@ -16,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "exampleId",
       "type": blockina.blockType.COMMAND,
       "text": ["text", "input"],
       "elements": {
