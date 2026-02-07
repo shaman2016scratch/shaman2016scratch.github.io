@@ -3,6 +3,7 @@ let lib = {
     "en": "Events",
     "ru": "События"
   },
+  "id": "events",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/events.svg",
   "creators": [
     {
