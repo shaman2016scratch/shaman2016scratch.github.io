@@ -7,8 +7,7 @@ let RAM = {
     "lines": 12
   },
   "screenLines": [],
-  "screenLine": {
-    
+  "screenLine": {    
     0: 0,
     1: 20,
     2: 40,
