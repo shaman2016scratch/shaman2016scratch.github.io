@@ -27,11 +27,20 @@ let lib = {
       "text": ["text", "input", "text2", "value"],
       "elements": {
         "text": { "type": "txt", "text": "set a variable" },
-        "input": { "type": "inp", "text": "Variable" },
+        "input": { "type": "inp", "text": "variable" },
         "text2": { "type": "txt", "text": "to" },
         "value": { "type": "inp", "text": "value" }
       },
       "func": function(args) { variables.sysValues[args.input.text] = args.value.text }
+    },
+    {
+      "type": blockina.blockType.REPORTER,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "get" },
+        "input": { "type": "inp", "text": "variable" }
+      },
+      "func": function(args) { return variables.sysValues[args.input.text] }
     },
     {
       "type": blockina.blockType.LABEL,
