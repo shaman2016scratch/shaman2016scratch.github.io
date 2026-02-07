@@ -17,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "wait",
       "type": blockina.blockType.COMMAND,
       "text": ["text", "input"],
       "elements": {
