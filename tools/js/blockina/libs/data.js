@@ -23,6 +23,17 @@ let lib = {
       }
     },
     {
+      "type": blockina.blockType.COMMAND,
+      "text": ["text", "input", "text2", "value"],
+      "elements": {
+        "text": { "type": "txt", "text": "set a variable" },
+        "input": { "type": "inp", "text": "Variable" },
+        "text2": { "type": "txt", "text": "to" },
+        "value": { "type": "inp", "text": "value" }
+      },
+      "func": function(args) { variables.sysValues[args.input] = args.value }
+    },
+    {
       "type": blockina.blockType.LABEL,
       "text": [],
       "elements": {
