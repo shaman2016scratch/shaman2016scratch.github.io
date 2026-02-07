@@ -17,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "plus",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -26,6 +27,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text + args[2]text }
     }, {
+      "id": "minus",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -35,6 +37,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text - args[2]text }
     }, {
+      "id": "multiply",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -44,6 +47,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text * args[2]text }
     }, {
+      "id": "razdelit",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -53,6 +57,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text / args[2]text }
     }, {
+      "id": "mod",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -62,6 +67,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text % args[2]text }
     }, {
+      "id": "stepen",
       "type": blockina.blockType.REPORTER,
       "text": [1, "text", 2],
       "elements": {
@@ -71,6 +77,7 @@ let lib = {
       },
       "func": function(args) { return args[1]text ** args[2]text }
     }, {
+      "id": "typeof",
       "type": blockina.blockType.REPORTER,
       "text": ["text", 1],
       "elements": {
