@@ -46,6 +46,7 @@ let variables = {
   "sysValues": {},
   "lists": {}
 }
+let blocks = {}
 async function start() {}
 async function sprite() {}
 async function code() {}
