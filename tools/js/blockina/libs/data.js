@@ -48,9 +48,9 @@ let lib = {
       "type": blockina.blockType.OBJECT,
       "text": ["text"],
       "elements": {
-        "text": { "type": "txt", "text": "new object" }
+        "text": { "type": "txt", "text": "new array" }
       },
-      "func": function(args) { return {} }
+      "func": function(args) { return [] }
     }
   ]
 }
