@@ -3,6 +3,7 @@ let lib = {
     "en": "Terminal",
     "ru": "Терминал"
   },
+  "id": "terminal",
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/example.svg",
   "creators": [
     {
