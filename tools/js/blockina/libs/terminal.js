@@ -17,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "send",
       "type": blockina.blockType.COMMAND,
       "text": ["text", "input"],
       "elements": {
@@ -25,6 +26,7 @@ let lib = {
       },
       "func": function(args) { termHelp.logs.push({ "type": "log", "text": args.input.text }) }
     }, {
+      "id": "clear"
       "type": blockina.blockType.COMMAND,
       "text": ["text"],
       "elements": {
