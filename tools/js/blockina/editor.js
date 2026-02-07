@@ -39,7 +39,8 @@ let blockina = {
   "elementType": {
     "TEXT": "txt",
     "BOOLEAN": "logic.bool",
-    "JSON": "logic.json"
+    "JSON": "logic.json",
+    "INPUT": "inp"
   }
 }
 let variables = {
