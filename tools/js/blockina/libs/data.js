@@ -17,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "labelId",
       "type": blockina.blockType.LABEL,
       "text": [],
       "elements": {
@@ -24,6 +25,7 @@ let lib = {
       }
     },
     {
+      "id": "setVar",
       "type": blockina.blockType.COMMAND,
       "text": ["text", "input", "text2", "value"],
       "elements": {
@@ -35,6 +37,7 @@ let lib = {
       "func": function(args) { variables.sysValues[args.input.text] = args.value.text }
     },
     {
+      "id": "getVar",
       "type": blockina.blockType.REPORTER,
       "text": ["text", "input"],
       "elements": {
@@ -44,6 +47,7 @@ let lib = {
       "func": function(args) { return variables.sysValues[args.input.text] }
     },
     {
+      "id": "label2",
       "type": blockina.blockType.LABEL,
       "text": [],
       "elements": {
@@ -51,6 +55,7 @@ let lib = {
       }
     },
     {
+      "id": "newObj",
       "type": blockina.blockType.OBJECT,
       "text": ["text"],
       "elements": {
@@ -59,6 +64,7 @@ let lib = {
       "func": function(args) { return {} }
     },
     {
+      "id": "label3",
       "type": blockina.blockType.LABEL,
       "text": [],
       "elements": {
@@ -66,7 +72,8 @@ let lib = {
       }
     },
     {
-      "type": blockina.blockType.OBJECT,
+      "id": "newArr",
+      "type": blockina.blockType.ARRAY,
       "text": ["text"],
       "elements": {
         "text": { "type": "txt", "text": "new array" }
