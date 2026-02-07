@@ -10,19 +10,19 @@ let lib = {
       "links": {
         "github": "https://github.com/shaman2016scratch/",
         "scratch": "https://scratch.mit.edu/users/shaman2016/"
+      }
+    }
+  ],
+  "docs": "Not",
+  "blocks": [
+    {
+      "type": blockina.blockType.COMMAND,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "command" },
+        "input": { "type": "inp", "text": "text, text, texter" }
       },
-      "docs": "Not"
-      "blocks": [
-        {
-          "type": blockina.blockType.COMMAND,
-          "text": ["text", "input"],
-          "elements": {
-            "text": { "type": "txt", "text": "command" },
-            "input": { "type": "inp", "text": "text, text, texter" }
-          },
-          "func": function(args) { console.log(`hi, text: ${args.input.text}`) }
-        }
-      ]
+      "func": function(args) { console.log(`hi, text: ${args.input.text}`) }
     }
   ]
 }
