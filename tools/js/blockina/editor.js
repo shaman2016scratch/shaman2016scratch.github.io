@@ -42,6 +42,10 @@ let blockina = {
     "JSON": "logic.json"
   }
 }
+let variables = {
+  "sysValues": {},
+  "lists": {}
+}
 async function start() {}
 async function sprite() {}
 async function code() {}
