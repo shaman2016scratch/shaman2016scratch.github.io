@@ -1,7 +1,7 @@
 let lib = {
   "name": {
-    "en": "Example Library",
-    "ru": "Пример Библиотеки"
+    "en": "Terminal",
+    "ru": "Терминал"
   },
   "icon": "https://shaman2016scratch.github.io/tools/blockina/exts/example.svg",
   "creators": [
@@ -19,10 +19,10 @@ let lib = {
       "type": blockina.blockType.COMMAND,
       "text": ["text", "input"],
       "elements": {
-        "text": { "type": "txt", "text": "command" },
-        "input": { "type": "inp", "text": "text, text, texter" }
+        "text": { "type": "txt", "text": "print" },
+        "input": { "type": "inp", "text": "Hello, World!" }
       },
-      "func": function(args) { console.log(`hi, text: ${args.input.text}`) }
+      "func": function(args) { termHelp.logs.push({ "type": "log", args.input.text }) }
     }
   ]
 }
