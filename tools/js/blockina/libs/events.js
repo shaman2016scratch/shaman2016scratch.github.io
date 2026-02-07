@@ -17,6 +17,7 @@ let lib = {
   "docs": "Not",
   "blocks": [
     {
+      "id": "hat1",
       "type": blockina.blockType.HAT,
       "text": ["text"],
       "elements": {
