@@ -31,7 +31,7 @@ let lib = {
         "text2": { "type": "txt", "text": "to" },
         "value": { "type": "inp", "text": "value" }
       },
-      "func": function(args) { variables.sysValues[args.input] = args.value }
+      "func": function(args) { variables.sysValues[args.input.text] = args.value.text }
     },
     {
       "type": blockina.blockType.LABEL,
