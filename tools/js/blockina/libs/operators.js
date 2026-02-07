@@ -69,6 +69,14 @@ let lib = {
         2: { "type": "inp", "text": 5 }
       },
       "func": function(args) { return args[1]text ** args[2]text }
+    }, {
+      "type": blockina.blockType.REPORTER,
+      "text": ["text", 1],
+      "elements": {
+        "text": { "type": "txt", "text": "Type" },
+        1: { "type": "inp", "text": 5 }
+      },
+      "func": function(args) { return typeof args[1]text }
     }
   ]
 }
