@@ -48,6 +48,20 @@ let variables = {
   "lists": {}
 }
 let blocks = {}
+let events = {
+  "sys": {
+    "projStart": false
+  },
+  "messages": {}
+}
+const startButton = document.querySelector('#startProj');
+startButton.addEventListener('mousedown', () => {
+  events.sys.projStart = true;
+});
+
+startButton.addEventListener('mouseup', () => {
+  events.sys.projStart = false;
+});
 async function start() {}
 async function sprite() {}
 async function code() {}
