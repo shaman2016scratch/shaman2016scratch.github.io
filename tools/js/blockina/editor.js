@@ -2,18 +2,28 @@ let screen = document.getElementById("content")
 screen.innerHTML = `
   <a href="/tools/blockina/"><button>MAIN</button></a>
   <br><button id="startProj">Start</button><button id="stopProj">Stop</button>
-  <iframe src="data:text/html," id="scene"></iframe>
+  <iframe src="data:text/html," id="scene" width="360" height="480"></iframe>
+  <iframe src="data:text/html,<html><head></head></html>" id="terminal" width="360" height="480"></iframe>
   <button onclick="sprite()">Sprites</button><button onclick="code()">Code</button><button onclick="costum()">Costumes</button><button onclick="extLib()">ExtLib</button>
   <div id="codeCont">
     <p>Select a section</p>
   </div>
 `
 let scene = document.getElementById("scene")
+let terminal = document.getElementById("terminal")
 let sprites = [
   "background"
 ]
 let code = {
-  "background": []
+  "background": [
+    {
+      "x": 0,
+      "y": 0,
+      "blocks": [
+        { "ext": "terminal", "blockId": "print", "elements": {} }
+      ]
+    }
+  ]
 }
 let costumes = {
   "background": []
@@ -57,6 +67,8 @@ let events = {
   },
   "messages": {}
 }
+let vm = {}
+let termHelp = {}
 const startButton = document.querySelector('#startProj');
 startButton.addEventListener('mousedown', () => {
   events.sys.projStart = true;
