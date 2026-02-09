@@ -10,7 +10,7 @@ async function updateInfo() {
    screen.innerHTML = `
     <h1>Ip: ${result.ip}</h1>
     <h2>User Agent: ${result["user-agent"]}</h2>
-    <h3>Language: ${result.headers["x-vercel-ip-country"]}</h3>
+    <h3>Language: ${result.headers["x-vercel-ip-language"]}</h3>
     <h3>City: ${result.headers["x-vercel-ip-city"]}</h3>
     <h3>Country: ${result.headers["x-vercel-ip-country"]}</h3>
     <h3>Real IP: ${result.headers["x-real-ip"]}</h3>
