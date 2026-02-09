@@ -19,5 +19,6 @@ async function updateInfo() {
     <h3>Origin: ${result.headers["origin"]}</h3>
     <h3>Continent: ${result.headers["x-vercel-ip-continent"]}</h3>
   `
+  let os = ""
 }
 updateInfo()
