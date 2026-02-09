@@ -7,7 +7,7 @@ async function getInfo() {
 }
 async function updateInfo() {
   await getInfo()
-  screen.innerHTML = `
+   screen.innerHTML = `
     <h1>Ip: ${result.ip}</h1>
     <h2>User Agent: ${result["user-agent"]}</h2>
     <h3>Language: ${result.headers["x-vercel-ip-country"]}</h3>
@@ -38,5 +38,18 @@ async function updateInfo() {
   } else {
     os = i[0]
   }
+  screen.innerHTML = `
+    <h1>Ip: ${result.ip}</h1>
+    <h2>User Agent: ${result["user-agent"]}</h2>
+    <h3>Language: ${result.headers["x-vercel-ip-country"]}</h3>
+    <h3>City: ${result.headers["x-vercel-ip-city"]}</h3>
+    <h3>Country: ${result.headers["x-vercel-ip-country"]}</h3>
+    <h3>Real IP: ${result.headers["x-real-ip"]}</h3>
+    <h3>Platform: ${result.headers["sec-ch-ua-platform"]}</h3>
+    <h3>Timezone: ${result.headers["x-vercel-ip-timezone"]}</h3>
+    <h3>Origin: ${result.headers["origin"]}</h3>
+    <h3>Continent: ${result.headers["x-vercel-ip-continent"]}</h3>
+    <h3>OS: ${os}</h3>
+  `
 }
 updateInfo()
