@@ -33,17 +33,20 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "get Internet Protocol",
               arguments: {}
+            }, {
+              opcode: "getReq",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Request",
+              arguments: {}
             }
           ],
         };
       }
 async getUA(args) {
-  a = getReq()
-  return a.result["user-agent"]
+  return getReq().result["user-agent"]
 }
 async getIP(args) {
-  a = getReq()
-  return a.result["ip"]
+  return getReq().result["ip"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
