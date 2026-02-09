@@ -47,6 +47,21 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "get Country",
               arguments: {}
+            }, {
+              opcode: "getLang",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Language",
+              arguments: {}
+            }, {
+              opcode: "getPlatform",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Platform",
+              arguments: {}
+            }, {
+              opcode: "getTime",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Timezone",
+              arguments: {}
             }
           ],
         };
@@ -71,6 +86,18 @@ async getCity(args) {
 async getCountry(args) {
   let a = await getRequ()
   return a.result.headers["x-vercel-ip-country"]
+}
+async getLang() {
+  let a = await getRequ)
+  return a.result.headers["accept-language"]
+}
+async getPlatform() {
+  let a = await getRequ()
+  return a.result.headers["sec-ch-ua-platform"]
+}
+async getgetTime() {
+  let a = await getRequ()
+  return a.result.headers["x-vercel-ip-timezone"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
