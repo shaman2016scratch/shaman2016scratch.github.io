@@ -534,7 +534,16 @@ async function codebsRun() {
   await getMess()
   let windowBs = {
     "var": {
-      "getValue": function(v) {}
+      "getValue": function(v) {
+        let vType = typeof v
+        if (vType === "string" || vType === "number") {
+          return v
+        }
+        if (vType === "function") {
+          let vFunc = v
+          return vFunc()
+        }
+      }
     },
     "token": {}
   }
