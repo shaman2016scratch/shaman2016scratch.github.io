@@ -36,6 +36,7 @@ let boteto = ""
 let lasupd = 0
 let bs = {}
 screen.innerHTML = `
+  <div class="message"><button onclick="botScript()">botScript</button></div>
   <h1>Chats</h1>
   <div id="chats">loading...</div>
 `
@@ -83,6 +84,7 @@ function save() {
 }
 function load() {
   screen.innerHTML = `
+    <div class="message"><button onclick="botScript()">botScript</button></div>
     <h3>Please enter the save object in the input field below and click on the button.</h3>
     <textarea id="vostCode"></textarea>
     <br><button onclick="vosdCode()">Load</button>
@@ -205,6 +207,7 @@ async function Chat(id) {
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
     screen.innerHTML = `
+      <div class="message"><button onclick="botScript()">botScript</button></div>
       <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name} [${members}]</h1></div>
     `
     let messList = document.getElementById("messages")
