@@ -9,7 +9,7 @@
   if (!Scratch.extensions.unsandboxed) {
     throw new Error("This Extension must run unsandboxed");
   }
-  async getRequ() {
+  async function getRequ() {
     let a = await fetch("https://api-shaman2016.vercel.app/req")
     a = await a.json()
     return a
