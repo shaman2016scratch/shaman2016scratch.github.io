@@ -10,6 +10,11 @@
   if (!Scratch.extensions.unsandboxed) {
     throw new Error("This Extension must run unsandboxed");
   }
+  async getRequ() {
+    let a = await fetch("https://api-shaman2016.vercel.app/req")
+    a = await a.json()
+    return a
+  }
 
     class reqInfoBy8787 {
       getInfo() {
@@ -43,11 +48,11 @@ async getReq() {
   return a
 }
 async getUA(args) {
-  let a = await getReq()
+  let a = await getRequ()
   return a.result["user-agent"]
 }
 async getIP(args) {
-  let a = await getReq()
+  let a = await getRequ()
   return a.result["ip"]
 }
     }
