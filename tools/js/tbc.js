@@ -538,7 +538,11 @@ async function codebsRun() {
         let vType = typeof v
         if (vType === "string") {
           if (v.split(".")[0] === "window") {
-            if (v.split(".")[])
+            if (typeof windowBs.var[v.split(".")[1]] === "function") {
+              return windowBs.var[v.split(".")[1]]()
+            } else {
+              windowBs.var[v.split(".")[1]]
+            }
           }
         }
         if (vType === "string" || vType === "number") {
