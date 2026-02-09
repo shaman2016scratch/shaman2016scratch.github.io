@@ -5,7 +5,7 @@
 // License: MPL-2.0
 
 (function (Scratch) {
-    "use strict";
+  "use strict";
 
   if (!Scratch.extensions.unsandboxed) {
     throw new Error("This Extension must run unsandboxed");
@@ -28,12 +28,20 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "get User Agent",
               arguments: {}
+            }, {
+              opcode: "getIP",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Internet Protocol",
+              arguments: {}
             }
           ],
         };
       }
 async getUA(args) {
   return a.result["user-agent"]
+}
+async getIP(args) {
+  return a.result["ip"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
