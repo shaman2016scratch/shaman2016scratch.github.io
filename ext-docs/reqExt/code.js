@@ -34,7 +34,7 @@
               arguments: {}
             }, {
               opcode: "getReq",
-              blockType: Scratch.BlockType.REPORTER,
+              blockType: Scratch.BlockType.OBJECT,
               text: "get Request",
               arguments: {}
             }, {
