@@ -20,5 +20,6 @@ async function updateInfo() {
     <h3>Continent: ${result.headers["x-vercel-ip-continent"]}</h3>
   `
   let os = ""
+  let i = result["user-agent"].split("(")[0]
 }
 updateInfo()
