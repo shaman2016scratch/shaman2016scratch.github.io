@@ -22,5 +22,21 @@ async function updateInfo() {
   let os = ""
   let i = result["user-agent"].split("(")[1]
   i = i.split(")")[0]
+  i = i.split("; ")
+  if (i[0] === "Linux") {
+    if (i[1].split(" ")[0] === "Android") {
+      if (i[2] === "HarmonyOS") {
+        os = "HarmonyOS"
+      } else {
+        os = "Android"
+      }
+    } else {
+      os = "Linux"
+    }
+  } else if (i[0].split(" ")[0] === "Windows") {
+    os = "Windows"
+  } else {
+    os = i[0]
+  }
 }
 updateInfo()
