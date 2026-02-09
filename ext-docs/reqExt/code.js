@@ -38,9 +38,11 @@
         };
       }
 async getUA(args) {
+  a = getReq()
   return a.result["user-agent"]
 }
 async getIP(args) {
+  a = getReq()
   return a.result["ip"]
 }
     }
