@@ -532,14 +532,21 @@ async function codebsRun() {
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
-  let windowBs = {}
+  let windowBs = {
+    "var": {
+      "getValue": function(v) {}
+    },
+    "token": {}
+  }
   for(let i = 0; i < code2.length; i++) {
     let i2 = code2[i]
     let i3 = i2.split(" ")
     if (i3[0] === "let") {
-      windowBs[i3[1]]
+      windowBs.war[i3[1]]
     } else if (i3[1] === "=") {
-      windowBs[i3[0]] = i3[2]
+      windowBs.war[i3[0]] = i3[2]
+    } else if (i3[0] === "token") {
+      windowBs.token = windowBs.var.getValue(i3[1])
     }
   }
 }
