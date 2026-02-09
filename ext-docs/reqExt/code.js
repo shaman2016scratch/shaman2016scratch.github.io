@@ -37,6 +37,16 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "get Request",
               arguments: {}
+            }, {
+              opcode: "getCity",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get City",
+              arguments: {}
+            }, {
+              opcode: "getCountry",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Country",
+              arguments: {}
             }
           ],
         };
@@ -53,6 +63,14 @@ async getUA(args) {
 async getIP(args) {
   let a = await getRequ()
   return a.result["ip"]
+}
+async getCity(args) {
+  let a = await getRequ()
+  return a.result.headers["x-vercel-ip-city"]
+}
+async getCountry(args) {
+  let a = await getRequ()
+  return a.result.headers["x-vercel-ip-country"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
