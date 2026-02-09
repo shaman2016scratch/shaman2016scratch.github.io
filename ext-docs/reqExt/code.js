@@ -88,7 +88,7 @@ async getCountry(args) {
   return a.result.headers["x-vercel-ip-country"]
 }
 async getLang() {
-  let a = await getRequ)
+  let a = await getRequ()
   return a.result.headers["accept-language"]
 }
 async getPlatform() {
