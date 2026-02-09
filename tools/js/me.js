@@ -16,6 +16,8 @@ async function updateInfo() {
     <h3>Real IP: ${result.headers["x-real-ip"]}</h3>
     <h3>Platform: ${result.headers["sec-ch-ua-platform"]}</h3>
     <h3>Timezone: ${result.headers["x-vercel-ip-timezone"]}</h3>
+    <h3>Origin: ${result.headers["origin"]}</h3>
+    <h3>Continent: ${result.headers["x-vercel-ip-continent"]}</h3>
   `
 }
 updateInfo()
