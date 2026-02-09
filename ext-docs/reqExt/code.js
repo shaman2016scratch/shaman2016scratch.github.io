@@ -48,10 +48,12 @@ async function getReq() {
   return a
 }
 async getUA(args) {
-  return await getReq().result["user-agent"]
+  let a = await getReq()
+  return a.result["user-agent"]
 }
 async getIP(args) {
-  return await getReq().result["ip"]
+  let a = await getReq()
+  return a.result["ip"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
