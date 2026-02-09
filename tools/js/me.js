@@ -16,3 +16,4 @@ async function updateInfo() {
     <h3>Real IP: ${result.headers["x-real-ip"]}</h3>
   `
 }
+updateInfo()
