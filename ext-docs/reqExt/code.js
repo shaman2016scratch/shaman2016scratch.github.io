@@ -42,11 +42,16 @@
           ],
         };
       }
+async function getReq() {
+  let a = await fetch("https://api-shaman2016.vercel.app/req")
+  a = await a.json()
+  return a
+}
 async getUA(args) {
-  return getReq().result["user-agent"]
+  return await getReq().result["user-agent"]
 }
 async getIP(args) {
-  return getReq().result["ip"]
+  return await getReq().result["ip"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
