@@ -33,7 +33,7 @@
         };
       }
 async getUA(args) {
-return a.result["user-agent"]
+  return a.result["user-agent"]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
