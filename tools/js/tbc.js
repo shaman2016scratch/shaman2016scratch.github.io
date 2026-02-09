@@ -534,8 +534,13 @@ async function codebsRun() {
   await getMess()
   let windowBs = {
     "var": {
-      "getValue": function(v) {
+      "getValue": async function(v) {
         let vType = typeof v
+        if (vType === "string") {
+          if (v.split(".")[0] === "window") {
+            if (v.split(".")[])
+          }
+        }
         if (vType === "string" || vType === "number") {
           return v
         }
