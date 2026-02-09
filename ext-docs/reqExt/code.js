@@ -37,7 +37,7 @@
           ],
         };
       }
-async function getReq() {
+async getReq() {
   let a = await fetch("https://api-shaman2016.vercel.app/req")
   a = await a.json()
   return a
