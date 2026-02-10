@@ -68,7 +68,7 @@
               text: "get Header [name]",
               arguments: {
                 name: {
-                  argumentType: Scratch.BlockType.String,
+                  type: Scratch.ArgumentType.STRING,
                   defaultValue: "origin"
                 }
               }
