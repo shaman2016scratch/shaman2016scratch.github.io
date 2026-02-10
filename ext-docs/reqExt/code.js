@@ -62,6 +62,16 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "get Timezone",
               arguments: {}
+            }, {
+              opcode: "getHeader",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Header [name]",
+              arguments: {
+                name: {
+                  argumentType: Scratch.BlockType.String,
+                  defaultValue: "origin"
+                }
+              }
             }
           ],
         };
@@ -95,9 +105,13 @@ async getPlatform() {
   let a = await getRequ()
   return a.result.headers["sec-ch-ua-platform"]
 }
-async getgetTime() {
+async getTime() {
   let a = await getRequ()
   return a.result.headers["x-vercel-ip-timezone"]
+}
+async getHeader(args) {
+  let a = await getRequ()
+  return a.result.headers[args.name]
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
