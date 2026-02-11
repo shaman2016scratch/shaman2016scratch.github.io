@@ -334,7 +334,7 @@ async function Chat(id) {
       let i = 0
       for(i = 0; i < realMess.length; i++) {
         if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
-        let threadId === realMess[i][messHead].message_thread_id || "not"
+        let threadId = realMess[i][messHead].message_thread_id || "not"
         if(messHead !== "notSupport" && realMess[i][messHead].chat.id === id && realMess[i][messHead].text && threadId === topic) {
           if(!realMess[i][messHead].reply_to_message) {
             if(!realMess[i][messHead].sender_chat) {
