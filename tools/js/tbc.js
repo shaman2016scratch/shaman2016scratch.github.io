@@ -449,7 +449,7 @@ async function Chat(id) {
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
-    if (!chatInfo[realMess[i][messHead].chat.id].isForum) {
+    if (!chatInfo[id].isForum) {
       await getMesss()
     } else {
       await getMesss()
