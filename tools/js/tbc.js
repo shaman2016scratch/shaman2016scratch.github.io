@@ -254,7 +254,7 @@ async function Chat(id) {
             document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text || realMess[i][messHead].reply_to_message.caption
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
-        } else if(!(!realMess[i][messHead].new_chat_member) && messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
+        } else if(messHead !== "notSupport" && realMess[i][messHead].chat.id === id && realMess[i][messHead].new_chat_member) {
           if(realMess[i][messHead].new_chat_member.is_bot) {
             messList.innerHTML += `
               <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [bot] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
@@ -329,131 +329,7 @@ async function Chat(id) {
         <input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
-    async function getTopics() {}
-    async function getMessInTopic(topic) {
-      let i = 0
-      for(i = 0; i < realMess.length; i++) {
-        if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
-        let threadId = realMess[i][messHead].message_thread_id || "not"
-        if(messHead !== "notSupport" && realMess[i][messHead].chat.id === id && realMess[i][messHead].text && threadId === topic) {
-          if(!realMess[i][messHead].reply_to_message) {
-            if(!realMess[i][messHead].sender_chat) {
-              if(realMess[i][messHead].from.is_bot) {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-                `
-              } else {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-                `
-              }
-            } else {
-              messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><br><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-              `
-            }
-            document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
-            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
-          } else {
-            if(!realMess[i][messHead].sender_chat) {
-              if(realMess[i][messHead].from.is_bot) {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-                `
-              } else {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p><a href="#idc${realMess[i][messHead].reply_to_message.message_id}">[message]</a></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-                `
-              }
-            } else {
-              messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p id="id${realMess[i].update_id}text_answer">[error]</p></pre><p id="id${realMess[i].update_id}text">[error]</p></div></div>
-              `
-            }
-            document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text || realMess[i][messHead].caption
-            document.getElementById(`id${realMess[i].update_id}text_answer`).textContent = realMess[i][messHead].reply_to_message.text || realMess[i][messHead].reply_to_message.caption
-            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
-          }
-        } else if(realMess[i][messHead].new_chat_member && messHead !== "notSupport" && realMess[i][messHead].chat.id === id && threadId === topic) {
-          if(realMess[i][messHead].new_chat_member.is_bot) {
-            messList.innerHTML += `
-              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [bot] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
-            `
-          } else {
-            messList.innerHTML += `
-              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [user] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
-            `
-          }
-        } else if(realMess[i][messHead].photo && messHead !== "notSupport" && realMess[i][messHead].chat.id === id && threadId === topic) {
-          let image = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
-          image = image.result.file_path
-          image = `https://api.telegram.org/file/bot${token.value}/${image}`
-          if(!realMess[i][messHead].reply_to_message) {
-            if(!realMess[i][messHead].sender_chat) {
-              if(realMess[i][messHead].from.is_bot) {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                `
-              } else {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                `
-              }
-            } else {
-              messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-              `
-            }
-          } else {
-            if(realMess[i][messHead].reply_to_message.photo) {
-              let imageOtvet = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].reply_to_message.photo[1].file_id}`)).json()
-              imageOtvet = imageOtvet.result.file_path
-              imageOtvet = `https://api.telegram.org/file/bot${token.value}/${imageOtvet}`
-              if(!realMess[i][messHead].sender_chat) {
-                if(realMess[i][messHead].from.is_bot) {
-                  messList.innerHTML += `
-                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.caption || ""}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                  `
-                } else {
-                  messList.innerHTML += `
-                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.caption || ""}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                  `
-                }
-              } else {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.caption || ""}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                `
-              }
-            } else {
-              if(!realMess[i][messHead].sender_chat) {
-                if(realMess[i][messHead].from.is_bot) {
-                  messList.innerHTML += `
-                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                  `
-                } else {
-                  messList.innerHTML += `
-                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                  `
-                }
-              } else {
-                messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
-                `
-              }
-            }
-          }
-          document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
-        }
-      } 
-      screen.innerHTML += `
-        <input id="messageText"><button onclick="sendMessage(${id})">send</button>
-      `
-    }
-    if (!chatInfo[id].isForum) {
-      await getMesss()
-    } else {
-      await getMesss()
-    }
+    await getMesss()
 }
 async function sendMessage(chat) {
   fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
