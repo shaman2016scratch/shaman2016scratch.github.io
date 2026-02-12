@@ -121,6 +121,8 @@ async function start() {
           messHead = "channel_post"
         } else if (realMess[i].edited_message) {
           messHead = "edited_message"
+        } else if (realMess[i].poll) {
+          messHead = "poll"
         } else {
           messHead = "notSupport"
         }
@@ -214,9 +216,36 @@ async function Chat(id) {
     async function getMesss() {
       let i = 0
       for(i = 0; i < realMess.length; i++) {
-        if (realMess[i].message) { messHead = "message" } else if (realMess[i].channel_post) { messHead = "channel_post" } else if (realMess[i].edited_message) { messHead = "edited_message" } else { messHead = "notSupport" }
+        if (realMess[i].message) {
+          messHead = "message"
+        } else if (realMess[i].channel_post) {
+          messHead = "channel_post"
+        } else if (realMess[i].edited_message) {
+          messHead = "edited_message"
+        } else if (realMess[i].poll) {
+          messHead = "poll"
+        } else { messHead = "notSupport" }
         if (messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
-          if(realMess[i][messHead].text) {
+          if (messHead === "poll") {
+            if (!realMess[i][messHead].reply_to_message) {
+              if (!realMess[i][messHead].sender_chat) {
+                if (realMess[i][messHead].from.is_bot) {
+                  messList.innerHTML += `
+                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot, ${realMess[i][messHead].type}] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">
+                      Poll<br>
+                      Anonymous: ${realMess[i][messHead].is_anonymous}<br>
+                      Closed? ${realMess[i][messHead].is_close}<br>
+                      <b>${realMess[i][messHead].question}</b>
+                    </p></div></div>
+                  `
+                  for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
+                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
+                  }
+                }
+              }
+            }
+            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
+          } else if (realMess[i][messHead].text) {
             if(!realMess[i][messHead].reply_to_message) {
               if(!realMess[i][messHead].sender_chat) {
                 if(realMess[i][messHead].from.is_bot) {
