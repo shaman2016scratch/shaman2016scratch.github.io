@@ -1,0 +1,5 @@
+window.printeVm = {
+  "date": {
+    "vars": {}
+  }
+}
