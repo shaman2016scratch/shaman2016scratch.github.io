@@ -241,6 +241,30 @@ async function Chat(id) {
                   for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
                     document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
                   }
+                } else {
+                  messList.innerHTML += `
+                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, ${realMess[i][messHead].type}] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">
+                      Poll<br>
+                      Anonymous: ${realMess[i][messHead].is_anonymous}<br>
+                      Closed? ${realMess[i][messHead].is_close}<br>
+                      <b>${realMess[i][messHead].question}</b>
+                    </p></div></div>
+                  `
+                  for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
+                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
+                  }
+                }
+              } else {
+                messList.innerHTML += `
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}, ${realMess[i][messHead].type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><p id="id${realMess[i].update_id}text">
+                    Poll<br>
+                    Anonymous: ${realMess[i][messHead].is_anonymous}<br>
+                    Closed? ${realMess[i][messHead].is_close}<br>
+                    <b>${realMess[i][messHead].question}</b>
+                  </p></div></div>
+                `
+                for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
+                  document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
                 }
               }
             }
