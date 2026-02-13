@@ -73,6 +73,9 @@ window.printeVm = {
     },
     "floading": {
       "run": async function(c) {}
+    },
+    "fBin": {
+      "run": async function(с) {}
     }
   }
 }
