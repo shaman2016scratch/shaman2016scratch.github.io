@@ -76,6 +76,9 @@ window.printeVm = {
     },
     "fBin": {
       "run": async function(с) {}
+    },
+    "biner": {
+      "run": async function(c) {}
     }
   }
 }
