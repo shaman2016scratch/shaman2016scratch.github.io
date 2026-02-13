@@ -56,7 +56,6 @@ window.printeVm = {
     "}",
     "[",
     "]",
-    
     0,
     1,
     2,
@@ -67,5 +66,13 @@ window.printeVm = {
     7,
     8,
     9
-  ]
+  ],
+  "pl": {
+    "jange": {
+      "run": async function(c) {}
+    },
+    "floading": {
+      "run": async function(c) {}
+    }
+  }
 }
