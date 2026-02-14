@@ -127,57 +127,66 @@ async function start() {
           messHead = "notSupport"
         }
         if (messHead !== "notSupport") {
-          if (!chats.includes(realMess[i][messHead].chat.id)) {
-            chats.push(realMess[i][messHead].chat.id)
-          }
-          if(!Object.keys(chatInfo).includes(String(realMess[i][messHead].chat.id))) {
-            function isForum() {
-              if (!realMess[i][messHead].message_thread_id) {
-                return false
-              } else {
-                return true
+          if (messHead !== "poll") {
+            if (!chats.includes(realMess[i][messHead].chat.id)) {
+              chats.push(realMess[i][messHead].chat.id)
+            }
+            if(!Object.keys(chatInfo).includes(String(realMess[i][messHead].chat.id))) {
+              function isForum() {
+                if (!realMess[i][messHead].message_thread_id) {
+                  return false
+                } else {
+                  return true
+                }
+              }
+              chatInfo[realMess[i][messHead].chat.id] = {
+                "username": realMess[i][messHead].chat.username || "",
+                "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
+                "icon": "https://placehold.co/25x25",
+                "type": "private",
+                "upd": lasupd,
+                "isForum": isForum()
+              }
+              let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
+              if(icoon.result.photo) {
+                icoon = icoon.result.photo.big_file_id
+                icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+                icoon = icoon.result.file_path
+                chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
-            chatInfo[realMess[i][messHead].chat.id] = {
-              "username": realMess[i][messHead].chat.username || "",
-              "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
-              "icon": "https://placehold.co/25x25",
-              "type": "private",
-              "upd": lasupd,
-              "isForum": isForum()
-            }
-            let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
-            if(icoon.result.photo) {
-              icoon = icoon.result.photo.big_file_id
-              icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
-              icoon = icoon.result.file_path
-              chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
-              chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
-            }
-          }
-          if(chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
-            function isForum() {
-              if (!realMess[i][messHead].message_thread_id) {
-                return false
-              } else {
-                return true
+            if (chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
+              function isForum() {
+                if (!realMess[i][messHead].message_thread_id) {
+                  return false
+                } else {
+                  return true
+                }
+              }
+              chatInfo[realMess[i][messHead].chat.id] = {
+                "username": realMess[i][messHead].chat.username || "",
+                "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
+                "icon": "https://placehold.co/25x25",
+                "type": "private",
+                "upd": lasupd,
+                "isForum": isForum()
+              }
+              let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
+              if(icoon.result.photo) {
+                icoon = icoon.result.photo.big_file_id
+                icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+                icoon = icoon.result.file_path
+                chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
-            chatInfo[realMess[i][messHead].chat.id] = {
-              "username": realMess[i][messHead].chat.username || "",
-              "name": realMess[i][messHead].chat.title || realMess[i][messHead].chat.first_name,
-              "icon": "https://placehold.co/25x25",
-              "type": "private",
-              "upd": lasupd,
-              "isForum": isForum()
-            }
-            let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
-            if(icoon.result.photo) {
-              icoon = icoon.result.photo.big_file_id
-              icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
-              icoon = icoon.result.file_path
-              chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
-              chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
+          } else {
+            let myPoll = await fetch(`https://api.telegram.org/bot${token.value}/getPoll?poll_id=${realMess[i][messHead].id}`)
+            myPoll = await myPoll.json()
+            myPoll = myPoll.result
+            if (!chats.includes(myPoll.chat.id)) {
+              chats.push(myPoll.chat.id)
             }
           }
         }
