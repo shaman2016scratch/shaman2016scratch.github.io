@@ -9,6 +9,18 @@
     <h2>What Api is used here?</h2>
     <p>It is used here <a href="https://api-shaman2016.vercel.app/req">https://api-shaman2016.vercel.app/req</a> (Or else <a href="https://api-shaman2016.vercel.app/getMe">https://api-shaman2016.vercel.app/getMe</a>)</p>
     <h2>What does each of the blocks mean and how do they work?</h2>
+    <h3>get User Agent</h3>
+    <p>How it is used: Getting the browser's User Agent</p>
+    <p>How it works: uses the user-agent parameter in the api response</p>
+    <h3>get Internet Protocol</h3>
+    <p>How it is used: Getting the router's IP address (since IP is short for Internet Protocol)</p>
+    <p>How it works: Takes the "ip" parameter from the API response</p>
+    <h3>get Request</h3>
+    <p>How it is used: Get an API response</p>
+    <p>How it works: Gives the server response (received after let a = await fetch("https://api-shaman2016 .vercel.app/req") and await a.json())</p>
+    <h3>get City</h3>
+    <p>How it is used: Get the user's city (determined by Vercel by IP address)</p>
+    <p>How it works: Returns the header "x-vercel-ip-city"</p>
     <script src="/ext-docs/reqExt/js.js"></script>
   </body>
 </html>
