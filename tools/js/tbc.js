@@ -121,8 +121,6 @@ async function start() {
           messHead = "channel_post"
         } else if (realMess[i].edited_message) {
           messHead = "edited_message"
-        } else if (realMess[i].poll) {
-          messHead = "poll"
         } else {
           messHead = "notSupport"
         }
@@ -231,52 +229,50 @@ async function Chat(id) {
           messHead = "channel_post"
         } else if (realMess[i].edited_message) {
           messHead = "edited_message"
-        } else if (realMess[i].poll) {
-          messHead = "poll"
-        } else { messHead = "notSupport" }
+        } else {
+          messHead = "notSupport"
+        }
         if (messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
-          if (messHead === "poll") {
-            let myPoll = await fetch(`https://api.telegram.org/bot${token.value}/getPoll?poll_id=${realMess[i][messHead].id}`)
-            myPoll = await myPoll.json()
-            myPoll = myPoll.result
+          if (realMess[i][messHead].poll) {
+            let myPoll = realMess[i][messHead]
             if (!myPoll.reply_to_message) {
               if (!myPoll.sender_chat) {
                 if (myPool.from.is_bot) {
                   messList.innerHTML += `
                     <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, ${realMess[i].poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                       Poll<br>
-                      Anonymous: ${realMess[i].poll.is_anonymous}<br>
-                      Closed? ${realMess[i].poll.is_close}<br>
-                      <b>${realMess[i].poll.question}</b>
+                      Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
+                      Closed? ${realMess[i][messHead].poll.is_close}<br>
+                      <b>${realMess[i][messHead].poll.question}</b>
                     </p></div></div>
                   `
-                  for (let i2 = 0; i2 < realMess[i].poll.options.length; i2++) {
-                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
+                  for (let i2 = 0; i2 < realMess[i][messHead].poll.options.length; i2++) {
+                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].poll.options[i2].text}</b> Votes: ${realMess[i][messHead].poll.options[i2].voter_count}</p>`
                   }
                 } else {
                   messList.innerHTML += `
                     <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${realMess[i].poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                       Poll<br>
-                      Anonymous: ${realMess[i][messHead].is_anonymous}<br>
-                      Closed? ${realMess[i][messHead].is_close}<br>
-                      <b>${realMess[i][messHead].question}</b>
+                      Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
+                      Closed? ${realMess[i][messHead].poll.is_close}<br>
+                      <b>${realMess[i][messHead].poll.question}</b>
                     </p></div></div>
                   `
-                  for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
-                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
+                  for (let i2 = 0; i2 < realMess[i][messHead].poll.options.length; i2++) {
+                    document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].poll.options[i2].text}</b> Votes: ${realMess[i][messHead].poll.options[i2].voter_count}</p>`
                   }
                 }
               } else {
                 messList.innerHTML += `
                   <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.sender_chat.title} [${myPoll.sender_chat.type}, ${realMess[i].poll.type}] <code>${myPoll.sender_chat.id}</code></h4><p id="id${myPoll.update_id}text">
                     Poll<br>
-                    Anonymous: ${realMess[i][messHead].is_anonymous}<br>
-                    Closed? ${realMess[i][messHead].is_close}<br>
-                    <b>${realMess[i][messHead].question}</b>
+                    Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
+                    Closed? ${realMess[i][messHead].poll.is_close}<br>
+                    <b>${realMess[i][messHead].poll.question}</b>
                   </p></div></div>
                 `
-                for (let i2 = 0; i2 < realMess[i][messHead].options.length; i2++) {
-                  document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].options[i2].text}</b> Votes: ${realMess[i][messHead].options[i2].voter_count}</p>`
+                for (let i2 = 0; i2 < realMess[i][messHead].poll.options.length; i2++) {
+                  document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].poll.options[i2].text}</b> Votes: ${realMess[i][messHead].poll.options[i2].voter_count}</p>`
                 }
               }
             }
