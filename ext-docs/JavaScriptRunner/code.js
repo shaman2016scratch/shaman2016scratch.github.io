@@ -49,7 +49,7 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
             return {
                 id: "shaman2016JavaScriptRunner",
                 name: "JavaScript Runner",
-                docs: "https://shaman2016scratch.github.io/ext-docs/JavaScriptRunner/",
+                docsURL: "https://shaman2016scratch.github.io/ext-docs/JavaScriptRunner/",
                 color1: "#0fbd8c",
                 blocks: [
                     {
