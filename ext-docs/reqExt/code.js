@@ -73,6 +73,16 @@
                   defaultValue: "origin"
                 }
               }
+            }, {
+              opcode: "getResult",
+              blockType: Scratch.BlockType.OBJECT,
+              text: "get Result",
+              arguments: {}
+            }, {
+              opcode: "getScratchMod",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get Scratch Modification",
+              arguments: {}
             }
           ],
         };
@@ -113,6 +123,25 @@ async getTime() {
 async getHeader(args) {
   let a = await getRequ()
   return a.result.headers[args.name]
+}
+async getResult() {
+  let a = await getRequ()
+  return a.result
+}
+async getScratchMod() {
+  let a = await getRequ()
+  let b = a.result.headers["origin"]
+  let c
+  if (b === "https://dashblocks.github.io") {
+    c = "dash"
+  } else if (b === "https://studio.penguinmod.com") {
+    c = "pm"
+  } else if (b === "https://t-smod.github.io") {
+    c = "TSMod"
+  } else {
+    с = a.result.headers["origin"]
+  }
+  return c
 }
     }
     Scratch.extensions.register(new reqInfoBy8787());
