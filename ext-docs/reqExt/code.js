@@ -20,6 +20,7 @@
         return {
           id: "reqInfoBy8787",
           name: "Request Information",
+          docs: "https://shaman2016scratch.github.io/ext-docs/reqExt/",
           color1: "#a3c0e1",
           blocks: [
             {
