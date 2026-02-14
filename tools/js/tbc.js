@@ -236,9 +236,12 @@ async function Chat(id) {
         } else { messHead = "notSupport" }
         if (messHead !== "notSupport" && realMess[i][messHead].chat.id === id) {
           if (messHead === "poll") {
-            if (!realMess[i][messHead].reply_to_message) {
-              if (!realMess[i][messHead].sender_chat) {
-                if (realMess[i][messHead].from.is_bot) {
+            let myPoll = await fetch(`https://api.telegram.org/bot${token.value}/getPoll?poll_id=${realMess[i][messHead].id}`)
+            myPoll = await myPoll.json()
+            myPoll = myPoll.result
+            if (!myPoll.reply_to_message) {
+              if (!myPoll.sender_chat) {
+                if (myPool.from.is_bot) {
                   messList.innerHTML += `
                     <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot, ${realMess[i][messHead].type}] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">
                       Poll<br>
