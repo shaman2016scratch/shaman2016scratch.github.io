@@ -26,10 +26,16 @@
     <p>How it works: Returns the header "x-vercel-ip-country"</p>
     <h3>get Language</h3>
     <p>How it is used: Get the browser language.</p>
-    <p>How it works: Returns the header "access-language"</p>
+    <p>How it works: Returns the header "accept-language"</p>
     <h3>get Platform</h3>
     <p>How it is used: Get the platform (OS, but not exactly, for example, if you have HarmonyOS and you are using Huawei Browser, it will write that you are on Android) (determined by User Agent)</p>
-    <p>How it works: Returns the header "x-platform"</p>
+    <p>How it works: Returns the header "sec-ch-ua-platform"</p>
+    <h3>get Timezone</h3>
+    <p>How it is used: Get the user's time zone (determined by Vercel by IP address)</p>
+    <p>How it works: Returns the header "x-vercel-ip-timezone"</p>
+    <h3>get Header [Name]</h3>
+    <p>How it is used: Get any header from the API response</p>
+    <p>How it works: Returns any header from the response. It takes the "headers" object from the server response and searches for the desired header in it.</p>
     <script src="/ext-docs/reqExt/js.js"></script>
   </body>
 </html>
