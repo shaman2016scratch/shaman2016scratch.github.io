@@ -243,7 +243,7 @@ async function Chat(id) {
               if (!myPoll.sender_chat) {
                 if (myPool.from.is_bot) {
                   messList.innerHTML += `
-                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot, ${realMess[i][messHead].type}] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">
+                    <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, myPoll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                       Poll<br>
                       Anonymous: ${realMess[i][messHead].is_anonymous}<br>
                       Closed? ${realMess[i][messHead].is_close}<br>
