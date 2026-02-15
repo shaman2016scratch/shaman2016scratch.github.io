@@ -11,5 +11,7 @@ if (!par.get()) {
   par.append("info")
 }
 if (par.get() === "info") {
-  body.innerHTML = ``
-}
+  body.innerHTML = `
+    <h1>Promo Preview</h1>
+  `
+} else if (par.get() === "info")
