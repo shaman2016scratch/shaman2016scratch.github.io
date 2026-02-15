@@ -36,7 +36,7 @@ let boteto = ""
 let lasupd = 0
 let bs = {}
 screen.innerHTML = `
-  <div class="message"><button onclick="botScript()">botScript</button></div>
+  <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
   <h1>Chats</h1>
   <div id="chats">loading...</div>
 `
@@ -85,7 +85,7 @@ function save() {
 }
 function load() {
   screen.innerHTML = `
-    <div class="message"><button onclick="botScript()">botScript</button></div>
+    <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
     <h3>Please enter the save object in the input field below and click on the button.</h3>
     <textarea id="vostCode"></textarea>
     <br><button onclick="vosdCode()">Load</button>
@@ -194,7 +194,7 @@ async function start() {
     await getChats()
     async function addChats() {
       screen.innerHTML = `
-        <div class="message"><button onclick="botScript()">botScript</button></div>
+        <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
         <div id="chats"><h1>Chats</h1></div>
       `
       let chatsList = document.getElementById("chats")
@@ -217,7 +217,7 @@ async function Chat(id) {
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
     screen.innerHTML = `
-      <div class="message"><button onclick="botScript()">botScript</button></div>
+      <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
       <div id="messages" class="messages"><h1><img src="${chatInfo[id].icon}" width="25" height="25">${chatInfo[id].name} [${members}]</h1></div>
     `
     let messList = document.getElementById("messages")
@@ -461,6 +461,7 @@ async function sendReply(chat, mess) {
 }
 async function botScript() {
   screen.innerHTML = `
+    <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
     <textarea id="codebs" placeholder="Your code" rows="30" cols="50"></textarea>
     <button onclick="codebsRun()">Start</button>
   `
@@ -497,6 +498,9 @@ async function codebsRun() {
           let vFunc = v
           return vFunc()
         }
+      },
+      "res.json": async function(obj) {
+        return await obj.json()
       }
     },
     "token": {},
@@ -521,6 +525,19 @@ async function codebsRun() {
       if (i3[1] === "name") {
         windowBs.name = windowBs.var.getValue(i3[2]])
       }
+    } else if (i3[0] === "fetch") {
+      windowBs.var.response = await fetch(i3[1])
+    } else if (i3[0] === "use") {
+      windowBs.var[i3[1]](i3[2])
+    } else if (i3[0] === "client") {
+      if (i3[1] === "token") {
+        token.value = windowBs.token[windowBs.name]
+      }
     }
   }
+}
+async function settingsTbc() {
+  screen.innerHTML = `
+    <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
+  `
 }
