@@ -10,4 +10,6 @@ let par = {
 if (!par.get()) {
   par.append("info")
 }
-if (par.get() === "info") {}
+if (par.get() === "info") {
+  body.innerHTML = ``
+}
