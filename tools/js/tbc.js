@@ -40,6 +40,7 @@ screen.innerHTML = `
   <h1>Chats</h1>
   <div id="chats">loading...</div>
 `
+let integrations = {}
 let vosdCode = function() {
   let conf = document.getElementById("vostCode").value
   conf = JSON.parse(conf)
@@ -498,17 +499,28 @@ async function codebsRun() {
         }
       }
     },
-    "token": {}
+    "token": {},
+    "name": {}
   }
   for(let i = 0; i < code2.length; i++) {
     let i2 = code2[i]
     let i3 = i2.split(" ")
     if (i3[0] === "let") {
-      windowBs.war[i3[1]]
+      windowBs.war[i3[1]] = null
     } else if (i3[1] === "=") {
       windowBs.war[i3[0]] = i3[2]
     } else if (i3[0] === "token") {
-      windowBs.token = windowBs.var.getValue(i3[1])
+      windowBs.token[windowsBs.name] = windowBs.var.getValue(i3[1])
+    } else if (i3[0] === "out.log") {
+      console.log(windowBs.var.getValue(i3[1]))
+    } else if (i3[0] === "out.warn") {
+      console.warn(windowBs.var.getValue(i3[1]))
+    } else if (i3[0] === "out.err") {
+      console.error(windowBs.var.getValue(i3[1]))
+    } else if (i3[0] === "bot") {
+      if (i3[1] === "name") {
+        windowBs.name = windowBs.var.getValue(i3[2]])
+      }
     }
   }
 }
