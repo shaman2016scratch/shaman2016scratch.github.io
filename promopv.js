@@ -14,4 +14,4 @@ if (par.get() === "info") {
   body.innerHTML = `
     <h1>Promo Preview</h1>
   `
-} else if (par.get() === "info")
+} else if (par.get() === "AAA") {}
