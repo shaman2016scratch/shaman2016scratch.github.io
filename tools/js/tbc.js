@@ -69,6 +69,34 @@ let vosdCodeLoc = function() {
   lasupd++
   bs = conf.bs
 }
+let windowBs = {
+  "var": {
+    "getValue": async function(v) {
+      let vType = typeof v
+      if (vType === "string") {
+        if (v.split(".")[0] === "window") {
+          if (typeof windowBs.var[v.split(".")[1]] === "function") {
+            return windowBs.var[v.split(".")[1]]()
+          } else {
+            windowBs.var[v.split(".")[1]]
+          }
+        }
+      }
+      if (vType === "string" || vType === "number") {
+        return v
+      }
+      if (vType === "function") {
+        let vFunc = v
+        return vFunc()
+      }
+    },
+    "res.json": async function(obj) {
+      return await obj.json()
+    }
+  },
+  "token": {},
+  "name": {}
+}
 function save() {
   alert("Log in to the console and copy the latest log.")
   console.log({
@@ -463,49 +491,21 @@ async function botScript() {
   screen.innerHTML = `
     <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
     <textarea id="codebs" placeholder="Your code" rows="30" cols="50"></textarea>
-    <button onclick="codebsRun()">Start</button>
+    <button onclick="codebsRun(document.getElementById('codebs').value)">Start</button>
   `
   let code = document.getElementById("codebs").value
   if(bs.code){
     code = bs.code
   }
 }
-async function codebsRun() {
-  let code = document.getElementById("codebs").value
-  bs.code = JSON.parse(code)
-  code2 = code.code
+async function codebsRun(co) {
+  let code = co
+  let code2 = JSON.parse(code)
+  code2 = code2.code
   code2 = code2.split(";\n  ")
   messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
-  let windowBs = {
-    "var": {
-      "getValue": async function(v) {
-        let vType = typeof v
-        if (vType === "string") {
-          if (v.split(".")[0] === "window") {
-            if (typeof windowBs.var[v.split(".")[1]] === "function") {
-              return windowBs.var[v.split(".")[1]]()
-            } else {
-              windowBs.var[v.split(".")[1]]
-            }
-          }
-        }
-        if (vType === "string" || vType === "number") {
-          return v
-        }
-        if (vType === "function") {
-          let vFunc = v
-          return vFunc()
-        }
-      },
-      "res.json": async function(obj) {
-        return await obj.json()
-      }
-    },
-    "token": {},
-    "name": {}
-  }
   for(let i = 0; i < code2.length; i++) {
     let i2 = code2[i]
     let i3 = i2.split(" ")
@@ -535,10 +535,26 @@ async function codebsRun() {
       }
     } else if (i2.split("|")[0] === "for") {
       let i4 = i2.split("|")
-      if (i4.length === 2) {
+      if (i4.length === 3) {
         let i5 = i4[1]
         let i6 = i4[2]
-        for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++) {}
+        let i7 = true
+        let i8 = {
+          "code": ""
+        }
+        let i9 = i4[3]
+        for (i7 = true; i7; i++) {
+          if (code2[i] === `end${i9}`) {
+            i7 = false
+          } else {
+            i8.code += `
+              ;\n  ${code2[i]}
+            `
+          }
+        } 
+        for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++) {
+          codebsRun(i8)
+        }
       }
     }
   }
