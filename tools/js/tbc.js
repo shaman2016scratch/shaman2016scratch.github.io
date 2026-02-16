@@ -538,7 +538,7 @@ async function codebsRun() {
       if (i4.length === 2) {
         let i5 = i4[1]
         let i6 = i4[2]
-        for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++)
+        for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++) {}
       }
     }
   }
