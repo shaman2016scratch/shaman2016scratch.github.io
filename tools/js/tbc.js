@@ -533,6 +533,14 @@ async function codebsRun() {
       if (i3[1] === "token") {
         token.value = windowBs.token[windowBs.name]
       }
+    } else if (i2.split("|")[0] === "for") {
+      let i4 = i2.split("|")
+      if (i4.length === 3) {
+        let i5 = i4[1]
+        let i6 = i4[2]
+        let i7 = i4[3]
+        for(windowBs.var.[i4[]] = windowBs.var.getValue(i4[1].split(" "));)
+      }
     }
   }
 }
