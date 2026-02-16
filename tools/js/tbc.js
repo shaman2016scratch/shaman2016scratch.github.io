@@ -562,5 +562,6 @@ async function codebsRun(co) {
 async function settingsTbc() {
   screen.innerHTML = `
     <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
+    <h1>Settings</h1>
   `
 }
