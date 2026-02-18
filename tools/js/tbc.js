@@ -36,7 +36,7 @@ let boteto = ""
 let lasupd = 0
 let bs = {}
 screen.innerHTML = `
-  <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
+  <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button><button onclick="creditsTbc()">Credits</button></div>
   <h1>Chats</h1>
   <div id="chats">loading...</div>
 `
@@ -565,3 +565,4 @@ async function settingsTbc() {
     <h1>Settings</h1>
   `
 }
+async function creditsTbc() {}
