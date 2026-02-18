@@ -1,7 +1,5 @@
 let rules = document.getElementById("rules")
 rules.innerHTML = `
-  let rules = document.getElementById("rules")
-rules.innerHTML = `
   Правила группы: 
   1. Не материться, использовать плохие слова, наказание: предупреждение
   2. Не спамить (хоть и символами, хоть и сообщениями) и не флудить, наказание за нарушение: 2 предупреждения
