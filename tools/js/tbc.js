@@ -1,3 +1,17 @@
+const baseSender = {
+  "text": "",
+  "photos": [],
+  "buttons": [],
+  "format": "HTML",
+  "apps": {
+    "yes": false,
+    "name": "",
+    "id": 0,
+    "metadata": {},
+    "link": ""
+  }
+}
+let senderParam = baseSender
 let ToolsApi = {}
 let toolsApiUrlMain = ""
 async function toolsApiUrlMainGet() {
@@ -242,6 +256,7 @@ async function start() {
     await addChats()
 }
 async function Chat(id) {
+    senderParam = baseSender
     members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
     screen.innerHTML = `
@@ -420,7 +435,7 @@ async function Chat(id) {
         }
       } 
       screen.innerHTML += `
-        <input id="messageText"><button onclick="sendMessage(${id})">send</button>
+        <button onclick="plusSend(${id})">plus</button><input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
     await getMesss()
@@ -566,3 +581,15 @@ async function settingsTbc() {
   `
 }
 async function creditsTbc() {}
+async function plusSend(idChat) {
+  screen.innerHTML += `
+    <div id="plusSend">
+      <p>Plus Send</p>
+      <br><button onclick="document.getElementById('plusSend').innerHTML = ''">Close</button>
+      <br><button onclick="sendPhoto(${idChat})">Photo</button><button>Apps</button><button>Buttons</button>
+    </div>
+  `
+}
+async function sendPhoto() {}
+async function sendApps() {}
+async function sendButtons() {}
