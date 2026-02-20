@@ -4,11 +4,16 @@ const baseSender = {
   "buttons": [],
   "format": "HTML",
   "apps": {
-    "yes": false,
     "name": "",
     "id": 0,
     "metadata": {},
     "link": ""
+  },
+  "type": {
+    "text": true,
+    "photos": false,
+    "buttons": false,
+    "apps": false
   }
 }
 let senderParam = baseSender
