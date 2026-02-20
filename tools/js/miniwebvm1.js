@@ -13,5 +13,7 @@ async function load() {}
 async function runLang1(c) {
   // binMWVM1
   let code = c.split(";")
-  for(let i = 0; i < code.length; i++) {}
+  for(let i = 0; i < code.length; i++) {
+    let i2 = fromBytes(code[i])
+  }
 }
