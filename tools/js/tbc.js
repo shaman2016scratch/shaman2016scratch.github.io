@@ -600,3 +600,6 @@ async function plusSend(idChat) {
 async function sendPhoto() {}
 async function sendApps() {}
 async function sendButtons() {}
+async function proxyUpd() {
+  proxyHttp = document.getElementById("proxyHttp").input
+}
