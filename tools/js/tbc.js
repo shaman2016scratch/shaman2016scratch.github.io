@@ -1,3 +1,5 @@
+const baseProxy = "https://api.telegram.org/"
+let proxyHttp = baseProxy
 const baseSender = {
   "text": "",
   "photos": [],
@@ -155,10 +157,10 @@ function loadLoc() {
   vosdCodeLoc()
 }
 async function start() {
-    boteto = await (await fetch(`https://api.telegram.org/bot${token.value}/getMe`)).json()
+    boteto = await (await fetch(`${proxyHttp}bot${token.value}/getMe`)).json()
     boteto = boteto.result
     botn.innerHTML = boteto.name
-    messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+    messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
     messages = messages.result
     await getMess()
     async function getChats() {
@@ -193,12 +195,12 @@ async function start() {
                 "upd": lasupd,
                 "isForum": isForum()
               }
-              let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
+              let icoon = await (await fetch(`${proxyHttp}bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
               if(icoon.result.photo) {
                 icoon = icoon.result.photo.big_file_id
-                icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+                icoon = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${icoon}`)).json()
                 icoon = icoon.result.file_path
-                chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyHttp}file/bot${token.value}/${icoon}`
                 chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
@@ -218,17 +220,17 @@ async function start() {
                 "upd": lasupd,
                 "isForum": isForum()
               }
-              let icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
+              let icoon = await (await fetch(`${proxyHttp}bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
               if(icoon.result.photo) {
                 icoon = icoon.result.photo.big_file_id
-                icoon = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${icoon}`)).json()
+                icoon = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${icoon}`)).json()
                 icoon = icoon.result.file_path
-                chatInfo[realMess[i][messHead].chat.id].icon = `https://api.telegram.org/file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyHttp}file/bot${token.value}/${icoon}`
                 chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
           } else {
-            let myPoll = await fetch(`https://api.telegram.org/bot${token.value}/getPoll?poll_id=${realMess[i][messHead].id}`)
+            let myPoll = await fetch(`${proxyHttp}bot${token.value}/getPoll?poll_id=${realMess[i][messHead].id}`)
             myPoll = await myPoll.json()
             myPoll = myPoll.result
             if (!chats.includes(myPoll.chat.id)) {
@@ -262,7 +264,7 @@ async function start() {
 }
 async function Chat(id) {
     senderParam = baseSender
-    members = await (await fetch(`https://api.telegram.org/bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
+    members = await (await fetch(`${proxyHttp}bot${token.value}/getChatMembersCount?chat_id=${id}`)).json()
     members = members.result
     screen.innerHTML = `
       <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
@@ -376,9 +378,9 @@ async function Chat(id) {
               `
             }
           } else if(realMess[i][messHead].photo) {
-            let image = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
+            let image = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
             image = image.result.file_path
-            image = `https://api.telegram.org/file/bot${token.value}/${image}`
+            image = `${proxyHttp}file/bot${token.value}/${image}`
             let fileId = realMess[i][messHead].photo
             if(!realMess[i][messHead].reply_to_message) {
               if(!realMess[i][messHead].sender_chat) {
@@ -398,9 +400,9 @@ async function Chat(id) {
               }
             } else {
               if(realMess[i][messHead].reply_to_message.photo) {
-                let imageOtvet = await (await fetch(`https://api.telegram.org/bot${token.value}/getFile?file_id=${realMess[i][messHead].reply_to_message.photo[1].file_id}`)).json()
+                let imageOtvet = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].reply_to_message.photo[1].file_id}`)).json()
                 imageOtvet = imageOtvet.result.file_path
-                imageOtvet = `https://api.telegram.org/file/bot${token.value}/${imageOtvet}`
+                imageOtvet = `${proxyHttp}file/bot${token.value}/${imageOtvet}`
                 let fileOtvetId = realMess[i][messHead].reply_to_message.photo[1].file_id
                 if(!realMess[i][messHead].sender_chat) {
                   if(realMess[i][messHead].from.is_bot) {
@@ -446,8 +448,8 @@ async function Chat(id) {
     await getMesss()
 }
 async function sendMessage(chat) {
-  fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
-  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+  messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
   realMessList.push(`-544${idlastbot}`)
@@ -481,8 +483,8 @@ async function getMess() {
   }
 }
 async function sendReply(chat, mess) {
-  fetch(`https://api.telegram.org/bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}`)
-  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}`)
+  messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
   realMessList.push(`-544${idlastbot}`)
@@ -523,7 +525,7 @@ async function codebsRun(co) {
   let code2 = JSON.parse(code)
   code2 = code2.code
   code2 = code2.split(";\n  ")
-  messages = await (await fetch(`https://api.telegram.org/bot${token.value}/getUpdates`)).json()
+  messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
   for(let i = 0; i < code2.length; i++) {
