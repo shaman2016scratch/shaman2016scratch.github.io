@@ -9,3 +9,5 @@ async function start() {
     <br><button>Repositories</button>
   `
 }
+async function files(res, req) {}
+async function repositories(res, req) {}
