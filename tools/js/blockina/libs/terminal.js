@@ -33,6 +33,24 @@ let lib = {
         "text": { "type": "txt", "text": "Clear" }
       },
       "func": function(args) { termHelp.logs = [] }
+    }, {
+      "id": "error",
+      "type": blockina.blockType.COMMAND,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "error" },
+        "input": { "type": "inp", "text": "Error" }
+      },
+      "func": function(args) { termHelp.logs.push({ "type": "error", "text": args.input.text }) }
+    }, {
+      "id": "warning",
+      "type": blockina.blockType.COMMAND,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "warn" },
+        "input": { "type": "inp", "text": "Warn" }
+      },
+      "func": function(args) { termHelp.logs.push({ "type": "warn", "text": args.input.text }) }
     }
   ]
 }
