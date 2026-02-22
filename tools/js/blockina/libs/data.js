@@ -47,6 +47,26 @@ let lib = {
       "func": function(args) { return variables.sysValues[args.input.text] }
     },
     {
+      "id": "getVarObject",
+      "type": blockina.blockType.OBJECT,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "get" },
+        "input": { "type": "inp", "text": "variable" }
+      },
+      "func": function(args) { return variables.sysValues[args.input.text] }
+    },
+    {
+      "id": "getVarArray",
+      "type": blockina.blockType.ARRAY,
+      "text": ["text", "input"],
+      "elements": {
+        "text": { "type": "txt", "text": "get" },
+        "input": { "type": "inp", "text": "variable" }
+      },
+      "func": function(args) { return variables.sysValues[args.input.text] }
+    },
+    {
       "id": "label2",
       "type": blockina.blockType.LABEL,
       "text": [],
@@ -60,6 +80,20 @@ let lib = {
       "text": ["text"],
       "elements": {
         "text": { "type": "txt", "text": "new object" }
+      },
+      "func": function(args) { return {} }
+    },
+    {
+      "id": "addObjKey",
+      "type": blockina.blockType.OBJECT,
+      "text": ["text", "key", "text2", "object", "text3", "value"],
+      "elements": {
+        "text": { "type": "txt", "text": "Set Key" },
+        "key": { "type": "inp", "text": "username" },
+        "text2": { "type": "txt", "text": "in object" },
+        "object": { "type": "inp", "text": {} },
+        "text3": { "type": "txt", "text": "value" },
+        "value": { "type": "inp", "text": "superUser123" }
       },
       "func": function(args) { return {} }
     },
