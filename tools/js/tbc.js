@@ -580,7 +580,7 @@ async function codebsRun(co) {
       }
     } else if (i2.split("|")[0] === "if") {
       let i4 = i2.split("|")
-      if (i4.length2) {
+      if (i4.length === 2) {
         let i5 = i4[1]
         let i6 = true
         let i7 = {
