@@ -573,9 +573,31 @@ async function codebsRun(co) {
               ;\n  ${code2[i]}
             `
           }
-        } 
+        }
         for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++) {
           codebsRun(i8)
+        }
+      }
+    } else if (i2.split("|")[0] === "if") {
+      let i4 = i2.split("|")
+      if (i4.length2) {
+        let i5 = i4[1]
+        let i6 = true
+        let i7 = {
+          "code": ""
+        }
+        let i8 = i4[2]
+        for (i6 = true; i6; i++) {
+          if (code2[i] === `end${i8}`) {
+            i6 = false
+          } else {
+            i7.code += `
+              ;\n  ${code2[i]}
+            `
+          }
+        }
+        if (windowBs.var.getValue(i5)) {
+          codebsRun(i7)
         }
       }
     }
