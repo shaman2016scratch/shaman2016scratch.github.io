@@ -545,7 +545,7 @@ async function codebsRun(co) {
       console.error(windowBs.var.getValue(i3[1]))
     } else if (i3[0] === "bot") {
       if (i3[1] === "name") {
-        windowBs.name = windowBs.var.getValue(i3[2]])
+        windowBs.name = windowBs.var.getValue(i3[2])
       }
     } else if (i3[0] === "fetch") {
       windowBs.var.response = await fetch(i3[1])
