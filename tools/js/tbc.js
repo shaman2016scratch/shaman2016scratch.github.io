@@ -326,8 +326,8 @@ async function Chat(id) {
                   document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<p><b>${realMess[i][messHead].poll.options[i2].text}</b> Votes: ${realMess[i][messHead].poll.options[i2].voter_count}</p>`
                 }
               }
+              document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
             }
-            document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           } else if (realMess[i][messHead].text) {
             if(!realMess[i][messHead].reply_to_message) {
               if(!realMess[i][messHead].sender_chat) {
