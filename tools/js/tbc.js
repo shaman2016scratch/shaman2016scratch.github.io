@@ -574,7 +574,7 @@ async function codebsRun(co) {
             `
           }
         }
-        for(windowBs.var.[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var.[i5.split[0]]++) {
+        for(windowBs.var[i5.split[0]] = windowBs.var.getValue(i5.split[1]); windowBs.var.getValue(i6); windowBs.var[i5.split[0]]++) {
           codebsRun(i8)
         }
       }
