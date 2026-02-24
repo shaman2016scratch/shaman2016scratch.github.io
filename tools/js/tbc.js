@@ -290,7 +290,7 @@ async function Chat(id) {
               if (!myPoll.sender_chat) {
                 if (myPoll.from.is_bot) {
                   messList.innerHTML += `
-                    <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
+                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                       Poll<br>
                       Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                       Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -302,7 +302,7 @@ async function Chat(id) {
                   }
                 } else {
                   messList.innerHTML += `
-                    <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
+                    <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                       Poll<br>
                       Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                       Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -315,7 +315,7 @@ async function Chat(id) {
                 }
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${myPoll.update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.sender_chat.title} [${myPoll.sender_chat.type}, ${myPoll.poll.type}] <code>${myPoll.sender_chat.id}</code></h4><p id="id${myPoll.update_id}text">
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.sender_chat.title} [${myPoll.sender_chat.type}, ${myPoll.poll.type}] <code>${myPoll.sender_chat.id}</code></h4><p id="id${myPoll.update_id}text">
                     Poll<br>
                     Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                     Closed? ${realMess[i][messHead].poll.is_close}<br>
