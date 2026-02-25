@@ -20,9 +20,9 @@
   <script>
     let desc = document.getElementById("desc")
     async function descSet() {
-      let descReal = await fetch("https://api-shaman2016/scratchen/description");
+      let descReal = await fetch("https://api-shaman2016.vercel.app/scratchen/description/");
       descReal = await descReal.json()
-      desc = descReal.result
+      desc = descReal.result.replace("\n", "<br>")
     }
     descSet()
   </script>
