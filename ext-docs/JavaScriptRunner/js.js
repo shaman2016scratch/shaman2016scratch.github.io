@@ -7,6 +7,10 @@ function ruTran() {
     <p>В <a href="https://dashblocks.github.io/extensions/">Галерее расширений Dash</a></p>
     <p>В <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dev-версия Dash</a> (в редакторе, кнопка "выбрать дополнение")</p>
     <p>На <a href="code.js">этом сайте</a> (код расширения)</p>
+    <p>В <a href="https://dashblocks.github.io/editor.html">Dash</a> (в редакторе, кнопка "выбрать дополнение")</p>
+    <h1>Важно</h1>
+    <p>В Dev версии Dash и в основной версии Dash используется код из Библиотеки Расширений Dash</p>
+    <p>Версия кода расширения в библиотеке расширений Dash: 3.0, версия кода расширения на этом сайте: 3.1</p>
     <h2>Поддерживается ли он где-то кроме Dash?</h2>
     <p>Да, скорее всего он поддерживается в PenguinMod.</p>
     <h2>Как с ним работать?</h2>
@@ -22,6 +26,10 @@ function enTran() {
     <p>In the <a href="https://dashblocks.github.io/extensions/">Dash extensions gallery</a></p>
     <p>In the <a href="https://dashblocks.github.io/scratch-gui/editor.html">Dash Dev-version</a> (In the editor, button "select extension")</p>
     <p>On <a href="code.js">this website</a> (his code)</p>
+    <p>In the <a href="https://dashblocks.github.io/editor.html">Dash</a> (In the editor, button "select extension")</p>
+    <h2>Important</h2>
+    <p>In the main version and dev versions of Dash, the extension code is taken from the Dash Extension Library.</p>
+    <p>The code version of this extension is in the Dash extension library: 3.0, the extension code version is on this website: 3.1</p>
     <h2>Is it supported anywhere other than Dash?</h2>
     <p>Yes, it is most likely supported in PenguinMod.</p>
     <h2>How to work with it?</h2>
