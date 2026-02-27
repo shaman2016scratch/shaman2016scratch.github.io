@@ -68,8 +68,8 @@ button, input, textarea {
 }
 
 .mess {
-    background: rgb(255, 255, 255);;
-    border: 2px solid #e5e5e5;;
+    background: gray;
+    border: 2px solid white;
     border-radius: 12px;
     font-size: 17px;
     width: 35%;

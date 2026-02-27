@@ -440,6 +440,7 @@ async function Chat(id) {
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
         }
+        screen.innerHTML = `<br>`
       } 
       screen.innerHTML += `
         <button onclick="plusSend(${id})">plus</button><input id="messageText"><button onclick="sendMessage(${id})">send</button>
