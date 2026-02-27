@@ -4,7 +4,7 @@ let langs = [
   "EN"
 ]
 let data = {
-  "lastUpd": "28.02.2026 00:37 UTC+3",
+  "lastUpd": "28.02.2026 00:45 UTC+3",
   "created": "28.02.2026 00:19 UTC+3"
 }
 let pages = {
@@ -16,6 +16,12 @@ let pages = {
       <h1>Документация по серверу Dash (Неофициально)</h1>
       <p>Сервер Dash появился в конце февраля 2026 года</p>
       <p>Он захосчен на Vercel и хранит данные в Telegram</p>
+      <h2>Методы</h2>
+      <h3>POST /save-project</h3>
+      <h3>GET /get-project/{id}</h3>
+      <h3>GET /projects/{id}</h3>
+      <h3>POST /projects/{id}/upload-thumbnail</h3>
+      <h2>Cors</h2>
     `,
     "contentEn": `
       <h1>Table of contents</h1>
@@ -24,6 +30,12 @@ let pages = {
       <h1>Dash Server Documentation (Unofficial)</h1>
       <p>The Dash server appeared at the end of February 2026</p>
       <p>It is hosted on Vercel and stores data in Telegram</p>
+      <h2>Methods</h2>
+      <h3>POST /save-project</h3>
+      <h3>GET /get-project/{id}</h3>
+      <h3>GET /projects/{id}</h3>
+      <h3>POST /projects/{id}/upload-thumbnail</h3>
+      <h2>Cors</h2>
     `
   }
 }
