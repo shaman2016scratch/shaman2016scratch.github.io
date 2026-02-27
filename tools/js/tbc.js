@@ -445,6 +445,13 @@ async function Chat(id) {
         <button onclick="plusSend(${id})">plus</button><input id="messageText"><button onclick="sendMessage(${id})">send</button>
       `
     }
+    async function getAnswer(ansData) {
+      if (typeof ansData === "object") {
+        // The blank for the new function
+      } else {
+        return "ERROR: The Answer Data is not of the 'Object' type"
+      }
+    }
     await getMesss()
 }
 async function sendMessage(chat) {
