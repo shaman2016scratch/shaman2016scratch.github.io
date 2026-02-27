@@ -1,4 +1,8 @@
 let screen = document.body
+let langs = [
+  "RU",
+  "EN"
+]
 let pages = {
   "main": {
     "contentRu": `
