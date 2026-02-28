@@ -66,7 +66,7 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
                                 type: Scratch.ArgumentType.BOOLEAN,
                                 defaultValue: false
                             }
-}
+                        }
                     },
                     {
                         opcode: "reporter",
