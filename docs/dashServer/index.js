@@ -4,7 +4,7 @@ let langs = [
   "EN"
 ]
 let data = {
-  "lastUpd": "28.02.2026 00:45 UTC+3",
+  "lastUpd": "28.02.2026 10:25 UTC+3",
   "created": "28.02.2026 00:19 UTC+3"
 }
 let pages = {
@@ -35,6 +35,17 @@ let pages = {
       <h3>GET /get-project/{id}</h3>
       <h3>GET /projects/{id}</h3>
       <h3>POST /projects/{id}/upload-thumbnail</h3>
+      <h3>GET /projects/thumbnails/{id}</h3>
+      <h3>POST /auth/register</h3>
+      <h3>POST /auth/login</h3>
+      <h3>GET /users/{id}</h3>
+      <h3>POST /users/upload-avatar</h3>
+      <h3>GET /users/avatars/</h3>
+      <h3>GET /session</h3>
+      <h3>GET /auth/logout</h3>
+      <h3>POST /admin/manage-user [ADMIN METHOD]</h3>
+      <h3>/featured-projects/{id} [ADMIN METHOD]</h3>
+      <h3>GET /featured-projects</h3>
       <h2>Cors</h2>
     `
   }
