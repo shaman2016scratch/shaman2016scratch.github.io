@@ -31,15 +31,15 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
             id: "shaman2016JavaScriptRunner",
             docs: "https://shaman2016scratch.github.io/ext-docs/JavaScriptRunner/"
         };
-        function output (toOutput) {
+        async function output (toOutput) {
             window.RUNNER_OUTPUT = toOutput;
             return toOutput;
         };
-        function warn (toWarn) {
+        async function warn (toWarn) {
             window.RUNNER_OUTPUT = \`Warning: \${toWarn}\`;
             return \`Warning: \${toWarn}\`;
         };
-        function error (toError) {
+        async function error (toError) {
             window.RUNNER_OUTPUT = \`Error: \${toError}\`;
             return \`Error: \${toError}\`;
         };
@@ -145,7 +145,7 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
                     reject(new Error(`Error in sandboxed script. Check the console for more info`));
                 };
                 if (isAsync) {
-                    script.src = `data:application/javascript,async function jsRun() { ${encodeURIComponent(_runnerFunctions)};${encodeURIComponent(code)} }; jsRun()`;
+                    script.src = `data:application/javascript,${encodeURIComponent(_runnerFunctions)}; async function jsRun() { ${encodeURIComponent(code)} }; jsRun()`;
                 } else {
                     script.src = `data:application/javascript,${encodeURIComponent(_runnerFunctions)};${encodeURIComponent(code)}`;
                 };
