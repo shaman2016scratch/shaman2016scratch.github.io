@@ -27,7 +27,7 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
                     github: "https://github.com/DBDev-IT"
                 }
             ],
-            version: "3.1.2",
+            version: "3.2",
             id: "shaman2016JavaScriptRunner",
             docs: "https://shaman2016scratch.github.io/ext-docs/JavaScriptRunner/"
         };
@@ -57,7 +57,16 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
                         opcode: "command",
                         text: "command [CODE], is async [isAsync]",
                         blockType: Scratch.BlockType.COMMAND,
-                        arguments: {}
+                        arguments: {
+                            CODE: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: "alert(\"Hello, world!\");"
+                            },
+                            isAsync: {
+                                type: Scratch.ArgumentType.BOOLEAN,
+                                defaultValue: false
+                            }
+                        }
                     },
                     {
                         opcode: "reporter",
