@@ -31,18 +31,15 @@ damir2809 <https://scratch.mit.edu/users/damir2809/>
             id: "shaman2016JavaScriptRunner",
             docs: "https://shaman2016scratch.github.io/ext-docs/JavaScriptRunner/"
         };
-        async function output (toOutput) {
-            let toOut = await toOutput;
+        function output (toOut) {
             window.RUNNER_OUTPUT = toOut;
             return toOut;
         };
-        async function warn (toWarning) {
-            let toWarn = await toWarning;
+        function warn (toWarn) {
             window.RUNNER_OUTPUT = \`Warning: \${toWarn}\`;
             return \`Warning: \${toWarn}\`;
         };
-        async function error (toError) {
-            let toErr = await toError;
+        async function error (toErr) {
             window.RUNNER_OUTPUT = \`Error: \${toErr}\`;
             return \`Error: \${toErr}\`;
         };
