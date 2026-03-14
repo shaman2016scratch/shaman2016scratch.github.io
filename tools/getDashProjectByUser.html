@@ -1,1 +1,53 @@
-
+<html>
+  <head>
+    <title>Get Project in Dash By User</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="/tools/css/getDashUser.css">
+  </head>
+  <body>
+    <h1>Get Dash Project By User</h1>
+    <p>User: <input type="number" id="userId"><button onclick="load()">Load</button></p>
+    <p>Method: <button onclick="document.getElementById('userId').type = 'number'">ID</button><button onclick="document.getElementById('userId').type = 'text'">USERNAME</button></p>
+  </body>
+  <script>
+    const url = new URL(window.location)
+    const sp = url.searchParams
+    let uid = undefined
+    if (!sp.get("id")) {
+      uid = document.getElementById('userId').value
+    } else {
+      uid = sp.get("id")
+    }
+    let root = document.body
+    if (sp.get("id")) {
+      load()
+    }
+    async function load() {
+      let metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
+      metaUser =  metaUser.json()
+      root.innerHTML = `
+        <p>Loading projects list</p>
+      `
+      let fakeRoot = `
+        <table>
+        <tbody>
+        <tr>
+      `
+      for(let i = 0; i < metaUser.user.projects.length; i++) {
+        fakeRoot += `
+          <th class="message">
+              <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${metaUser.user.projects[i].thumbnailId}'>
+              <h4>${metaUser.user.projects[i].name}</h4>
+              <p>by ${metaUser.user.username}</p>
+          </th>
+        `
+      }
+      fakeRoot += `
+        </tr>
+        </tbody>
+        </table>
+      `
+    }
+  </script>
+</html>
