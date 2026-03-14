@@ -31,7 +31,8 @@
       async function getUserData() {
         await getMeta();
         root.innerHTML = `
-          <h1><img src='https://shaman2016-trampline.vercel.app/dashAvatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}, ${verified[uid] || 'not verified'}]</h1>
+          <h1><img src='https://shaman2016-trampline.vercel.app/dashAvatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [<b>${metadata.user.role}</b>, <b>${verified[uid] || 'not verified'}</b>]</h1>
+          <p><b>Joined: ${new Date(metadata.user.joinedAt)}</b> || <b>Last Active: ${new Date(metadata.user.lastActive)}</b></p>
           <p>${metadata.user.profile.description.replaceAll('\n', '<br>')}</p>
         `
       };
