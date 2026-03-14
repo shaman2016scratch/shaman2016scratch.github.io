@@ -23,13 +23,14 @@
     if (sp.get("id")) {
       load()
     }
+    let metaUser;
     async function load() {
       if (sp.get("id") === null) {
         uid = document.getElementById('userId').value
       } else {
         uid = sp.get("id")
       }
-      let metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
+      metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
       metaUser = await metaUser.json()
       root.innerHTML = `
         <p>Loading projects list</p>
