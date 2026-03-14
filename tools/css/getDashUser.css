@@ -8,7 +8,7 @@ body {
   margin: 20px;
   width: 80%;
   background-color: gray;
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -16,27 +16,4 @@ body {
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
- }
-// new messages, thanks t.me/creative_programmer
-.me
-.mess-img
- {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    left: 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(-100%, -50%);
 }
-
-.mess {
-    background: gray;
-    border: 2px solid white;
-    border-radius: 12px;
-    font-size: 17px;
-    width: 35%;
-    line-height: 24px;
-    padding: 12px 16px;
-    position: relative;
-}
-// End new messages
