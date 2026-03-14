@@ -19,7 +19,7 @@
       async function getUserData() {
         await getMeta();
         root.innerHTML = `
-          <h1><img src='https://shaman2016-trampline.vercel.app/dash/users/avatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}]</h1>
+          <h1><img src='https://shaman2016-trampline.vercel.app/dash/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}]</h1>
           <p>${metadata.user.profile.description}</p>
         `
       };
