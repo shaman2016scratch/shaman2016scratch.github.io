@@ -25,7 +25,7 @@
     }
     async function load() {
       let metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
-      metaUser =  metaUser.json()
+      metaUser = await metaUser.json()
       root.innerHTML = `
         <p>Loading projects list</p>
       `
