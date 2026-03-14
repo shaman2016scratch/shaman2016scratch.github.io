@@ -31,7 +31,7 @@
       async function getUserData() {
         await getMeta();
         function getDate(st) {
-          if (!st === null) {
+          if (st === null) {
             return "date not specified"
           } else {
             return new Date(st).toLocaleDateString()
