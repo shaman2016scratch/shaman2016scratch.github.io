@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Get Dash User 0.3</h1>
+    <p>User Id: <input type="number" id="userId"><button onclick="load()">Load</button></p>
+    <div id="root">Loading...</div>
+  </body>
+  <script>
+    async function load() {
+      let metadata = undefined;
+      let uid = document.getElementById('userId').value;
+      let root = document.getElementById('root');
+      async function getMeta() {
+        let url = `https://dashblocks-server.vercel.app/users/${uid}`;
+        metadata = await fetch(url); metadata = await metadata.json()
+      };
+      async function getUserData() {
+        await getMeta();
+        root.innerHTML = `
+          <h1><img src='https://dashblocks-server.vercel.app/users/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}]</h1>
+          <p>${metadata.user.profile.description}</p>
+        `
+      };
+      await getUserData();
+    };
+  </script>
+</html>
