@@ -42,9 +42,11 @@
           }
         }
         root.innerHTML = `
-          <h1><img src='https://shaman2016-trampline.vercel.app/dashAvatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
+          <h1><img src='https://shaman2016-trampline.vercel.app/dashImage/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> || <b>Last Active: ${getDate(metadata.user.lastActive)}</b></p>
           <p class="message">${metadata.user.profile.description.replaceAll('\n', '<br>')}</p>
+          <div>
+            <iframe src='/tools/getDashProjectByUser?user='${uid}'></iframe>
         `
       };
       await getUserData();
