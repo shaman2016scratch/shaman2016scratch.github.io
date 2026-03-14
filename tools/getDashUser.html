@@ -8,6 +8,18 @@
     <div id="root">Loading...</div>
   </body>
   <script>
+    let verified = {
+      7: 'official',
+      8: 'official',
+      9: 'official',
+      15: 'official',
+      17: 'official',
+      18: 'official',
+      20: 'official',
+      21: 'official, MiCloud Creator',
+      22: 'official',
+      28: 'official'
+    }
     async function load() {
       let metadata = undefined;
       let uid = document.getElementById('userId').value;
@@ -19,7 +31,7 @@
       async function getUserData() {
         await getMeta();
         root.innerHTML = `
-          <h1><img src='https://shaman2016-trampline.vercel.app/dashAvatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}]</h1>
+          <h1><img src='https://shaman2016-trampline.vercel.app/dashAvatar/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} [${metadata.user.role}, ${verified[uid] || 'not verified'}]</h1>
           <p>${metadata.user.profile.description.replace('\n', '<br>')}</p>
         `
       };
