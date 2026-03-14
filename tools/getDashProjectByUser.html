@@ -14,7 +14,7 @@
     const url = new URL(window.location)
     const sp = url.searchParams
     let uid = undefined
-    if (!sp.get("id")) {
+    if (sp.get("id") !== '') {
       uid = document.getElementById('userId').value
     } else {
       uid = sp.get("id")
