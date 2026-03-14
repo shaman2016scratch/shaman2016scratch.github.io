@@ -46,7 +46,7 @@
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> || <b>Last Active: ${getDate(metadata.user.lastActive)}</b></p>
           <p class="message">${metadata.user.profile.description.replaceAll('\n', '<br>')}</p>
           <div class="message">
-            <iframe src='/tools/getDashProjectByUser?id=${uid}'></iframe>
+            <iframe src='/tools/getDashProjectByUser?id=${uid}' width="600"></iframe>
           </div>
         `
       };
