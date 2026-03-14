@@ -24,6 +24,7 @@
       load()
     }
     let metaUser;
+    let i;
     async function load() {
       if (sp.get("id") === null) {
         uid = document.getElementById('userId').value
@@ -40,7 +41,7 @@
         <tbody>
         <tr>
       `
-      for(let i = 0; i < metaUser.user.projects.length; i++) {
+      for(i = 0; i < metaUser.user.projects.length; i++) {
         fakeRoot += `
           <th class="message">
               <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${metaUser.user.projects[i].thumbnailId}'>
