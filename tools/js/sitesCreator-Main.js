@@ -28,22 +28,19 @@ window.sitesCreatorMain = {
           </tr>
           <tr>
             <th><p><b>Контент</b></p></th>
-            <th>Категория пуста.</th>
+            <th></th>
           </tr>
           <tr>
             <th><p><b>Данные</b></p></th>
-            <th>Категория пуста.</th>
-          </tr>
-          <tr>
-            <th><p><b>Информация</b></p></th>
-            <th>Категория пуста.</th>
+            <th>
+              <button>Объявить переменную</button><button>Обновить переменную</button>
+            </th>
           </tr>
         </tbody>
       </table>
     `
   },
   "openFilesList": async function() {},
-  "window": {},
   "openAboutService": async function() {
     window.creatorDOM.innerHTML = `
       <p>SitesCreator — сервис для создания сайтов без навыков HTML, JS, CSS.</p>
