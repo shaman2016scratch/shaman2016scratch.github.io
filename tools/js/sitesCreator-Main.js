@@ -15,12 +15,19 @@ window.sitesCreatorMain = {
     `
   },
   "openFilesList": async function() {},
-  "window": {}
+  "window": {},
+  "openAboutService": async function() {
+    window.creatorDOM.innerHTML = `
+      <p>SitesCreator — сервис для создания сайтов без навыков HTML, JS, CSS.</p>
+      <p>Сервис является конструктором сайтов</p>
+    `
+  }
 }
 async function start() {
   window.screen.innerHTML = `
     <button onclick="window.sitesCreatorMain.openEditor()">Создавать</button>
     <button onclick="window.sitesCreatorMain.openFilesList()">Файлы</button>
+    <button onclick="window.sitesCreatorMain.openAboutService()">О сервисе</button>
     <div id="menu">
       <p>Выберите.</p>
     </div>
