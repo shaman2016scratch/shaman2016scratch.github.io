@@ -2,6 +2,7 @@ window.screen = document.getElementById("content")
 window.sitesCreatorMain = {
   "openEditor": async function() {
     window.creatorDOM.innerHTML = `
+      <h4>Блоки</h4>
       <table>
         <tbody>
           <tr>
@@ -38,6 +39,9 @@ window.sitesCreatorMain = {
           </tr>
         </tbody>
       </table>
+      <h4>Настройки скрипта</h4>
+      <p>Скрипт: <input> | Страница: <input></p>
+      <h4>Скрипт</h4>
     `
   },
   "openFilesList": async function() {},
