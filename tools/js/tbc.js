@@ -1,4 +1,5 @@
-const baseProxy = "https://trampline-shaman2016.vercel.app/telegram/"
+const baseProxy = "https://trampline-shaman2016.vercel.app/tg/"
+const baseImageProxy = "https://trampline-shaman2016.vercel.app/tgImage/"
 let proxyHttp = baseProxy
 const baseSender = {
   "text": "",
