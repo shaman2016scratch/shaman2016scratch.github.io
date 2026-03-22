@@ -1,4 +1,4 @@
-const baseProxy = "https://api.telegram.org/"
+const baseProxy = "https://trampline-shaman2016.vercel.app/telegram/"
 let proxyHttp = baseProxy
 const baseSender = {
   "text": "",
