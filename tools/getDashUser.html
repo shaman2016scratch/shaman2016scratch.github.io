@@ -12,6 +12,8 @@
     <div id="root" class="messages">Loading...</div>
   </body>
   <script>
+    const url = new URL(window.location)
+    const sp = url.searchParams
     let verified = {
       7: 'official, Creator of this tool',
       8: 'official',
@@ -27,9 +29,15 @@
       67: 'bad meme',
       68: 'Mr. Eat fun'
     }
+    let uid
+    if (!sp.get('id')) {
+      uid = document.getElementById('userId').value;
+    } else {
+      uid = sp.get('id')
+      load()
+    }
     async function load() {
       let metadata = undefined;
-      let uid = document.getElementById('userId').value;
       let root = document.getElementById('root');
       async function getMeta() {
         let url = `https://shaman2016-trampline.vercel.app/dash/users/${uid}`;
