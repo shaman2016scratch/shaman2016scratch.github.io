@@ -44,10 +44,19 @@
             return new Date(st).toLocaleDateString()
           }
         }
+        function getDesc() {
+          if (metadata.user.role === 'dasher') {
+            return 'User is not Dasher+'
+          } else if (metadata.user.profile.description === '') {
+            return '<i>Пусто.</i>'
+          } else {
+            return metadata.user.profile.description.replaceAll('\n', '<br>')
+          }
+        }
         root.innerHTML = `
           <h1><img src='https://shaman2016-trampline.vercel.app/dashImage/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b> | <b>Scratch Account: <a href="https://scratch.mit.edu/users/${metadata.user.profile.scratchUsername || 'griffpatch'}">${metadata.user.profile.scratchUsername || "There is no linked account"}</a></b></p>
-          <p class="message">${metadata.user.profile.description.replaceAll('\n', '<br>')}</p>
+          <p class="message">${getDesc}</p>
           <div class="message">
             <iframe src='/tools/getDashProjectByUser?id=${uid}' width="600"></iframe>
           </div>
