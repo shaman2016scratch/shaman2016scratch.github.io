@@ -11,14 +11,16 @@ const baseSender = {
     "name": "",
     "id": 0,
     "metadata": {},
-    "link": ""
+    "link": "",
   },
   "type": {
     "text": true,
     "photos": false,
     "buttons": false,
-    "apps": false
-  }
+    "apps": false,
+  },
+  'isReply': false,
+  'replyData': {}
 }
 let senderParam = baseSender
 let ToolsApi = {}
@@ -459,8 +461,16 @@ async function Chat(id) {
     }
     await getMesss()
 }
+async function setSender() {}
 async function sendMessage(chat) {
-  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}`)
+  fetch(`${proxyHttp}bot${token.value}/sendMessage`, {
+    method: 'POST',
+    body: JSON.stringify({
+			chat_id: chat,
+      text: document.getElementById("messageText").value,
+			parse_mode: "HTML",
+	  })
+  })
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
@@ -479,7 +489,7 @@ async function sendMessage(chat) {
         "name": chatInfo[chat].name,
         "type": chatInfo[chat].type
       },
-      "date": null,
+      "date": Date.now(),
       "text": document.getElementById("messageText").value
     }
   })
@@ -514,7 +524,7 @@ async function sendReply(chat, mess) {
         "name": chatInfo[chat].name,
         "type": chatInfo[chat].type
       },
-      "date": null,
+      "date": Date.now(),
       "text": document.getElementById("messageText").value
     }
   })
