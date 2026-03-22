@@ -1,6 +1,7 @@
 const baseProxy = "https://trampline-shaman2016.vercel.app/tg/"
-const baseImageProxy = "https://trampline-shaman2016.vercel.app/tgImage/"
+const baseImageProxy = "https://trampline-shaman2016.vercel.app/tgImg/"
 let proxyHttp = baseProxy
+let proxyImageHttp = baseImageProxy
 const baseSender = {
   "text": "",
   "photos": [],
@@ -201,7 +202,7 @@ async function start() {
                 icoon = icoon.result.photo.big_file_id
                 icoon = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${icoon}`)).json()
                 icoon = icoon.result.file_path
-                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyHttp}file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyImageHttp}file/bot${token.value}/${icoon}`
                 chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
@@ -226,7 +227,7 @@ async function start() {
                 icoon = icoon.result.photo.big_file_id
                 icoon = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${icoon}`)).json()
                 icoon = icoon.result.file_path
-                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyHttp}file/bot${token.value}/${icoon}`
+                chatInfo[realMess[i][messHead].chat.id].icon = `${proxyImageHttp}file/bot${token.value}/${icoon}`
                 chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
               }
             }
@@ -381,7 +382,7 @@ async function Chat(id) {
           } else if(realMess[i][messHead].photo) {
             let image = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
             image = image.result.file_path
-            image = `${proxyHttp}file/bot${token.value}/${image}`
+            image = `${proxyImageHttp}file/bot${token.value}/${image}`
             let fileId = realMess[i][messHead].photo
             if(!realMess[i][messHead].reply_to_message) {
               if(!realMess[i][messHead].sender_chat) {
@@ -403,7 +404,7 @@ async function Chat(id) {
               if(realMess[i][messHead].reply_to_message.photo) {
                 let imageOtvet = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].reply_to_message.photo[1].file_id}`)).json()
                 imageOtvet = imageOtvet.result.file_path
-                imageOtvet = `${proxyHttp}file/bot${token.value}/${imageOtvet}`
+                imageOtvet = `${proxyImageHttp}file/bot${token.value}/${imageOtvet}`
                 let fileOtvetId = realMess[i][messHead].reply_to_message.photo[1].file_id
                 if(!realMess[i][messHead].sender_chat) {
                   if(realMess[i][messHead].from.is_bot) {
