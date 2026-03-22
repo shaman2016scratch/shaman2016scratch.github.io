@@ -438,11 +438,12 @@ async function Chat(id) {
                   messList.innerHTML += `
                     <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                   `
-                }
+								}
               }
             }
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
           }
+		      document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE<i>`
         }
       } 
       screen.innerHTML += `
