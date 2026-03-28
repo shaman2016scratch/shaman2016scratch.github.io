@@ -680,10 +680,10 @@ let proxySettingsComponents = {
   },
 }
 async function pluginSettings() {
-	screen.innerHTML = `
-      <h1>Plugin settings</h1>
-      <p><button onclick='pluginSettingsComponents.list.add()'>ADD</button><button onclick='pluginSettingsComponents.list.open()'>OPEN LIST</button></p>
-      <div id='plugMenu'>Choose something.</div>
+  screen.innerHTML = `
+    <h1>Plugin settings</h1>
+    <p><button onclick='pluginSettingsComponents.list.add()'>ADD</button><button onclick='pluginSettingsComponents.list.open()'>OPEN LIST</button></p>
+    <div id='plugMenu'>Choose something.</div>
   `
 }
 let plugList = []
