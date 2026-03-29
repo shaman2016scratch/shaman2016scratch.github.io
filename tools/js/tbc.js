@@ -467,10 +467,10 @@ async function sendMessage(chat) {
   fetch(`${proxyHttp}bot${token.value}/sendMessage`, {
     method: 'POST',
     body: JSON.stringify({
-	  chat_id: chat,
+      chat_id: chat,
       text: document.getElementById("messageText").value,
-	  parse_mode: "HTML",
-	})
+      parse_mode: "HTML",
+    })
   })
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
