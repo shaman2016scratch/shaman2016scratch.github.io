@@ -687,31 +687,31 @@ async function pluginSettings() {
   `
 }
 let plugList = []
-let plugObj
+let plugObj = {}
 let pluginSettingsComponents = {
   'list': {
-	'add': async function() {
-	  let plugMenu = document.getElementById('plugMenu')
-	  plugMenu.innerHTML = `
+    'add': async function() {
+      let plugMenu = document.getElementById('plugMenu')
+      plugMenu.innerHTML = `
         <h2>NEW PLUGIN</h2>
         <label for='plugName'>NAME</label>
         <input id='plugName' name='plugName'>
         <label for='plugUrl'>URL</label>
         <input id='plugUrl' name='plugUrl'>
         <button onclick='plugAddListSumbut()'>ADD</button>
-	  `
-	},
-	'open': async function() {
-	  let plugMenu = document.getElementById('plugMenu')
-	  plugMenu.innerHTML = `
-		<h2>Plugins</h2>
-	  `
-	  for(let i = 0; i < plugList.length; i++) {
-		plugMenu.innerHTML += `
+      `
+    },
+    'open': async function() {
+      let plugMenu = document.getElementById('plugMenu')
+      plugMenu.innerHTML = `
+        <h2>Plugins</h2>
+      `
+      for(let i = 0; i < plugList.length; i++) {
+        plugMenu.innerHTML += `
           <div class='message' id='${plugList[i].id}'></div>
-		`
-	  }
-	},
+        `
+      }
+    },
   },
 }
 async function plugAddListSumbut() {
@@ -720,14 +720,14 @@ async function plugAddListSumbut() {
   let plugCode = await fetch(plugUrl)
   plugCode = await plugCode.json()
   plugList.push = {
-	'name': plugName,
-	'code': plugUrl,
-	'version': plugCode.__meta__.__version__,
-	'plugName': plugCode.__meta__.__name__,
-	'creatorTg': plugCode.__meta__.__creator__.__tg__,
-	'creatorTgChannel': plugCode.__meta__.__creator__.__tgChannel__,
-	'id': plugCode.__meta__.__id__,
-	'description': plugCode.__meta__.__description__,
+    'name': plugName,
+    'code': plugUrl,
+    'version': plugCode.__meta__.__version__,
+    'plugName': plugCode.__meta__.__name__,
+    'creatorTg': plugCode.__meta__.__creator__.__tg__,
+    'creatorTgChannel': plugCode.__meta__.__creator__.__tgChannel__,
+    'id': plugCode.__meta__.__id__,
+    'description': plugCode.__meta__.__description__,
   }
   plugObj[plugName] = plugList.length
   alert('Plugin Added')
