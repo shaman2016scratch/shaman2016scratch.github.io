@@ -711,7 +711,8 @@ let pluginSettingsComponents = {
           <div class='message' id='${plugList[i].id}'>
             <h4>${plugList[i].plugName || 'unknown'} [${plugList[i].name}]</h4>
             <p class='message'>${plugList[i].description || 'unknown'}</p>
-            <a href='https://t.me/${plugList[i].creatorTg}'>Telegram creator's</a>|<a href='https://t.me/${plugList[i].creatorTgChannel}'>Telegram channel creator's</a>
+            <br><a href='https://t.me/${plugList[i].creatorTg}'>Telegram creator's</a>|<a href='https://t.me/${plugList[i].creatorTgChannel}'>Telegram channel creator's</a>
+            <br><a href='${plugList[i].code}'><button>View Code</button></a><button onclick='openLogsPlugin("${plugList[i].name}")'>View Logs</button><button onclick='onoffPlug("${plugList[i].name}")'>on/off</button>
           </div>
         `
       }
@@ -733,7 +734,24 @@ async function plugAddListSumbut() {
     'id': plugCode.__meta__.__id__,
     'description': plugCode.__meta__.__description__,
     'isSettings': plugCode.__meta__.__isSettings__,
+    'logs': []
   }
   plugObj[plugName] = plugList.length
   alert('Plugin Added')
+}
+async function openLogsPlugin(pn) {
+  let plugMenu = document.getElementById('plugMenu')
+  let plogs = plugList[plugObj[pn]].logs
+  plugMenu.innerHTML = `
+    <h3>PLUGIN LOGS</h3>
+  `
+  for(let i = 0; i < plogs.length; i++) {
+    plugMenu.innerHTML += `
+      <p><b>${plogs[i].type || 'log'}</b>: ${plogs[i].text || 'unknown'}.<br><i>${plogs[i].date || 'NODATA'}</i></p>
+    `
+  }
+}
+async function onoffPlug(pn) {
+  let plugCode = await fetch(plugList[plugObj[pn]].code)
+  plugCode = await plugCode.json()
 }
