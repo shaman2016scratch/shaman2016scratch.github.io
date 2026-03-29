@@ -734,7 +734,8 @@ async function plugAddListSumbut() {
     'id': plugCode.__meta__.__id__,
     'description': plugCode.__meta__.__description__,
     'isSettings': plugCode.__meta__.__isSettings__,
-    'logs': []
+    'logs': [],
+    'isStarted': false,
   }
   plugObj[plugName] = plugList.length
   alert('Plugin Added')
@@ -754,4 +755,11 @@ async function openLogsPlugin(pn) {
 async function onoffPlug(pn) {
   let plugCode = await fetch(plugList[plugObj[pn]].code)
   plugCode = await plugCode.json()
+  if (plugList[plugObj[pn]].isStarted) {
+    plugList[plugObj[pn]].isStarted = false
+    document.getElementById(plugList[plugObj[pn]].id).innerHTML = ''
+  } else {
+    plugList[plugObj[pn]].isStarted = true
+    document.body += `<div id='${plugList[plugObj[pn]].id}'><script src='${plugList[plugObj[pn]].code}'></script></div>`
+  }
 }
