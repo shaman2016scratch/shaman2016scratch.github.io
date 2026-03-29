@@ -443,7 +443,7 @@ async function Chat(id) {
           }
           document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
         }
-        document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE<i>`
+        document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
       }
     } 
     screen.innerHTML += `
@@ -747,7 +747,7 @@ async function openLogsPlugin(pn) {
   `
   for(let i = 0; i < plogs.length; i++) {
     plugMenu.innerHTML += `
-      <p><b>${plogs[i].type || 'log'}</b>: ${plogs[i].text || 'unknown'}.<br><i>${plogs[i].date || 'NODATA'}</i></p>
+      <p><b>${plogs[i].type || 'log'}</b>: ${plogs[i].text || 'unknown'}.<br><i>${new Date(plogs[i].date).toLocaleDateString() || 'NODATA'}</i></p>
     `
   }
 }
