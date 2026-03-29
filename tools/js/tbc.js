@@ -179,7 +179,7 @@ async function start() {
         messHead = "notSupport"
       }
       if (messHead !== "notSupport") {
-	    if (messHead !== "poll") {
+        if (messHead !== "poll") {
           if (!chats.includes(realMess[i][messHead].chat.id)) {
             chats.push(realMess[i][messHead].chat.id)
           }
@@ -197,7 +197,7 @@ async function start() {
               "icon": "https://placehold.co/25x25",
               "type": "private",
               "upd": lasupd,
-			  "isForum": isForum()
+              "isForum": isForum()
             }
             let icoon = await (await fetch(`${proxyHttp}bot${token.value}/getChat?chat_id=${realMess[i][messHead].chat.id}`)).json()
             if(icoon.result.photo) {
@@ -282,7 +282,7 @@ async function Chat(id) {
         messHead = "message"
       } else if (realMess[i].channel_post) {
         messHead = "channel_post"
-	  } else if (realMess[i].edited_message) {
+      } else if (realMess[i].edited_message) {
         messHead = "edited_message"
       } else {
         messHead = "notSupport"
@@ -291,7 +291,7 @@ async function Chat(id) {
         if (realMess[i][messHead].poll) {
           let myPoll = realMess[i][messHead]
           if (!myPoll.reply_to_message) {
-			if (!myPoll.sender_chat) {
+            if (!myPoll.sender_chat) {
               if (myPoll.from.is_bot) {
                 messList.innerHTML += `
                   <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
@@ -306,7 +306,7 @@ async function Chat(id) {
                 }
               } else {
                 messList.innerHTML += `
-				  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                     Poll<br>
                     Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                     Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -331,7 +331,7 @@ async function Chat(id) {
               }
             }
             document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
-		  }
+          }
         } else if (realMess[i][messHead].text) {
           if(!realMess[i][messHead].reply_to_message) {
             if(!realMess[i][messHead].sender_chat) {
@@ -410,7 +410,7 @@ async function Chat(id) {
               let fileOtvetId = realMess[i][messHead].reply_to_message.photo[1].file_id
               if(!realMess[i][messHead].sender_chat) {
                 if(realMess[i][messHead].from.is_bot) {
-				  messList.innerHTML += `
+                  messList.innerHTML += `
                     <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.caption || ""}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                   `
                 } else {
@@ -422,7 +422,7 @@ async function Chat(id) {
                 messList.innerHTML += `
                   <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><img src="${imageOtvet}"><p>${realMess[i][messHead].reply_to_message.caption || ""}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
-			  }
+              }
             } else {
               if(!realMess[i][messHead].sender_chat) {
                 if(realMess[i][messHead].from.is_bot) {
@@ -430,7 +430,7 @@ async function Chat(id) {
                     <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                   `
                 } else {
-				  messList.innerHTML += `
+                  messList.innerHTML += `
                     <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                   `
                 }
@@ -438,12 +438,12 @@ async function Chat(id) {
                 messList.innerHTML += `
                   <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><pre><b>${realMess[i][messHead].reply_to_message.from.first_name}</b><p>${realMess[i][messHead].reply_to_message.text}</p></pre><img onclick="console.log('File Ids: ${fileId}')" src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
                 `
-			  }
+              }
             }
           }
           document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
         }
-		document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE<i>`
+        document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE<i>`
       }
     } 
     screen.innerHTML += `
@@ -454,7 +454,7 @@ async function Chat(id) {
     if (typeof ansData === "undefined") {
       return ansData
     }
-	if (typeof ansData === "object") {
+    if (typeof ansData === "object") {
       // The blank for the new function
     } else {
       return "ERROR: The Answer Data is not of the 'Object' type"
