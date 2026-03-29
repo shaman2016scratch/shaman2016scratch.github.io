@@ -708,7 +708,11 @@ let pluginSettingsComponents = {
       `
       for(let i = 0; i < plugList.length; i++) {
         plugMenu.innerHTML += `
-          <div class='message' id='${plugList[i].id}'></div>
+          <div class='message' id='${plugList[i].id}'>
+            <h4>${plugList[i].plugName || 'unknown'} [${plugList[i].name}]</h4>
+            <p class='message'>${plugList[i].description || 'unknown'}</p>
+            <a href='https://t.me/${plugList[i].creatorTg}'>Telegram creator's</a>|<a href='https://t.me/${plugList[i].creatorTgChannel}'>Telegram channel creator's</a>
+          </div>
         `
       }
     },
@@ -728,6 +732,7 @@ async function plugAddListSumbut() {
     'creatorTgChannel': plugCode.__meta__.__creator__.__tgChannel__,
     'id': plugCode.__meta__.__id__,
     'description': plugCode.__meta__.__description__,
+    'isSettings': plugCode.__meta__.__isSettings__,
   }
   plugObj[plugName] = plugList.length
   alert('Plugin Added')
