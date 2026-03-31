@@ -764,3 +764,65 @@ async function onoffPlug(pn) {
     document.body += `<div id='${plugList[plugObj[pn]].id}'><script src='${plugList[plugObj[pn]].code}'></script></div>`
   }
 }
+window.tbcImport = async function(comp, par) {
+  if (comp === 'console') {
+    return {
+      'log': new Function(['text'], `
+        plugList[${par.plugin}].logs += {
+          type: 'log',
+          text,
+          date: new Date()
+        }
+      `),
+      'warn': new Function(['text'], `
+        plugList[${par.plugin}].logs += {
+          type: 'warn',
+          text,
+          date: new Date()
+        }
+      `),
+      'error': new Function(['text'], `
+        plugList[${par.plugin}].logs += {
+          type: 'error',
+          text,
+          date: new Date()
+        }
+      `),
+    }
+  } else if (comp === 'telegram.bot.get') {
+    return {
+      'bot': async function(tokenBot) {
+        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getMe`)).json()
+      },
+      'updates': async function(tokenBot) {
+        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getUpdates`)).json()
+      },
+      'chat': async function(tokenBot, id) {
+        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChat?chat_id=${id}`)).json()
+      },
+      'chatAdmins': async function(tokenBot) {
+        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChatAdministrators?chat_id=${id}`)).json()
+      },
+    }
+  } else if (comp === 'telegram.bot.send') {
+    return {
+      'message': async function(tokenBot, text, chatId) {
+        const req = await fetch(`${proxyHttp}bot${tokenBot}/sendMessage`, {
+          method: 'POST',
+          body: JSON.stringify({
+            chat_id: chatId,
+            text
+          })
+        })
+        const res =  req.json()
+        return {
+          req,
+          res
+        }
+      }
+    }
+  } else {
+    return undefined
+    console.error(`module ${comp} not found`)
+  }
+}
