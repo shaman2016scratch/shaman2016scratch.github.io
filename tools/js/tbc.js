@@ -205,7 +205,7 @@ async function start() {
               icoon = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${icoon}`)).json()
               icoon = icoon.result.file_path
               chatInfo[realMess[i][messHead].chat.id].icon = `${proxyImageHttp}file/bot${token.value}/${icoon}`
-	          chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
+              chatInfo[realMess[i][messHead].chat.id].type = realMess[i][messHead].chat.type
             }
           }
           if (chatInfo[realMess[i][messHead].chat.id].upd !== lasupd) {
