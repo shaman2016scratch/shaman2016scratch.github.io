@@ -683,7 +683,7 @@ async function pluginSettings() {
   screen.innerHTML = `
     <h1>Plugin settings</h1>
     <p><button onclick='pluginSettingsComponents.list.add()'>ADD</button><button onclick='pluginSettingsComponents.list.open()'>OPEN LIST</button></p>
-	<p>Warning: the author and developers of Telegram Bot Client do not bear any responsibility for what plugins can do, plugins can do bad things, it is better to install only proven plugins.</p>
+    <p>Warning: the author and developers of Telegram Bot Client do not bear any responsibility for what plugins can do, plugins can do bad things, it is better to install only proven plugins.</p>
     <div id='plugMenu'>Choose something.</div>
   `
 }
