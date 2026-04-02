@@ -15,16 +15,11 @@
     let metadata = undefined;
     const url = new URL(window.location)
     const sp = url.searchParams
-    let uid = undefined
-    if (sp.get("id") === null) {
-      uid = document.getElementById('userId').value
-    } else {
-      uid = sp.get("id")
-    }
-    let root = document.body
     if (sp.get("id")) {
+      document.getElementById('userId').value = sp.get('id')
       load()
     }
+    let root = document.body
     let verified = {
       7: 'official, Creator of this tool',
       8: 'official',
@@ -41,6 +36,7 @@
       68: 'Mr. Eat fun'
     }
     async function load() {
+      let uid = document.getElementById('userId').value
       let metadata = undefined;
       let root = document.getElementById('root');
       async function getMeta() {
