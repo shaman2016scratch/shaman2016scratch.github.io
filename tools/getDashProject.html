@@ -26,7 +26,7 @@
         metadata = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${uid}`)
         metadata = await metadata.json()
       };
-      async function getUserData() {
+      async function getProjData() {
         await getMeta();
         root.innerHTML = `
           <h1>${metadata.project.name}</h1>
@@ -35,7 +35,7 @@
           <p class="message">${metadata.project.stats.fires}🔥</p>
         `
       };
-      await getUserData();
+      await getProjData();
     };
   </script>
 </html>
