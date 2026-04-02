@@ -41,7 +41,7 @@
         <tbody>
         <tr>
       `
-      for(i = metaUser.user.projects.length; i > -1; i--) {
+      for(i = metaUser.user.projects.length - 1; i > -1; i--) {
         let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.user.projects[i].id}`)
         projectMeta = await projectMeta.json()
         projectMeta = projectMeta.project
