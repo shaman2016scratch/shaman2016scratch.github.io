@@ -12,8 +12,19 @@
     <div id="root" class="messages">Loading...</div>
   </body>
   <script>
+    let metadata = undefined;
     const url = new URL(window.location)
     const sp = url.searchParams
+    let uid = undefined
+    if (sp.get("id") === null) {
+      uid = document.getElementById('userId').value
+    } else {
+      uid = sp.get("id")
+    }
+    let root = document.body
+    if (sp.get("id")) {
+      load()
+    }
     let verified = {
       7: 'official, Creator of this tool',
       8: 'official',
@@ -28,15 +39,6 @@
       66: 'Tenge Fun',
       67: 'bad meme',
       68: 'Mr. Eat fun'
-    }
-    let uid = undefined
-    if (sp.get('id') === null) {
-      uid = document.getElementById('userId').value;
-    } else {
-      uid = sp.get('id')
-    }
-    if (sp.get('id')) {
-      load()
     }
     async function load() {
       let metadata = undefined;
