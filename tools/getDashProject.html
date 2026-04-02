@@ -30,7 +30,7 @@
         await getMeta();
         root.innerHTML = `
           <h1>${metadata.project.name}</h1>
-          <iframe src='https://dashblocks.github.io/scratch-gui/#${uid}' width="480" height="360"></iframe>
+          <iframe src='https://dashblocks.github.io/scratch-gui/embed.html#${uid}' width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
           <p class="message"><b>Description</b><br>${metadata.project.description}</p>
           <p class="message">${metadata.project.stats.fires}🔥</p>
         `
