@@ -1,1 +1,41 @@
-
+<html>
+  <head>
+    <title>Get Project In Dash</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="/tools/css/getDashUser.css">
+  </head>
+  <body>
+    <h1>Get Dash Project</h1>
+    <p>Project Id: <input type="number" id="projId"><button onclick="load()">Load</button></p>
+    <div id="root" class="messages">Loading...</div>
+  </body>
+  <script>
+    let metadata = undefined;
+    const url = new URL(window.location)
+    const sp = url.searchParams
+    if (sp.get("id")) {
+      document.getElementById('projId').value = sp.get('id')
+      load()
+    }
+    async function load() {
+      let uid = document.getElementById('projId').value
+      let metadata = undefined;
+      let root = document.getElementById('root');
+      async function getMeta() {
+        metadata = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${uid}`)
+        metadata = await metadata.json()
+      };
+      async function getUserData() {
+        await getMeta();
+        root.innerHTML = `
+          <h1>${metadata.project.name}</h1>
+          <iframe src='https://dashblocks.github.io/scratch-gui/#${uid}' width="480" height="360"></iframe>
+          <p class="message">${metadata.project.description}</p>
+          <p class="message">${metadata.project.stats.fires}🔥</p>
+        `
+      };
+      await getUserData();
+    };
+  </script>
+</html>
