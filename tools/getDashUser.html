@@ -44,8 +44,8 @@
       let metadata = undefined;
       let root = document.getElementById('root');
       async function getMeta() {
-        let url = `https://shaman2016-trampline.vercel.app/dash/users/${uid}`;
-        metadata = await fetch(url); metadata = await metadata.json()
+        metadata = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
+        metadata = await metadata.json()
       };
       async function getUserData() {
         await getMeta();
