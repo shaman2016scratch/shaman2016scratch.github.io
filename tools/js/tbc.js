@@ -22,6 +22,12 @@ const baseSender = {
   'isReply': false,
   'replyData': {}
 }
+let verified = {
+  users: {
+    6049462351: 'OFFICIAL. CREATOR TBC'
+  },
+  chats: {}
+}
 let senderParam = baseSender
 let ToolsApi = {}
 let toolsApiUrlMain = ""
@@ -294,7 +300,7 @@ async function Chat(id) {
             if (!myPoll.sender_chat) {
               if (myPoll.from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [bot, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [bot, poll:${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                     Poll<br>
                     Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                     Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -306,7 +312,7 @@ async function Chat(id) {
                 }
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.from.first_name} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [user, ${myPoll.poll.type}] <code>${myPoll.from.id}</code></h4><p id="id${myPoll.update_id}text">
                     Poll<br>
                     Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                     Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -319,7 +325,7 @@ async function Chat(id) {
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.sender_chat.title} [${myPoll.sender_chat.type}, ${myPoll.poll.type}] <code>${myPoll.sender_chat.id}</code></h4><p id="id${myPoll.update_id}text">
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${myPoll.message_id}"><h4><img src="https://placehold.co/25x25">${myPoll.sender_chat.title} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [${myPoll.sender_chat.type}, ${myPoll.poll.type}] <code>${myPoll.sender_chat.id}</code></h4><p id="id${myPoll.update_id}text">
                   Poll<br>
                   Anonymous: ${realMess[i][messHead].poll.is_anonymous}<br>
                   Closed? ${realMess[i][messHead].poll.is_close}<br>
@@ -337,16 +343,16 @@ async function Chat(id) {
             if(!realMess[i][messHead].sender_chat) {
               if(realMess[i][messHead].from.is_bot) {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [bot] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
                 `
               } else {
                 messList.innerHTML += `
-                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
+                  <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [user] <code>${realMess[i][messHead].from.id}</code></h4><p id="id${realMess[i].update_id}text">[error]</p></div></div>
                 `
               }
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><br><p id="id${realMess[i].update_id}text">[error]</p></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} <b>${myPoll.sender_tag || '<i>Unknown</i>'}</b> [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><br><p id="id${realMess[i].update_id}text">[error]</p></div></div>
               `
             }
             document.getElementById(`id${realMess[i].update_id}text`).textContent = realMess[i][messHead].text
