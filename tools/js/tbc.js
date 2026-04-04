@@ -832,3 +832,4 @@ window.tbcImport = async function(comp, par) {
     console.error(`module ${comp} not found`)
   }
 }
+async function getChatInfo(id) {}
