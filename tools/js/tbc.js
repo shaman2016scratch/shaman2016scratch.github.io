@@ -68,8 +68,13 @@ let lasupd = 0
 let bs = {}
 screen.innerHTML = `
   <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button><button onclick="creditsTbc()">Credits</button></div>
-  <h1>Chats</h1>
-  <div id="chats">loading...</div>
+  <h1>Mini documentation</h1>
+  <h2>How do I get a bot token?</h2>
+  <p>1. go to t.me/botfather<br>2. Write to him /newbot, come up with a name for the bot, enter a username (without @, only letters and numbers and _, it should end in '_bot' or 'bot')<br>3. Copy the received token.</p>
+  <h2>Telegram doesn't work for me.</h2>
+  <p>Use the MTProto proxy. MTProto is the protocol on which all telegram works, all traffic passes through the MTProto telegram server. If it stops working in a particular region, you need another MTProto proxy that will receive all traffic and send it through the server functions to the official proxy server. But this proxy should be located where telegram works. Attention: The MTProto proxy only helps telegram work, it does not help other services work.</p>
+  <h2>A little bit about this tool</h2>
+  <p>Why is everything in English? Because the tool is designed for an audience from all over the world. The author is not a native English speaker, all translations are made through Yandex Translator</p>
 `
 let integrations = {}
 let vosdCode = function() {
