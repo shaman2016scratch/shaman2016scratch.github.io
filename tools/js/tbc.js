@@ -770,8 +770,8 @@ async function onoffPlug(pn) {
     document.body += `<div id='${plugList[plugObj[pn]].id}'><script src='${plugList[plugObj[pn]].code}'></script></div>`
   }
 }
-window.tbcImport = async function(comp, par) {
-  if (comp === 'console') {
+window.tbcImport = async function(from, module, par) {
+  if (from === 'console') {
     return {
       'log': new Function(['text'], `
         plugList[${par.plugin}].logs += {
@@ -795,41 +795,95 @@ window.tbcImport = async function(comp, par) {
         }
       `),
     }
-  } else if (comp === 'telegram.bot.get') {
-    return {
-      'bot': async function(tokenBot) {
-        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getMe`)).json()
-      },
-      'updates': async function(tokenBot) {
-        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getUpdates`)).json()
-      },
-      'chat': async function(tokenBot, id) {
-        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChat?chat_id=${id}`)).json()
-      },
-      'chatAdmins': async function(tokenBot) {
-        const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChatAdministrators?chat_id=${id}`)).json()
-      },
-    }
-  } else if (comp === 'telegram.bot.send') {
-    return {
-      'message': async function(tokenBot, text, chatId) {
-        const req = await fetch(`${proxyHttp}bot${tokenBot}/sendMessage`, {
-          method: 'POST',
-          body: JSON.stringify({
-            chat_id: chatId,
-            text
+  } else if (from === 'telegram') {
+    if (module === 'bot/get') {
+      return {
+        'bot': async function(tokenBot) {
+          const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getMe`)).json()
+        },
+        'updates': async function(tokenBot) {
+          const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getUpdates`)).json()
+        },
+        'chat': async function(tokenBot, id) {
+          const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChat?chat_id=${id}`)).json()
+        },
+        'chatAdmins': async function(tokenBot) {
+          const getBot = await (await fetch(`${proxyHttp}bot${tokenBot}/getChatAdministrators?chat_id=${id}`)).json()
+        },
+      }
+    } else if (module === 'bot/send') {
+      return {
+        'message': async function(tokenBot, text, chatId) {
+          const req = await fetch(`${proxyHttp}bot${tokenBot}/sendMessage`, {
+            method: 'POST',
+            body: JSON.stringify({
+              chat_id: chatId,
+              text
+            })
           })
-        })
-        const res =  req.json()
-        return {
-          req,
-          res
+          const res =  req.json()
+          return {
+            req,
+            res
+          }
+        }
+      }
+    }
+  } else if (from === 'tbcApi') {
+    if (module === 'proxy/base') {
+      return {
+        'get': function() {
+          return proxyHttp
+        },
+        'set': function(url) {
+          proxyHttp = url
+        }
+      }
+    } else if (module === 'proxy/image') {
+      return {
+        'get': function() {
+          return proxyImageHttp
+        },
+        'set': function(url) {
+          proxyImageHttp = url
+        }
+      }
+    } else if (module === 'verified/users') {
+      return {
+        'isPresent': function(id) {
+          if (!verified.users[id]) {
+            return false
+          } else {
+            return true
+          }
+        },
+        'get': function(id) {
+          return verified.users[id]
+        },
+        'set': function(id, value) {
+          verified.users[id] = value
+        }
+      }
+    } else if (module === 'verified/chats') {
+      return {
+        'isPresent': function(id) {
+          if (!verified.chats[id]) {
+            return false
+          } else {
+            return true
+          }
+        },
+        'get': function(id) {
+          return verified.chats[id]
+        },
+        'set': function(id, value) {
+          verified.chats[id] = value
         }
       }
     }
   } else {
     return undefined
-    console.error(`module ${comp} not found`)
+    console.error(`module ${module} on ${from} or package ${from} not found`)
   }
 }
 async function getChatInfo(id) {}
