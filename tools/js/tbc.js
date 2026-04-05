@@ -668,9 +668,36 @@ async function proxySettings() {
 let proxySettingsComponents = {
   'main': {
     'index': async function() {
+      const tgPingStart = new Date().getTime()
+      let tgPing = 0
+      fetch('https://api.telegram.org/')
+        .then(response => {
+          const endTime = new Date().getTime()
+          tgPing = endTime - tgPingStart;
+        })
+        .catch(error => tgPing = `ERROR: ${error.message}`);
+      const basePingStart = new Date().getTime()
+      let basePing = 0
+      fetch(baseProxy)
+        .then(response => {
+          const endTime = new Date().getTime()
+          basePing = endTime - basePingStart;
+        })
+        .catch(error => basePing = `ERROR: ${error.message}`);
+      const mainPingStart = new Date()
+      let mainPing = 0
+      fetch(proxyHttp)
+        .then(response => {
+          const endTime = new Date().getTime()
+          mainPing = endTime - mainPingStart;
+        })
+        .catch(error => mainPing = `ERROR: ${error.message}`);
       screen.innerHTML = `
         <h1>Proxy settings > MAIN PROXY</h1>
         <p>PROXY URL: <input id='proxyUrl'><button onclick='proxySettingsComponents.main.add.http()'>ADD HTTP PROXY</button></p>
+        <p>Telegram Proxy ping: ${tgPing}</p>
+        <p>Base Proxy ping: ${basePing}</p>
+        <p>Proxy ping: ${mainPing}</p>
       `
     },
     'add': {
