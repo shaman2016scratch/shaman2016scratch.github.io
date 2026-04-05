@@ -907,12 +907,16 @@ let tbc = {
     data: function() {
       screen.innerHTML = `
         <h1>Data and memory</h1>
-        <p onclick='proxySettings()'>Proxy</p>
+        <h2>Using</h2>
+        <p>${chats.length} chats <button onclick='chats = []; chatInfo = {}; openChat = {}'>Clear</button></p>
+        <p>${realMessList.length} messages <button onclick='realMess = {}; realMessList = []'>Clear</button></p>
+        <h2>Proxy</h2>
+        <p onclick='proxySettings()'>Proxy Settings</p>
       `
     },
     privacy: function() {
       screen.innerHTML = `
-        <h1>Privacy</h1>
+        <h1>Privacy and safety</h1>
       `
     }
   }
