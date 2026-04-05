@@ -52,6 +52,7 @@ async function SetVersion() {
   document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 }
 SetVersion()
+let version = ToolsApi.versionTools().tbc
 let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
@@ -475,11 +476,24 @@ async function Chat(id) {
 }
 async function setSender() {}
 async function sendMessage(chat) {
+  let getRes = await fetch('https://api-shaman2016.vercel.app/getMe')
+  getRes = await getRes.json()
+  getRes = getRes.result
+  let text = document.getElementById("messageText").value
+  if (text === '.botFetch' && addons[0].enabled) {
+    text = `
+      <b>botFetch</b>
+      Client: Telegram Bot Chats
+      Author: SHAMAN2016/polzovatel_8787
+      Version: ${version}
+      Site: ${getRes.headers.origin}
+    `
+  }
   fetch(`${proxyHttp}bot${token.value}/sendMessage`, {
     method: 'POST',
     body: JSON.stringify({
       chat_id: chat,
-      text: document.getElementById("messageText").value,
+      text,
       parse_mode: "HTML",
     })
   })
@@ -641,7 +655,7 @@ async function settingsTbc() {
   screen.innerHTML = `
     <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
     <h1>Settings</h1>
-    <p><button onclick='tbc.settings.utilites()'>Utilities</button></p>
+    <p><button onclick='tbc.settings.utilites.index()'>Utilities</button></p>
     <p><button onclick='tbc.settings.data()'>Data and memory</button></p>
     <p><button onclick='tbc.settings.privacy()'>Privacy</button></p>
   `
@@ -924,12 +938,35 @@ window.tbcImport = async function(from, module, par) {
 async function getChatInfo(id) {}
 let tbc = {
   settings: {
-    utilities: function() {
-      screen.innerHTML = `
-        <h1>Utilities</h1>
-        <p onclick='pluginSettings()'>Plugins</p>
-        <p onclick='proxySettings()'>Proxy</p>
-      `
+    utilities: {
+      index: function() {
+        screen.innerHTML = `
+          <h1>Utilities</h1>
+          <p onclick='pluginSettings()'>Plugins</p>
+          <p onclick='tbc.settings.utilities.addons()'>Add-ons</p>
+          <p onclick='proxySettings()'>Proxy</p>
+        `
+      },
+      addons: function() {
+        function getEnable(n) {
+          if(addons[n].enabled) {
+            return 'enabled'
+          } else {
+            return 'enable'
+          }
+        }
+        screen.innerHTML = `
+          <h1 onclick='tbc.settings.utilities.index()'>Utilities</h1>
+          <h2>Add-ons</h2>
+          <div class='projects'>
+            <div class='project'>
+              <p><b>botFetch</b></p>
+              <p>Write ".botFetch" to get information about the client and yourself.</p>
+              <p><button onclick='onoffplugin(0)>${getEnable(0)}</button></p>
+            </div>
+          </div>
+        `
+      }
     },
     data: function() {
       screen.innerHTML = `
@@ -948,3 +985,7 @@ let tbc = {
     }
   }
 }
+let addons = [
+  enabled: false,
+  settings: {}
+]
