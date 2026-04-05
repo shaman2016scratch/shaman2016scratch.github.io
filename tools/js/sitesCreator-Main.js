@@ -42,6 +42,7 @@ window.sitesCreatorMain = {
       <h4>Настройки скрипта</h4>
       <p>Скрипт: <input> | Страница: <input></p>
       <h4>Скрипт</h4>
+      <div id='scriptSC'></div>
     `
   },
   "openFilesList": async function() {},
