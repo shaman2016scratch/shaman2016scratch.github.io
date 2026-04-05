@@ -897,8 +897,23 @@ window.tbcImport = async function(from, module, par) {
 async function getChatInfo(id) {}
 let tbc = {
   settings: {
-    utilities: function() {},
-    data: function() {},
-    privacy: function() {}
+    utilities: function() {
+      screen.innerHTML = `
+        <h1>Utilities</h1>
+        <p onclick='pluginSettings()'>Plugins</p>
+        <p onclick='proxySettings()'>Proxy</p>
+      `
+    },
+    data: function() {
+      screen.innerHTML = `
+        <h1>Data and memory</h1>
+        <p onclick='proxySettings()'>Proxy</p>
+      `
+    },
+    privacy: function() {
+      screen.innerHTML = `
+        <h1>Privacy</h1>
+      `
+    }
   }
 }
