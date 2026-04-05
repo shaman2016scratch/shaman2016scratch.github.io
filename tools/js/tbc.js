@@ -641,6 +641,9 @@ async function settingsTbc() {
   screen.innerHTML = `
     <div class="message"><button onclick="botScript()">botScript</button><button onclick="settingsTbc()">Settings</button></div>
     <h1>Settings</h1>
+    <p><button onclick='tbc.settings.utilites()'>Utilities</button></p>
+    <p><button onclick='tbc.settings.data()'>Data and memory</button></p>
+    <p><button onclick='tbc.settings.privacy()'>Privacy</button></p>
   `
 }
 async function creditsTbc() {}
@@ -892,3 +895,10 @@ window.tbcImport = async function(from, module, par) {
   }
 }
 async function getChatInfo(id) {}
+let tbc = {
+  settings: {
+    utilities: function() {},
+    data: function() {},
+    privacy: function() {}
+  }
+}
