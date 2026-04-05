@@ -986,6 +986,15 @@ let tbc = {
   }
 }
 let addons = [
-  enabled: false,
-  settings: {}
+  {
+    enabled: false,
+    settings: {}
+  }
 ]
+function onoffplugin(n) {
+  if(addons[n].enabled) {
+    addons[n].enabled = false
+  } else {
+    addons[n].enabled = true
+  }
+}
