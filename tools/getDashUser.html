@@ -66,6 +66,7 @@
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b> | <b>Scratch Account: <a href="https://scratch.mit.edu/users/${metadata.user.profile.scratchUsername || 'griffpatch'}">${metadata.user.profile.scratchUsername || "There is no linked account"}</a></b></p>
           <p class="message">${getDesc()}</p>
           <div class="message">
+            <h2>Projects (${metadata.user.projects.length})</h2>
             <iframe src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
           </div>
         `
