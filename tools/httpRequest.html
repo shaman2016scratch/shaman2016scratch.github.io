@@ -5,29 +5,71 @@
   <body>
     <h1>Http Request</h1>
     <label for='url'>URL</label><input id='url'>
-    <label for='type'>TYPE</label>
+    <br><label for='type'>TYPE</label>
     <select id='type'>
       <option selected value="json">JSON</option>
       <option value="text">Text, HTML, CSS, JS</option>
+      <option value="blobPhoto">Photos, Images, GIF</option>
+      <option value="blobVideo">Video</option>
+      <option value="blobAudio">Audio</option>
     </select>
-    <button onclick='send()'>SEND</button>
+    <br><button onclick='send()'>SEND</button>
     <div id='result'>
       <p>Make an HTTP request</p>
     </div>
   </body>
   <script>
     let url = document.getElementById('url')
+    let type = document.getElementById('type')
     let result = document.getElementById('result')
     async function send() {
       url = document.getElementById('url')
       const req = await fetch(url.value)
-      const res = await req.json()
-      result.innerHTML = `
-        <h2>Request Data</h2>
-        <pre>${String(req)}</pre>
-        <h2>Answer</h2>
-        <pre>${String(res)}</pre>
-      `
+      if (type.value === 'json') {
+        const res = await req.json()
+        result.innerHTML = `
+          <h2>Request Data</h2>
+          <pre>${String(req)}</pre>
+          <h2>Answer</h2>
+          <pre>${String(res)}</pre>
+        `
+      } else if (type.value === 'text') {
+        const res = await req.text()
+        result.innerHTML = `
+          <h2>Request Data</h2>
+          <pre>${String(req)}</pre>
+          <h2>Answer</h2>
+          <pre id='value'>Хм</pre>
+        `
+        document.getElementById('value').textContent = String(res)
+      } else if (type.value === 'blobPhoto') {
+        const res = await req.blob()
+        const getUrl = URL.createObjectURL(res)
+        result.innerHTML = `
+          <h2>Request Data</h2>
+          <pre>${String(req)}</pre>
+          <h2>Answer</h2>
+          <img src='${getUrl}'>
+        `
+      } else if (type.value === 'blobVideo') {
+        const res = await req.blob()
+        const getUrl = URL.createObjectURL(res)
+        result.innerHTML = `
+          <h2>Request Data</h2>
+          <pre>${String(req)}</pre>
+          <h2>Answer</h2>
+          <video controls style="max-width: 100%;" src='${getUrl}'></video>
+        `
+      } else if (type.value === 'blobAudio') {
+        const res = await req.blob()
+        const getUrl = URL.createObjectURL(res)
+        result.innerHTML = `
+          <h2>Request Data</h2>
+          <pre>${String(req)}</pre>
+          <h2>Answer</h2>
+          <audio controls src='${getUrl}'></audio>
+        `
+      }
     }
   </script>
 </html>
