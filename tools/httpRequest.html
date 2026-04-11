@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>http request</title>
+  </head>
+  <body>
+    <h1>Http Request</h1>
+    <label for='url'>URL</label><input id='url'><button onclick='send()'>SEND</button>
+    <div id='result'>
+      <p>Make an HTTP request</p>
+    </div>
+  </body>
+  <script>
+    let url = document.getElementById('url')
+    let result = document.getElementById('result')
+    async function send() {
+      url = document.getElementById('url')
+      const req = await fetch(url.value)
+      const res = await req.json()
+      result.innerHTML = `
+        <h2>Request Data</h2>
+        <pre>${String(req)}</pre>
+        <h2>Answer</h2>
+        <pre>${String(res)}</pre>
+      `
+    }
+  </script>
+</html>
