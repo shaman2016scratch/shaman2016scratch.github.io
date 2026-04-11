@@ -52,7 +52,7 @@ async function start() {
     for(let i = 0; i < data.users.length; i++) {
       let userLoginInfo = data.userData[data.users[i]]
       accounts += `
-        <p onclick='login(${data.users[i]})'>${userLoginInfo.name}</p>
+        <p onclick='login("${data.users[i]}")'>${userLoginInfo.name}</p>
       `
     }
     root.innerHTML = `
@@ -82,7 +82,7 @@ function login(userId) {
       <h3>Login</h3>
       <label for='pass'>Password</label>
       <input id='pass'>
-      <button onclick='loginAcc(${userId}, document.getElementById("pass").value)'>LOGIN</button>
+      <button onclick='loginAcc("${userId}", document.getElementById("pass").value)'>LOGIN</button>
     `
   }
 }
