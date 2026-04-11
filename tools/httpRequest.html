@@ -4,7 +4,13 @@
   </head>
   <body>
     <h1>Http Request</h1>
-    <label for='url'>URL</label><input id='url'><button onclick='send()'>SEND</button>
+    <label for='url'>URL</label><input id='url'>
+    <label for='type'>TYPE</label>
+    <select id='type'>
+      <option selected value="json">JSON</option>
+      <option value="text">Text, HTML, CSS, JS</option>
+    </select>
+    <button onclick='send()'>SEND</button>
     <div id='result'>
       <p>Make an HTTP request</p>
     </div>
