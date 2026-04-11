@@ -98,6 +98,7 @@ function loginAcc(userId, pass) {
     `
   }
 }
+async function openDesktop() {}
 document.addEventListener('DOMContentLoaded', (e) => {
   start()
 })
