@@ -37,8 +37,19 @@ let data = {
       buildId: 1
     },
     components: {
-      list: [],
-      metadata: {}
+      list: [
+        {
+          type: 'programming language',
+          name: 'testScript',
+          src: {
+            type: 'githubRepo',
+            fileType: 'javascript',
+            repo: 'shaman2016scratch/shaman2016.github.io',
+            commit: 'main',
+            path: '/tools/components/testOS/testScript.js'
+          }
+        }
+      ]
     }
   },
   cloud: {
@@ -84,6 +95,7 @@ let data = {
     }
   }
 }
+let packages = {}
 let user = null
 async function start() {
   try {
@@ -91,6 +103,7 @@ async function start() {
     root.innerHTML = `
       <h1>Please, wait. System loading</h1>
     `
+    await generatePackage()
     root.innerHTML = `
       <h1>Please, wait. System starting</h1>
     `
@@ -148,3 +161,24 @@ async function openDesktop() {}
 document.addEventListener('DOMContentLoaded', (e) => {
   start()
 })
+async function genegatePackage() {
+  try {
+    let localfuncPackage = {
+      name: data.system.metadata.name,
+      version: data.system.metadata.version,
+      license: 'MIT',
+      depends: []
+    }
+    for(let i = 0; i < data.system.components.list.length; i++) {}
+  } catch (error) {
+    console.error('ERROR DATA')
+    console.error(error)
+    console.log('Please report of error')
+    root.innerHTML = `
+      <h1>ERROR</h1>
+      <p>${error.message}</p>
+      <p>Open browser console for information of error</p>
+      <p>Please report of error <a href='https://scratch.mit.edu/users/SHAMAN2016'>in scratch</a> <a href='https://github.com/shaman2016scratch/shaman2016scratch.github.io/issues'>or github</a></p>
+    `
+  }
+}
