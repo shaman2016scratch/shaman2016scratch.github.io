@@ -103,7 +103,7 @@ async function start() {
     root.innerHTML = `
       <h1>Please, wait. System loading</h1>
     `
-    await generatePackage()
+    await genegatePackage()
     root.innerHTML = `
       <h1>Please, wait. System starting</h1>
     `
