@@ -45,7 +45,7 @@ let data = {
             type: 'githubRepo',
             fileType: 'javascript',
             repo: 'shaman2016scratch/shaman2016.github.io',
-            commit: 'main',
+            commit: 'refs/heads/main',
             path: '/tools/components/testOS/testScript.js'
           }
         }
@@ -66,7 +66,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'main',
+          commit: 'refs/heads/main',
           path: '/tools/components/testOS/apps/myDivace.js'
         }
       },
@@ -77,7 +77,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'main',
+          commit: 'refs/heads/main',
           path: '/tools/components/testOS/apps/settings.js'
         }
       },
@@ -88,7 +88,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'main',
+          commit: 'refs/heads/main',
           path: '/tools/components/testOS/apps/fs.js'
         }
       }
@@ -167,12 +167,19 @@ async function genegatePackage() {
       depends: []
     }
     for(let i = 0; i < data.system.components.list.length; i++) {
-      let reslove = ''
-      localfuncPackage.depends.push({
-        name: data.system.components.list[i].name,
-        type: data.system.components.list[i].type,
-        reslove
-      })
+      if (data.system.components.list[i].src.type === 'githubRepo') {
+        localfuncPackage.depends.push({
+          name: data.system.components.list[i].name,
+          type: data.system.components.list[i].type,
+          reslove: `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`
+        })
+      } else {
+        localfuncPackage.depends.push({
+          name: data.system.components.list[i].name,
+          type: data.system.components.list[i].type,
+          reslove: data.system.components.list[i].src.link
+        })
+      }
     }
   } catch (error) {
     console.error('ERROR DATA')
