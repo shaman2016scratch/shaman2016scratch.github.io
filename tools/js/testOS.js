@@ -158,9 +158,6 @@ function loginAcc(userId, pass) {
   }
 }
 async function openDesktop() {}
-document.addEventListener('DOMContentLoaded', (e) => {
-  start()
-})
 async function genegatePackage() {
   try {
     let localfuncPackage = {
@@ -182,3 +179,6 @@ async function genegatePackage() {
     `
   }
 }
+document.addEventListener('DOMContentLoaded', (e) => {
+  start()
+})
