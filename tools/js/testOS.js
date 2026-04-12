@@ -171,13 +171,15 @@ async function genegatePackage() {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
           type: data.system.components.list[i].type,
-          reslove: `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`
+          reslove: `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`,
+          version: data.system.components.list[i].src.commit
         })
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
           type: data.system.components.list[i].type,
-          reslove: data.system.components.list[i].src.link
+          reslove: data.system.components.list[i].src.link,
+          version: data.system.components.list[i].src.version
         })
       }
     }
