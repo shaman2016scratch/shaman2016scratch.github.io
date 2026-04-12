@@ -166,7 +166,14 @@ async function genegatePackage() {
       license: 'MIT',
       depends: []
     }
-    for(let i = 0; i < data.system.components.list.length; i++) {}
+    for(let i = 0; i < data.system.components.list.length; i++) {
+      let reslove = ''
+      localfuncPackage.depends.push({
+        name: data.system.components.list[i].name,
+        type: data.system.components.list[i].type,
+        reslove
+      })
+    }
   } catch (error) {
     console.error('ERROR DATA')
     console.error(error)
