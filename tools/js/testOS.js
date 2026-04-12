@@ -20,7 +20,16 @@ let data = {
       }
     }
   },
-  filesystem: {},
+  fs: {
+    files: {
+      'home': {
+        type: 0,
+        files: {},
+        created: new Date(),
+        update: new Date()
+      }
+    }
+  },
   system: {
     metadata: {
       name: 'Test8787OS',
@@ -36,6 +45,43 @@ let data = {
     1: {},
     2: {},
     3: {}
+  },
+  desktop: {
+    apps: {
+      myDivace: {
+        type: 'programm',
+        name: 'My Divace',
+        src: {
+          type: 'githubRepo',
+          fileType: 'javascript',
+          repo: 'shaman2016scratch/shaman2016.github.io',
+          commit: 'main',
+          path: '/tools/components/testOS/apps/myDivace.js'
+        }
+      },
+      settings: {
+        type: 'programm',
+        name: 'Settings',
+        src: {
+          type: 'githubRepo',
+          fileType: 'javascript',
+          repo: 'shaman2016scratch/shaman2016.github.io',
+          commit: 'main',
+          path: '/tools/components/testOS/apps/settings.js'
+        }
+      },
+      fs: {
+        type: 'programm',
+        name: 'testOS Files',
+        src: {
+          type: 'githubRepo',
+          fileType: 'javascript',
+          repo: 'shaman2016scratch/shaman2016.github.io',
+          commit: 'main',
+          path: '/tools/components/testOS/apps/fs.js'
+        }
+      }
+    }
   }
 }
 let user = null
