@@ -44,7 +44,7 @@ let data = {
           src: {
             type: 'githubRepo',
             fileType: 'javascript',
-            repo: 'shaman2016scratch/shaman2016.github.io',
+            repo: 'shaman2016scratch/shaman2016scratch.github.io',
             commit: 'main',
             path: '/tools/components/testOS/testScript.js'
           }
@@ -65,7 +65,7 @@ let data = {
         src: {
           type: 'githubRepo',
           fileType: 'javascript',
-          repo: 'shaman2016scratch/shaman2016.github.io',
+          repo: 'shaman2016scratch/shaman2016scratch.github.io',
           commit: 'main',
           path: '/tools/components/testOS/apps/myDivace.js'
         }
@@ -76,7 +76,7 @@ let data = {
         src: {
           type: 'githubRepo',
           fileType: 'javascript',
-          repo: 'shaman2016scratch/shaman2016.github.io',
+          repo: 'shaman2016scratch/shaman2016scratch.github.io',
           commit: 'main',
           path: '/tools/components/testOS/apps/settings.js'
         }
@@ -87,7 +87,7 @@ let data = {
         src: {
           type: 'githubRepo',
           fileType: 'javascript',
-          repo: 'shaman2016scratch/shaman2016.github.io',
+          repo: 'shaman2016scratch/shaman2016scratch.github.io',
           commit: 'main',
           path: '/tools/components/testOS/apps/fs.js'
         }
@@ -98,7 +98,7 @@ let data = {
         src: {
           type: 'githubRepo',
           fileType: 'javascript',
-          repo: 'shaman2016scratch/shaman2016.github.io',
+          repo: 'shaman2016scratch/shaman2016scratch.github.io',
           commit: 'main',
           path: '/tools/components/testOS/apps/terminal.js'
         }
