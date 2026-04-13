@@ -169,11 +169,11 @@ function loginAcc(userId, pass) {
   }
 }
 async function openDesktop() {
-  const keysDesktop = Object.keys(data.desktop)
+  const keysDesktop = Object.keys(data.desktop.apps)
   let listDesktop = []
   async function getApps() {
     for (let i = 0; i < keysDesktop.length; i++) {
-      listDesktop.push(data.desktop[keysDesktop[i]])
+      listDesktop.push(data.desktop.apps[keysDesktop[i]])
     }
   }
   await getApps()
@@ -245,7 +245,7 @@ async function genegatePackage() {
           version: data.system.components.list[i].src.commit
         })
         const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
-        const resPackage = reqPackage.json()
+        const resPackage = await reqPackage.json()
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
@@ -254,7 +254,7 @@ async function genegatePackage() {
           version: data.system.components.list[i].src.version
         })
         const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
-        const resPackage = reqPackage.json()
+        const resPackage = await reqPackage.json()
       }
     }
     packages = localfuncPackage
