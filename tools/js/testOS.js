@@ -45,7 +45,7 @@ let data = {
             type: 'githubRepo',
             fileType: 'javascript',
             repo: 'shaman2016scratch/shaman2016.github.io',
-            commit: 'refs/heads/main',
+            commit: 'main',
             path: '/tools/components/testOS/testScript.js'
           }
         }
@@ -66,7 +66,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'refs/heads/main',
+          commit: 'main',
           path: '/tools/components/testOS/apps/myDivace.js'
         }
       },
@@ -77,7 +77,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'refs/heads/main',
+          commit: 'main',
           path: '/tools/components/testOS/apps/settings.js'
         }
       },
@@ -88,7 +88,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'refs/heads/main',
+          commit: 'main',
           path: '/tools/components/testOS/apps/fs.js'
         }
       },
@@ -99,7 +99,7 @@ let data = {
           type: 'githubRepo',
           fileType: 'javascript',
           repo: 'shaman2016scratch/shaman2016.github.io',
-          commit: 'refs/heads/main',
+          commit: 'main',
           path: '/tools/components/testOS/apps/terminal.js'
         }
       }
@@ -246,7 +246,7 @@ async function genegatePackage() {
           version: data.system.components.list[i].src.commit
         })
         const reqPackage = await fetch(resolveUrl)
-        const resPackage = await reqPackage.json()
+        const resPackage = await reqPackage.text()
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
@@ -255,7 +255,7 @@ async function genegatePackage() {
           version: data.system.components.list[i].src.version
         })
         const reqPackage = await fetch(data.system.components.list[i].src.link)
-        const resPackage = await reqPackage.json()
+        const resPackage = await reqPackage.text()
       }
     }
     packages = localfuncPackage
