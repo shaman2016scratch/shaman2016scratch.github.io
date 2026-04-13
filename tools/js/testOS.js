@@ -168,7 +168,19 @@ function loginAcc(userId, pass) {
     `
   }
 }
-async function openDesktop() {}
+async function openDesktop() {
+  const keysDesktop = Object.keys(data.desktop)
+  let listDesktop = []
+  async function getApps() {
+    for (let i = 0; i < keysDesktop.length; i++) {
+      listDesktop.push(data.desktop[keysDesktop[i]])
+    }
+  }
+  await getApps()
+  function genDesktop() {}
+  genDesktop()
+  function rendDesktop(content) {}
+}
 async function genegatePackage() {
   try {
     let localfuncPackage = {
@@ -185,6 +197,8 @@ async function genegatePackage() {
           reslove: `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`,
           version: data.system.components.list[i].src.commit
         })
+        const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
+        const resPackage = reqPackage.json()
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
@@ -192,8 +206,11 @@ async function genegatePackage() {
           reslove: data.system.components.list[i].src.link,
           version: data.system.components.list[i].src.version
         })
+        const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
+        const resPackage = reqPackage.json()
       }
     }
+    packages = localfuncPackage
   } catch (error) {
     console.error('ERROR DATA')
     console.error(error)
