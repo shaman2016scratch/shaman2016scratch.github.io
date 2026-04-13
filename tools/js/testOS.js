@@ -238,22 +238,23 @@ async function genegatePackage() {
     }
     for(let i = 0; i < data.system.components.list.length; i++) {
       if (data.system.components.list[i].src.type === 'githubRepo') {
+        const resolveUrl = `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
           type: data.system.components.list[i].type,
-          reslove: `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`,
+          resolve: resolveUrl,
           version: data.system.components.list[i].src.commit
         })
-        const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
+        const reqPackage = await fetch(resolveUrl)
         const resPackage = await reqPackage.json()
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
           type: data.system.components.list[i].type,
-          reslove: data.system.components.list[i].src.link,
+          resolve: data.system.components.list[i].src.link,
           version: data.system.components.list[i].src.version
         })
-        const reqPackage = await fetch(localfuncPackage.depends[localfuncPackage.depends.length].reslove)
+        const reqPackage = await fetch(data.system.components.list[i].src.link)
         const resPackage = await reqPackage.json()
       }
     }
