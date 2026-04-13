@@ -91,6 +91,17 @@ let data = {
           commit: 'refs/heads/main',
           path: '/tools/components/testOS/apps/fs.js'
         }
+      },
+      terminal: {
+        type: 'programm',
+        name: 'Terminal',
+        src: {
+          type: 'githubRepo',
+          fileType: 'javascript',
+          repo: 'shaman2016scratch/shaman2016.github.io',
+          commit: 'refs/heads/main',
+          path: '/tools/components/testOS/apps/terminal.js'
+        }
       }
     }
   }
