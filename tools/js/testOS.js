@@ -177,7 +177,28 @@ async function openDesktop() {
     }
   }
   await getApps()
-  function genDesktop() {}
+  function genDesktop() {
+    function getContent(i) {
+      if (!listDesktop[i]) {
+        return ``
+      } else {
+        return `
+          <h4>${listDesktop[i].name}</h4>
+        `
+      }
+    }
+    let notHtml = `
+      <table>
+        <tbody>
+          <tr>
+            <td class='message'>
+              ${getContent(0)}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    `
+  }
   genDesktop()
   function rendDesktop(content) {}
 }
