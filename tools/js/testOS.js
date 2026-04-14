@@ -185,7 +185,12 @@ async function openDesktop() {
         `
       } else {
         return `
-          <td class='message'>
+          <td class='message' onclick='open("openDesktop://app/", {
+            params: ${i},
+            headers: {},
+            body: {}
+          })'>
+            <img src='${listDesktop[i].icon || 'https://i.pinimg.com/originals/b9/57/c0/b957c0baaa2d905fb933314f812eecd7.jpg'}' style='margin: auto'>
             <h4>${listDesktop[i].name}</h4>
           </td>
         `
@@ -269,6 +274,36 @@ async function genegatePackage() {
       <p>Open browser console for information of error</p>
       <p>Please report of error <a href='https://scratch.mit.edu/users/SHAMAN2016'>in scratch</a> <a href='https://github.com/shaman2016scratch/shaman2016scratch.github.io/issues'>or github</a></p>
     `
+  }
+}
+async function request(protocol, url, params, method) {
+  let splitUrl = url.split('/')
+  let domain = splitUrl[0]
+  let pathNotDomain = url.split(domain)[1]
+  let splitPathNotDomain = pathNotDomain.split('/')
+  if (protocol === 'openDesktop') {
+    if (url === 'app/') {
+      if (method === 'run') {} else {
+        console.error('Method is not supported')
+        return 'Method is not supported'
+      }
+    }
+  }
+}
+async function open(url, params) {
+  let protocolSplit = url.split('://')
+  let protocol = protocolSplit[0]
+  let path = protocolSplit[1]
+  let splitPath = path.split('/')
+  let domain = splitPath[0]
+  let pathNotDomain = path.split(domain)[1]
+  let splitPathNotDomain = pathNotDomain.split('/')
+  if (protocol === 'openDesktop') {
+    if (path === '') {
+      openDesktop()
+    } else if (path === 'app/') {
+      await request(protocol, path, params, 'run')
+    }
   }
 }
 document.addEventListener('DOMContentLoaded', (e) => {
