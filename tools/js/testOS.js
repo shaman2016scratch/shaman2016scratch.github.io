@@ -190,7 +190,7 @@ async function openDesktop() {
             headers: {},
             body: {}
           })'>
-            <img src='${listDesktop[i].icon || 'https://i.pinimg.com/originals/b9/57/c0/b957c0baaa2d905fb933314f812eecd7.jpg'}' style='margin: auto'>
+            <img src='${listDesktop[i].icon || 'https://i.pinimg.com/originals/b9/57/c0/b957c0baaa2d905fb933314f812eecd7.jpg'}' style='margin: auto' height='45' width='45'>
             <h4>${listDesktop[i].name}</h4>
           </td>
         `
