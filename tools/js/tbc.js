@@ -365,13 +365,25 @@ async function Chat(id) {
           document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
         } else if(realMess[i][messHead].new_chat_member) {
           if(realMess[i][messHead].new_chat_member.is_bot) {
-            messList.innerHTML += `
-              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [bot] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
-            `
+            if (!realMess[i][messHead].new_chat_member.id === realMess[i][messHead].from.id) {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [bot] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
+              `
+            } else {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>вступила в чат</p></div></div>
+              `
+            }
           } else {
-            messList.innerHTML += `
-              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [user] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
-            `
+            if (!realMess[i][messHead].new_chat_member.id === realMess[i][messHead].from.id) {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>добавила в чат ${realMess[i][messHead].new_chat_member.first_name} [user] [${realMess[i][messHead].new_chat_member.id}]</p></div></div>
+              `
+            } else {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>вступила в чат</p></div></div>
+              `
+            }
           }
         } else if(realMess[i][messHead].photo) {
           let image = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
@@ -415,6 +427,16 @@ async function Chat(id) {
             `
           }
           document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button><a href='${video}'><button>Copy file</button></a><button onclick='console.log(\`file_id: ${file_id}, file_url: ${video}\`); alert("in console")'>Get file metadata</button>`
+        } else if (realMess[i][messHead].left_chat_member) {
+          if(realMess[i][messHead].from.is_bot) {
+            messList.innerHTML += `
+              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>покинула группу</p></div></div>
+            `
+          } else {
+            messList.innerHTML += `
+              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>покинула группу</p></div></div>
+            `
+          }
         }
         console.log(`doc ${document.getElementById(`id${realMess[i].update_id}`)}, value 'id${realMess[i].update_id}'`)
         document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
