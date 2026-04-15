@@ -877,7 +877,7 @@ window.tbcImport = async function(from, module, par) {
 async function getChatInfo(id) {}
 let tbc = {
   settings: {
-    utilities: {
+    utilites: {
       index: function() {
         screen.innerHTML = `
           <h1>Utilities</h1>
@@ -901,7 +901,7 @@ let tbc = {
             <div class='project'>
               <p><b>botFetch</b></p>
               <p>Write ".botFetch" to get information about the client and yourself.</p>
-              <p><button onclick='onoffplugin(0)>${getEnable(0)}</button></p>
+              <p><button onclick='onoffaddons(0)>${getEnable(0)}</button></p>
             </div>
           </div>
         `
@@ -930,7 +930,7 @@ let addons = [
     settings: {}
   }
 ]
-function onoffplugin(n) {
+function onoffaddons(n) {
   if(addons[n].enabled) {
     addons[n].enabled = false
   } else {
