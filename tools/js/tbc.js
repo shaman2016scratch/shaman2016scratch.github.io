@@ -447,6 +447,14 @@ async function Chat(id) {
               <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user, sys message] <code>${realMess[i][messHead].from.id}</code></h4><p>покинула группу</p></div></div>
             `
           }
+        } else if (realMess[i][messHead].new_chat_photo) {
+          messList.innerHTML += `
+            <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}">Фотография чата обновлена</div></div>
+          `
+        } else {
+          messList.innerHTML += `
+            <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><i>Сообщение не поддерживается</i></div></div>
+          `
         }
         console.log(`doc ${document.getElementById(`id${realMess[i].update_id}`)}, value 'id${realMess[i].update_id}'`)
         document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
