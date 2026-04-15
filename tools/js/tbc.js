@@ -1,3 +1,5 @@
+let screen = document.getElementById("content")
+let version = null
 const baseProxy = "https://shaman2016-trampline.vercel.app/tg/"
 const baseImageProxy = "https://shaman2016-trampline.vercel.app/tgImg/"
 let proxyHttp = baseProxy
@@ -49,11 +51,10 @@ async function ToolsApiInstall() {
 }
 async function SetVersion() {
   await ToolsApiInstall()
+  version = ToolsApi.versionTools().tbc
   document.getElementById("v").textContent = `Version: ${ToolsApi.versionTools().tbc}`
 }
 SetVersion()
-let version = ToolsApi.versionTools().tbc
-let screen = document.getElementById("content")
 let token = document.getElementById("bot")
 let botn = document.getElementById("botname")
 let chats = []
