@@ -180,6 +180,16 @@ async function start() {
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
+  if (messages[99]) {
+    messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates?offset=${messages[99].update_id + 1}`)).json()
+    messages = messages.result
+    await getMess()
+  }
+  if (messages[99]) {
+    messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates?offset=${messages[99].update_id + 1}`)).json()
+    messages = messages.result
+    await getMess()
+  }
   async function getChats() {
     for(let i = 0; i < realMess.length; i++) {
       if (realMess[i].message) {
