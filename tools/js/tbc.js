@@ -455,6 +455,8 @@ async function Chat(id) {
           messList.innerHTML += `
             <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><i>Сообщение не поддерживается</i></div></div>
           `
+          console.log('DEBUG (for developers):')
+          console.log(realMess[i][messHead])
         }
         console.log(`doc ${document.getElementById(`id${realMess[i].update_id}`)}, value 'id${realMess[i].update_id}'`)
         document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
