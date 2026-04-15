@@ -377,23 +377,44 @@ async function Chat(id) {
           let image = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].photo[1].file_id}`)).json()
           image = image.result.file_path
           image = `${proxyImageHttp}file/bot${token.value}/${image}`
-          let fileId = realMess[i][messHead].photo
+          let { file_id } = realMess[i][messHead].photo[1]
           if(!realMess[i][messHead].sender_chat) {
             if(realMess[i][messHead].from.is_bot) {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img onclick="console.log('File Ids: ${fileId}')" src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
               `
             } else {
               messList.innerHTML += `
-                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img onclick="console.log('File Ids: ${fileId}')" src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
               `
             }
           } else {
             messList.innerHTML += `
-              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img onclick="console.log('File Ids: ${fileId}')" src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
+              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><img src="${image}"><p>${realMess[i][messHead].caption || ""}</p></div></div>
             `
           }
-          document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
+          document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button><a href='${image}'><button>Copy file</button></a><button onclick='console.log(\`file_id: ${file_id}, file_url: ${image}\`); alert("in console")'>Get file metadata</button>`
+        } else if (realMess[i][messHead].video) {
+          let video = await (await fetch(`${proxyHttp}bot${token.value}/getFile?file_id=${realMess[i][messHead].video.file_id}`)).json()
+          video = video.result.file_path
+          video = `${proxyImageHttp}file/bot${token.value}/${video}`
+          let { file_id } = realMess[i][messHead].video
+          if(!realMess[i][messHead].sender_chat) {
+            if(realMess[i][messHead].from.is_bot) {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [bot] <code>${realMess[i][messHead].from.id}</code></h4><video src="${video}" height='${realMess[i][messHead].video.height}' width='${realMess[i][messHead].video.width}' controls></video><p>${realMess[i][messHead].caption || ""}</p></div></div>
+              `
+            } else {
+              messList.innerHTML += `
+                <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><h4><img src="https://placehold.co/25x25">${realMess[i][messHead].from.first_name} [user] <code>${realMess[i][messHead].from.id}</code></h4><video src="${video}" height='${realMess[i][messHead].video.height}' width='${realMess[i][messHead].video.width}' controls></video><p>${realMess[i][messHead].caption || ""}</p></div></div>
+              `
+            }
+          } else {
+            messList.innerHTML += `
+              <div class="message" id="id${realMess[i].update_id}"><div id="idc${realMess[i][messHead].message_id}"><img src="https://placehold.co/25x25"><div><h4>${realMess[i][messHead].sender_chat.title} [${realMess[i][messHead].sender_chat.type}] <code>${realMess[i][messHead].sender_chat.id}</code></h4><video src="${video}" height='${realMess[i][messHead].video.height}' width='${realMess[i][messHead].video.width}' controls></video><p>${realMess[i][messHead].caption || ""}</p></div></div>
+            `
+          }
+          document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button><a href='${video}'><button>Copy file</button></a><button onclick='console.log(\`file_id: ${file_id}, file_url: ${video}\`); alert("in console")'>Get file metadata</button>`
         }
         console.log(`doc ${document.getElementById(`id${realMess[i].update_id}`)}, value 'id${realMess[i].update_id}'`)
         document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
