@@ -395,6 +395,7 @@ async function Chat(id) {
           }
           document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<button onclick="sendReply(${id}, ${realMess[i][messHead].message_id})">To answer</button>`
         }
+        console.log(`doc ${document.getElementById(`id${realMess[i].update_id}`)}, value 'id${realMess[i].update_id}'`)
         document.getElementById(`id${realMess[i].update_id}`).innerHTML += `<br><i>DATE: ${new Date(realMess[i].data)}<i>`
       }
     } 
