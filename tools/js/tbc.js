@@ -489,14 +489,7 @@ async function sendMessage(chat) {
       Site: ${getRes.headers.origin}
     `
   }
-  fetch(`${proxyHttp}bot${token.value}/sendMessage`, {
-    method: 'POST',
-    body: JSON.stringify({
-      chat_id: chat,
-      text,
-      parse_mode: "HTML",
-    })
-  })
+  fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
@@ -531,7 +524,7 @@ async function getMess() {
   }
 }
 async function sendReply(chat, mess) {
-  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}`)
+  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}&parse_mode=HTML`)
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
@@ -791,7 +784,7 @@ async function plugAddListSumbut() {
     'description': plugCode.__meta__.__description__,
     'isSettings': plugCode.__meta__.__isSettings__,
     'logs': [],
-    'isStarted': false,
+    'isStarted': false
   }
   plugObj[plugName] = plugList.length
   alert('Plugin Added')
@@ -822,25 +815,36 @@ async function onoffPlug(pn) {
 window.tbcImport = async function(from, module, par) {
   if (from === 'console') {
     return {
-      'log': new Function(['text'], `
+      log: new Function(['text'], `
         plugList[${par.plugin}].logs += {
           type: 'log',
           text,
           date: new Date()
         }
       `),
-      'warn': new Function(['text'], `
+      warn: new Function(['text'], `
         plugList[${par.plugin}].logs += {
           type: 'warn',
           text,
           date: new Date()
         }
       `),
-      'error': new Function(['text'], `
+      error: new Function(['text'], `
         plugList[${par.plugin}].logs += {
           type: 'error',
           text,
           date: new Date()
+        }
+      `),
+      getLogs: new Function(['text'], `
+        return plugList[${par.plugin}].logs
+      `),
+      logColor: new Function(['text', 'color'], `
+        plugList[${par.plugin}].logs += {
+          type: 'log',
+          text,
+          date: new Date(),
+          color
         }
       `),
     }
@@ -863,13 +867,7 @@ window.tbcImport = async function(from, module, par) {
     } else if (module === 'bot/send') {
       return {
         'message': async function(tokenBot, text, chatId) {
-          const req = await fetch(`${proxyHttp}bot${tokenBot}/sendMessage`, {
-            method: 'POST',
-            body: JSON.stringify({
-              chat_id: chatId,
-              text
-            })
-          })
+          const req = await fetch(`${proxyHttp}bot${tokenBot}/sendMessage?text=${text}&chat_id=${chatId}`, {})
           const res =  req.json()
           return {
             req,
