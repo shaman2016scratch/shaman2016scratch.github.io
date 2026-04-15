@@ -176,7 +176,7 @@ function loadLoc() {
 async function start() {
   boteto = await (await fetch(`${proxyHttp}bot${token.value}/getMe`)).json()
   boteto = boteto.result
-  botn.innerHTML = boteto.name
+  botn.textContent = `Name: ${boteto.first_name}`
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   await getMess()
@@ -979,4 +979,14 @@ function onoffaddons(n) {
   } else {
     addons[n].enabled = true
   }
+}
+async function myprofile() {
+  let proinfo = await fetch(`${proxyHttp}bot${token.value}/getChat?id=${boteto.id}`)
+  proinfo = await proinfo.json()
+  proinfo = proinfo.result
+  screen.innerHTML += `
+    <h2>${proinfo.first_name} <code>id${proinfo.id}</code></h2>
+    <p>@${proinfo.username}</p>
+    <p>${proinfo.type}</p>
+  `
 }
