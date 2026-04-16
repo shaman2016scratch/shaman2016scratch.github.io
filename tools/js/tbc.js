@@ -676,7 +676,7 @@ async function sendApps() {}
 async function sendButtons() {}
 async function proxySettings() {
   screen.innerHTML = `
-    <h1>Proxy settings</h1>
+    <h1><div onclick='settingsTbc()'>Settings</div> > Proxy settings</h1>
     <p><button onclick='proxySettingsComponents.main.index()'>MAIN PROXY</button><button onclick='proxySettingsComponents.filesProxy.index()'>FILES PROXY</button></p>
   `
 }
@@ -708,7 +708,7 @@ let proxySettingsComponents = {
         })
         .catch(error => mainPing = `ERROR: ${error.message}`);
       screen.innerHTML = `
-        <h1>Proxy settings > MAIN PROXY</h1>
+        <h1><div onclick='settingsTbc()'>Settings</div> > Proxy settings > MAIN PROXY</h1>
         <p>PROXY URL: <input id='proxyUrl'><button onclick='proxySettingsComponents.main.add.http()'>ADD HTTP PROXY</button></p>
         <p>Telegram Proxy ping: ${tgPing}</p>
         <p>Base Proxy ping: ${basePing}</p>
@@ -724,7 +724,7 @@ let proxySettingsComponents = {
   'filesProxy': {
     'index': async function() {
       screen.innerHTML = `
-        <h1>Proxy settings > FILES PROXY</h1>
+        <h1><div onclick='settingsTbc()'>Settings</div> > Proxy settings > FILES PROXY</h1>
         <p>PROXY URL: <input id='proxyUrl'><button onclick='proxySettingsComponents.filesProxy.add.http()'>ADD HTTP PROXY</button></p>
       `
     },
@@ -737,7 +737,7 @@ let proxySettingsComponents = {
 }
 async function pluginSettings() {
   screen.innerHTML = `
-    <h1>Plugin settings</h1>
+    <h1><div onclick='settingsTbc()'>Settings</div> > Plugin settings</h1>
     <p><button onclick='pluginSettingsComponents.list.add()'>ADD</button><button onclick='pluginSettingsComponents.list.open()'>OPEN LIST</button></p>
     <p>Warning: the author and developers of Telegram Bot Client do not bear any responsibility for what plugins can do, plugins can do bad things, it is better to install only proven plugins.</p>
     <div id='plugMenu'>Choose something.</div>
@@ -947,7 +947,7 @@ let tbc = {
     utilites: {
       index: function() {
         screen.innerHTML = `
-          <h1>Utilities</h1>
+          <h1><div onclick='settingsTbc()'>Settings</div> > Utilities</h1>
           <p onclick='pluginSettings()'>Plugins</p>
           <p onclick='tbc.settings.utilities.addons()'>Add-ons</p>
           <p onclick='proxySettings()'>Proxy</p>
