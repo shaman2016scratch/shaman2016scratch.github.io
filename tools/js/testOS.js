@@ -8,7 +8,8 @@ let data = {
   userData: {
     'test user': {
       name: 'test',
-      password: null
+      password: null,
+      pass: null
     }
   },
   mainData: {
@@ -122,9 +123,12 @@ async function start() {
     for(let i = 0; i < data.users.length; i++) {
       let userLoginInfo = data.userData[data.users[i]]
       accounts += `
-        <p onclick='login("${data.users[i]}")'>${userLoginInfo.name}</p>
+        <br><button onclick='createAcc()'>Create Account</button>
       `
     }
+    accounts += `
+        <p onclick='login("${data.users[i]}")'>${userLoginInfo.name}</p>
+    `
     root.innerHTML = `
       <h1>System Started!</h1>
       <div id='login'>${accounts}</div>
@@ -283,7 +287,9 @@ async function request(protocol, url, params, method) {
   let splitPathNotDomain = pathNotDomain.split('/')
   if (protocol === 'openDesktop') {
     if (url === 'app/') {
-      if (method === 'run') {} else {
+      if (method === 'run') {
+         root.innerHTML
+      } else {
         console.error('Method is not supported')
         return 'Method is not supported'
       }
@@ -304,6 +310,44 @@ async function open(url, params) {
     } else if (path === 'app/') {
       await request(protocol, path, params, 'run')
     }
+  }
+}
+function createAcc() {
+  let loginMenu = document.getElementById('login')
+  loginMenu.innerHTML = `
+    <h3>Create Account In System</h3>
+    <label for='userid'>User Id</label>
+    <input id='userid' type='text' placeholder="Id">
+    <br><label for='name'>Name</label>
+    <input id='name' type='text' placeholder="Cool Account 384">
+    <br><label for='password'>Password</label>
+    <input id='password' type='password' placeholder="F0DWh39" minlength='4'>
+    <br><input type='radio' id='usage'>Usage password in login?
+    <br><button onclick='createAccount(document.getElementById('userid').value, document.getElementById('name').value, document.getElementById('password').value, document.getElementById('usage').checked)'>Create</button>
+  `
+}
+function createAccount(id, name, pass, isUsageLog) {
+  if (!data.userData[id]) {
+    data.users.push(id)
+    if (isUsageLog) {
+      data.userData[id] = {
+        name,
+        password: pass,
+        pass
+      }
+    } else {
+      data.userData[id] = {
+        name,
+        password: null,
+        pass
+      }
+    }
+    openDesktop()
+  } else {
+    console.error('This account exists')
+    root.innerHTML = `
+      <p>Error: This account exists</p>
+    `
   }
 }
 document.addEventListener('DOMContentLoaded', (e) => {
