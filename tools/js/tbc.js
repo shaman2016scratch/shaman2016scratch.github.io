@@ -173,9 +173,13 @@ function saveLoc() {
 function loadLoc() {
   vosdCodeLoc()
 }
-async function start() {
+async function loadBoteto() {
   boteto = await (await fetch(`${proxyHttp}bot${token.value}/getMe`)).json()
   boteto = boteto.result
+}
+loadBoteto()
+async function start() {
+  await loadBoteto()
   botn.textContent = `Name: ${boteto.first_name}`
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
