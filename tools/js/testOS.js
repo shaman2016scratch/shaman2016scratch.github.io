@@ -335,7 +335,7 @@ function createAcc() {
     <br><label for='password'>Password</label>
     <input id='password' type='password' placeholder="F0DWh39" minlength='4'>
     <br><input type='radio' id='usage'>Usage password in login?
-    <br><button onclick='createAccount(document.getElementById('userid').value, document.getElementById('name').value, document.getElementById('password').value, document.getElementById('usage').checked)'>Create</button>
+    <br><button onclick='createAccount(document.getElementById("userid").value, document.getElementById("name").value, document.getElementById("password").value, document.getElementById("usage").checked)'>Create</button>
   `
 }
 function createAccount(id, name, pass, isUsageLog) {
