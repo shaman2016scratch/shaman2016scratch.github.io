@@ -288,9 +288,19 @@ async function request(protocol, url, params, method) {
   if (protocol === 'openDesktop') {
     if (url === 'app/') {
       if (method === 'run') {
-         root.innerHTML = `
-           <h2>App <button onclick='openDesktop()'>X<button></h2>
-         `
+        let relsove = ''
+        if (data.desktop.apps[params].src.type === 'githubRepo') {
+          relsove = `https://raw.githubusercontent.com/${data.desktop.apps[params].src.repo}/${data.desktop.apps[params].src.commit}${data.desktop.apps[params].src.path}`
+        }
+        root.innerHTML = `
+          <h2>App <button onclick='openDesktop()'>X<button></h2>
+          <div class='messages' id='windows'>
+            <div class='message' id='window_main'>
+              Error
+            </div>
+          </div>
+          <script src='${relsove}'></script>
+        `
       } else {
         console.error('Method is not supported')
         return 'Method is not supported'
