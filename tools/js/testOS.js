@@ -229,6 +229,15 @@ async function openDesktop() {
           </tr>
         </tbody>
       </table>
+      <table class='message'>
+        <tbody>
+          <tr>
+            <th>
+              Test8787OS
+            </th>
+          </tr>
+        </tbody>
+      </table>
     `
     rendDesktop(notHtml)
   }
