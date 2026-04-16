@@ -123,11 +123,11 @@ async function start() {
     for(let i = 0; i < data.users.length; i++) {
       let userLoginInfo = data.userData[data.users[i]]
       accounts += `
-        <br><button onclick='createAcc()'>Create Account</button>
+        <p onclick='login("${data.users[i]}")'>${userLoginInfo.name}</p>
       `
     }
     accounts += `
-        <p onclick='login("${data.users[i]}")'>${userLoginInfo.name}</p>
+      <br><button onclick='createAcc()'>Create Account</button>
     `
     root.innerHTML = `
       <h1>System Started!</h1>
@@ -288,7 +288,9 @@ async function request(protocol, url, params, method) {
   if (protocol === 'openDesktop') {
     if (url === 'app/') {
       if (method === 'run') {
-         root.innerHTML
+         root.innerHTML = `
+           <h2>App <button onclick='openDesktop()'>X<button></h2>
+         `
       } else {
         console.error('Method is not supported')
         return 'Method is not supported'
