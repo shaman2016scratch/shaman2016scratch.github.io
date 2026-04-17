@@ -381,6 +381,53 @@ function createAccount(id, name, pass, isUsageLog) {
     `
   }
 }
+window.appSdk = {}
+window.appSdk = {
+  windows: {
+    getMain: function() {
+      return document.getElementById('window_main')
+    },
+    get: function(id) {
+      return document.getElementById(`window_${id}`)
+    },
+    create: function(id) {
+      document.getElementById('windows').innerHTML += `
+        <div id='window_${id}'>
+          <p>Error</p>
+        </div>
+      `
+    },
+    delete: function(id) {
+      document.getElementById(`window_${id}`).innerHTML = ''
+    }
+  },
+  windowObject: {
+    gen: function(data) {
+      return {
+        set: new Function(['content'], `
+          let data = ${data}
+          data.innerHTML = content
+        `),
+        content: data.innerHTML,
+        updateId: new Function(['id'], `
+          let data = ${data}
+          data.id = id
+        `)
+      }
+    }
+  },
+  windowActions: {
+    set: function(content, windowObj) {
+      windowObj.innerHTML = content
+    },
+    content: function(windowObj) {
+      return windowObj.innerHTML
+    },
+    updateId: function(id, windowObj) {
+      windowObj.id = id
+    }
+  }
+}
 document.addEventListener('DOMContentLoaded', (e) => {
   start()
 })
