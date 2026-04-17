@@ -49,6 +49,16 @@ let data = {
             commit: 'main',
             path: '/tools/components/testOS/testScript.js'
           }
+        }, {
+          type: 'programming language',
+          name: 'test.js',
+          src: {
+            type: 'githubRepo',
+            fileType: 'javascript',
+            repo: 'shaman2016scratch/shaman2016scratch.github.io',
+            commit: 'main',
+            path: '/tools/components/testOS/testjs.js'
+          }
         }
       ]
     }
