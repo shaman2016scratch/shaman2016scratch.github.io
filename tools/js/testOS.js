@@ -240,9 +240,9 @@ async function openDesktop() {
         </tbody>
       </table>
       <table class='message'>
-        <tbody>
+        <tbody id='panel'>
           <tr>
-            <th>
+            <th onclick='openPusk()'>
               Test8787OS
             </th>
           </tr>
@@ -429,6 +429,17 @@ window.appSdk = {
       windowObj.id = id
     }
   }
+}
+function openPusk() {
+  let panel = document.getElementById('panel')
+  panel.innerHTML = `
+    <tr>
+      <th>
+        <p onclick='start()'>Перезагрузка</p>
+      </th>
+    </tr>
+    ${panel.innerHTML}
+  `
 }
 document.addEventListener('DOMContentLoaded', (e) => {
   start()
