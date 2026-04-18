@@ -319,8 +319,20 @@ async function request(protocol, url, params, method) {
                 Error
               </div>
             </div>
-            <script src='${relsove}'></script>
           `
+          try {
+            const req = await fetch(relsove)
+            const res = await req.text()
+            root.innerHTML += `
+              <script src='${relsove}'></script>
+            `
+          } catch (error) {
+            root.innerHTML = `
+              <p>Error: ${error.message}</p>
+              <button onclick='openDesktop()'>Open desktop</button>
+            `
+            console.error(error)
+          }
         }
       } else {
         console.error('Method is not supported')
