@@ -160,7 +160,7 @@
                 }
               }
             }, {
-              opcode: "crearList",
+              opcode: "clearList",
               blockType: Scratch.BlockType.COMMAND,
               text: "clear list [list]",
               arguments: {
