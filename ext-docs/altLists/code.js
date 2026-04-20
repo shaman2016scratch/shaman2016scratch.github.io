@@ -305,7 +305,7 @@
         this.selectedList = ''
       }
       deleteSelectedList() {
-        delete this.lists[args.selectedList]
+        delete this.lists[this.selectedList]
       }
     }
     Scratch.extensions.register(new shaman2016list());
