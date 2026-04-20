@@ -118,6 +118,7 @@ let data = {
   }
 }
 let packages = {}
+let packageFunctions = {}
 let user = null
 async function start() {
   try {
@@ -264,6 +265,7 @@ async function genegatePackage() {
       license: 'MIT',
       depends: []
     }
+    let localPackageFunctions = {}
     for(let i = 0; i < data.system.components.list.length; i++) {
       if (data.system.components.list[i].src.type === 'githubRepo') {
         const resolveUrl = `https://raw.githubusercontent.com/${data.system.components.list[i].src.repo}/${data.system.components.list[i].src.commit}${data.system.components.list[i].src.path}`
@@ -275,6 +277,7 @@ async function genegatePackage() {
         })
         const reqPackage = await fetch(resolveUrl)
         const resPackage = await reqPackage.text()
+        localPackageFunctions[data.system.components.list[i].name] = new Function(['arguments'], resPackage)
       } else {
         localfuncPackage.depends.push({
           name: data.system.components.list[i].name,
@@ -317,6 +320,10 @@ async function request(protocol, url, params, method) {
             <div class='messages' id='windows'>
               <div class='message' id='window_main'>
                 Error
+              </div>
+              <div class='message' id='console'>
+                <h2>App console</h2>
+                <p>Program openned. ${new Date(new Date())}</p>
               </div>
             </div>
           `
@@ -440,7 +447,8 @@ window.appSdk = {
     updateId: function(id, windowObj) {
       windowObj.id = id
     }
-  }
+  },
+  console: {}
 }
 function openPusk() {
   let panel = document.getElementById('panel')
