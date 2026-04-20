@@ -184,6 +184,16 @@
                 }
               }
             }, {
+              opcode: "deleteList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "delete list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
               blockType: Scratch.BlockType.LABEL,
               text: 'Save'
             }, {
@@ -219,6 +229,16 @@
                   type: Scratch.ArgumentType.STRING,
                 }
               }
+            }, {
+              opcode: "unselectList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "unselect list",
+              arguments: {}
+            }, {
+              opcode: "deleteSelectedList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "detele selected list",
+              arguments: {}
             }
           ],
         };
@@ -277,6 +297,15 @@
       }
       itemReal(args) {
         return this.lists[args.list].value.indexOf(args.text) !== -1
+      }
+      deleteList(args) {
+        delete this.lists[args.list]
+      }
+      unselectList() {
+        this.selectedList = ''
+      }
+      deleteSelectedList() {
+        delete this.lists[args.selectedList]
       }
     }
     Scratch.extensions.register(new shaman2016list());
