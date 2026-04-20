@@ -13,6 +13,7 @@
     class shaman2016list {
       constructor() {
         this.lists = {}
+        this.selectedList = ''
       }
       
       getInfo() {
@@ -131,6 +132,16 @@
                 }
               }
             }, {
+              opcode: "createList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "create list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
               blockType: Scratch.BlockType.LABEL,
               text: 'Save'
             }, {
@@ -148,6 +159,24 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "export",
               arguments: {}
+            }, {
+              blockType: Scratch.BlockType.LABEL,
+              text: 'Selected list'
+            }, {
+              opcode: "getSelectedList",
+              blockType: Scratch.BlockType.ARRAY,
+              text: "get array selected list",
+              arguments: {}
+            }, {
+              opcode: "selectList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "select list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: 'my list',
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
             }
           ],
         };
@@ -156,16 +185,13 @@
         return this.lists[args.list].value
       }
       setItemList(args) {
-        this.lists[args.list].value[args.item].text = args.value
+        this.lists[args.list].value[args.item] = args.value
       }
       newItemList(args) {
-        this.lists[args.list].value.push({
-          text: args.value,
-          created: new Date()
-        })
+        this.lists[args.list].value.push(args.value)
       }
       getItemList(args) {
-        return this.lists[args.list].value[args.item].text
+        return this.lists[args.list].value[args.item]
       }
       getLengthList(args) {
         return this.lists[args.list].value.length
@@ -179,11 +205,27 @@
       setList(args) {
         this.lists[args.list].value = args.array
       }
+      createList(args) {
+        if (this.lists[args.list]) {
+          console.error('This list exists')
+          alert('Error: This list exists')
+        } else {
+          this.lists[args.list] = {
+            value: []
+          }
+        }
+      }
       importL(args) {
         this.lists = args.key
       }
       exportL() {
         return this.lists
+      }
+      getSelectedList() {
+        return this.lists[this.selectedList].value
+      }
+      selectList(args) {
+        this.selectedList = args.list
       }
     }
     Scratch.extensions.register(new shaman2016list());
