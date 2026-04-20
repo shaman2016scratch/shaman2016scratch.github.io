@@ -64,3 +64,6 @@ async function start() {
   `
   window.creatorDOM = document.getElementById("menu")
 }
+document.addEventListener('DOMContentLoaded', (e) => {
+  start()
+})
