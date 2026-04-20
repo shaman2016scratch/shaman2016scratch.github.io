@@ -1,1 +1,3 @@
+let testjs = {}
 
+return testjs
