@@ -160,6 +160,30 @@
                 }
               }
             }, {
+              opcode: "crearList",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "clear list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "itemReal",
+              blockType: Scratch.BlockType.BOOLEAN,
+              text: "item [text] in list [list]?",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                },
+                text: {
+                  defaultValue: "item",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
               blockType: Scratch.BlockType.LABEL,
               text: 'Save'
             }, {
@@ -247,6 +271,12 @@
       }
       newItemIndex(args) {
         this.lists[args.list].value.splice(args.index, 1, args.value)
+      }
+      clearList(args) {
+        this.lists[args.list].value = []
+      }
+      itemReal(args) {
+        return this.lists[args.list].value.indexOf(args.text) !== -1
       }
     }
     Scratch.extensions.register(new shaman2016list());
