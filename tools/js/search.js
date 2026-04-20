@@ -222,3 +222,6 @@ async function search() {
     }
   }
 }
+document.addEventListener('DOMContentLoaded', (e) => {
+  start()
+})
