@@ -66,6 +66,24 @@
                 }
               }
             }, {
+              opcode: "newItemIndex",
+              blockType: Scratch.BlockType.COMMAND,
+              text: "new item [value] of index [index] in list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                },
+                value: {
+                  defaultValue: "item",
+                  type: Scratch.ArgumentType.STRING,
+                },
+                index: {
+                  defaultValue: 0,
+                  type: Scratch.ArgumentType.NUMBER,
+                },
+              }
+            }, {
               opcode: "getItemList",
               blockType: Scratch.BlockType.REPORTER,
               text: "get item [item] in list [list]",
@@ -226,6 +244,9 @@
       }
       selectList(args) {
         this.selectedList = args.list
+      }
+      newItemIndex(args) {
+        this.lists[args.list].value.splice(args.index, 1, args.value)
       }
     }
     Scratch.extensions.register(new shaman2016list());
