@@ -21,7 +21,7 @@
           id: "shaman2016list",
           name: 'lists',
           docsURL: "https://shaman2016scratch.github.io/ext-docs/altLists/",
-          color1: "#ff4a00",
+          color1: "#ff6629",
           blocks: [
             {
               opcode: "getList",
