@@ -20,7 +20,7 @@
         return {
           id: "shaman2016list",
           name: 'lists',
-          docsURL: "https://shaman2016scratch.github.io/ext-docs/altLists/",
+          docs: "https://shaman2016scratch.github.io/ext-docs/altLists/",
           color1: "#ff6629",
           blocks: [
             {
