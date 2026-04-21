@@ -1,4 +1,4 @@
-const installDepend = new Function(['params'], `async function asyncInstall() { ${await (await fetch('https://raw.githubusercontent.com/shaman2016scratch/shaman2016scrqtch.github.io/main/tools/components/testOS/terminal/pkg.js')).text()} }; await asyncInstall()`)
+const installDepend = new Function(['params'], `async function asyncInstall() { ${await (await fetch('https://raw.githubusercontent.com/shaman2016scratch/shaman2016scrqtch.github.io/main/tools/components/testOS/terminal/pkg.js')).text()} }; asyncInstall()`)
 let out = ''
 if (params.pkg === '@terminal/logic') {
   let myDepends = {}
