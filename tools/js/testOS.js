@@ -1,4 +1,5 @@
 let root = document.getElementById('root')
+let body = document.body
 let data = {
   apps: [],
   appData: {},
@@ -28,6 +29,13 @@ let data = {
         files: {},
         created: new Date(),
         update: new Date()
+      },
+      'cloudstorage': {
+        type: 0,
+        files: {},
+        created: new Date(),
+        update: new Date(),
+        unvisit: true
       }
     }
   },
@@ -62,11 +70,6 @@ let data = {
         }
       ]
     }
-  },
-  cloud: {
-    1: {},
-    2: {},
-    3: {}
   },
   desktop: {
     apps: {
@@ -115,6 +118,9 @@ let data = {
         }
       }
     }
+  },
+  cloudfunctions: {
+    cloudstorage: {}
   }
 }
 let packages = {}
