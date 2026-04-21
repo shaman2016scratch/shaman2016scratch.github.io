@@ -454,7 +454,13 @@ window.appSdk = {
       windowObj.id = id
     }
   },
-  console: {}
+  console: {
+    log: function(text, author) {
+      document.getElementById('console').innerHTML += `
+        <p>${author}: ${text}. ${new Data(new Data())}</p>
+      `
+    }
+  }
 }
 function openPusk() {
   let panel = document.getElementById('panel')
