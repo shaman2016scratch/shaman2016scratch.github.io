@@ -9,4 +9,5 @@ if (!window.terminalInstalled) {
   }
   window.terminal.importDepends()
   window.terminalInstalled = true
+  alert('terminal installed. restart terminal')
 }
