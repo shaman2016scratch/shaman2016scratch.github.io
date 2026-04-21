@@ -1,4 +1,4 @@
-let root = document.body
+let root = document.getElementById('root')
 let data = {
   apps: [],
   appData: {},
