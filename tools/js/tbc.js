@@ -659,6 +659,7 @@ async function settingsTbc() {
     <p><button onclick='tbc.settings.utilites.index()'>Utilities</button></p>
     <p><button onclick='tbc.settings.data()'>Data and memory</button></p>
     <p><button onclick='tbc.settings.privacy()'>Privacy</button></p>
+    <p><button onclick='settingsProfile()'>Profile settings</button></p>
   `
 }
 async function creditsTbc() {}
@@ -1008,9 +1009,14 @@ async function myprofile() {
   let proinfo = await fetch(`${proxyHttp}bot${token.value}/getChat?id=${boteto.id}`)
   proinfo = await proinfo.json()
   proinfo = proinfo.result
-  screen.innerHTML += `
+  screen.innerHTML = `
     <h2>${proinfo.first_name} <code>id${proinfo.id}</code></h2>
     <p>@${proinfo.username}</p>
     <p>${proinfo.type}</p>
+  `
+}
+function settingsProfile() {
+  screen.innerHTML = `
+    <h1><div onclick='settingsTbc()'>Settings</div> > Profile settings</h1>
   `
 }
