@@ -13,7 +13,7 @@
     class polzovatel_8787_dashApi {
       getInfo() {
         return {
-          id: "polzovatel_8787_dashApi",
+          id: "polzovatel8787dashApi",
           name: "Dash Api",
           docsURL: "https://shaman2016scratch.github.io/ext-docs/dashapi/",
           color1: "#ff8f4d",
