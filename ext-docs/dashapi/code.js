@@ -57,15 +57,25 @@ async isLogin() {
   const req = await fetch('https://dashblocks-server.vercel.app/session', {
     credentials: 'include'
   })
-  let ret = false
+  ret = false
   if (req) {
     ret = true
   }
   return ret
 }
 async getMyUsername() {
+  async isLogin() {
+    const req = await fetch('https://dashblocks-server.vercel.app/session', {
+      credentials: 'include'
+    })
+    let ret = false
+    if (req) {
+      ret = true
+    }
+    return ret
+  }
   let ret = ''
-  if (isLogin()) {
+  if (iLogin()) {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
@@ -75,6 +85,16 @@ async getMyUsername() {
   return ret
 }
 async getId() {
+  async isLogin() {
+    const req = await fetch('https://dashblocks-server.vercel.app/session', {
+      credentials: 'include'
+    })
+    let ret = false
+    if (req) {
+      ret = true
+    }
+    return ret
+  }
   let ret = 0
   if (isLogin()) {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
@@ -86,6 +106,16 @@ async getId() {
   return ret
 }
 async getMyRole() {
+  async isLogin() {
+    const req = await fetch('https://dashblocks-server.vercel.app/session', {
+      credentials: 'include'
+    })
+    let ret = false
+    if (req) {
+      ret = true
+    }
+    return ret
+  }
   let ret = ''
   if (isLogin()) {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
@@ -97,6 +127,16 @@ async getMyRole() {
   return ret
 }
 async getMyAvatar() {
+  async isLogin() {
+    const req = await fetch('https://dashblocks-server.vercel.app/session', {
+      credentials: 'include'
+    })
+    let ret = false
+    if (req) {
+      ret = true
+    }
+    return ret
+  }
   let ret = ''
   if (isLogin()) {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
