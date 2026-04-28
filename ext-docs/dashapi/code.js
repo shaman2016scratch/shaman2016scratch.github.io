@@ -199,7 +199,7 @@ async isLogin() {
 }
 // get my info
 async getMyUsername() {
-  async isLogin() {
+  async function isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
@@ -220,7 +220,7 @@ async getMyUsername() {
   return ret
 }
 async getId() {
-  async isLogin() {
+  async function isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
@@ -241,7 +241,7 @@ async getId() {
   return ret
 }
 async getMyRole() {
-  async isLogin() {
+  async function isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
@@ -262,7 +262,7 @@ async getMyRole() {
   return ret
 }
 async getMyAvatar() {
-  async isLogin() {
+  async function isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
