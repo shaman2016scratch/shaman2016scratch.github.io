@@ -91,7 +91,7 @@
               }
             }, {
               opcode: "getProjectsUser",
-              blockType: Scratch.BlockType.REPORTER,
+              blockType: Scratch.BlockType.ARRAY,
               text: "get array of projects of user [user]",
               arguments: {
                 user: {
@@ -219,7 +219,7 @@ async getMyUsername() {
   }
   return ret
 }
-async getId() {
+async getMyId() {
   async function isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
@@ -291,6 +291,13 @@ async getIdUser(args) {
   return res.user.id
 }
 async getIdUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.id
+}
+async getUsernameUser(args) {
   const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
     credentials: 'include'
   })
