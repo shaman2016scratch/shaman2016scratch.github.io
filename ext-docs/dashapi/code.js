@@ -191,7 +191,7 @@ async isLogin() {
   const req = await fetch('https://dashblocks-server.vercel.app/session', {
     credentials: 'include'
   })
-  ret = false
+  let ret = false
   if (req) {
     ret = true
   }
@@ -210,7 +210,7 @@ async getMyUsername() {
     return ret
   }
   let ret = ''
-  if (iLogin()) {
+  if (isLogin()) {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
       credentials: 'include'
     })
@@ -341,28 +341,28 @@ async getAvatarUser(args) {
 }
 // get project data
 async getAuthorProject(args) {
-  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+  const req = await fetch(`https://dashblocks-server.vercel.app/projects/${args.project}`, {
     credentials: 'include'
   })
   const res = await req.json()
   return res.project.author.username
 }
 async getNameProject(args) {
-  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+  const req = await fetch(`https://dashblocks-server.vercel.app/projects/${args.project}`, {
     credentials: 'include'
   })
   const res = await req.json()
   return res.project.name
 }
 async getDescriptionProject(args) {
-  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+  const req = await fetch(`https://dashblocks-server.vercel.app/projects/${args.project}`, {
     credentials: 'include'
   })
   const res = await req.json()
   return res.project.description
 }
 async getFiresProject(args) {
-  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+  const req = await fetch(`https://dashblocks-server.vercel.app/projects/${args.project}`, {
     credentials: 'include'
   })
   const res = await req.json()
