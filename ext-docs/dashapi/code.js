@@ -142,6 +142,46 @@
             }, {
               blockType: Scratch.BlockType.LABEL,
               text: "2. Projects"
+            }, {
+              opcode: "getAuthorProject",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get username of author project [project]",
+              arguments: {
+                project: {
+                  defaultValue: 100,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "getNameProject",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get name of project [project]",
+              arguments: {
+                project: {
+                  defaultValue: 100,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "getDescriptionProject",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get description of project [project]",
+              arguments: {
+                project: {
+                  defaultValue: 100,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "getFiresProject",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get fires of project [project]",
+              arguments: {
+                project: {
+                  defaultValue: 100,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
             }
           ],
         };
@@ -298,6 +338,35 @@ async getAvatarUser(args) {
   })
   const res = await req.json()
   return `https://dashblocks-server.vercel.app/users/avatars/${res.user.profile.avatarId}`
+}
+// get project data
+async getAuthorProject(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.project.author.username
+}
+async getNameProject(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.project.name
+}
+async getDescriptionProject(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.project.description
+}
+async getFiresProject(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/project/${args.project}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.project.stats.fires
 }
     }
     Scratch.extensions.register(new polzovatel_8787_dashApi());
