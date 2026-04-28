@@ -7,7 +7,11 @@
 (function (Scratch) {
 
   if (!Scratch.extensions.unsandboxed) {
-    throw new Error("This Extension must run unsandboxed");
+    throw new Error("This Extension must run unsandboxed")
+  }
+
+  if (!Scratch.extensions.isDash) {
+    throw new Error("This Extension must run in Dash (because of CORS)")
   }
 
     class polzovatel_8787_dashApi {
@@ -20,7 +24,7 @@
           blocks: [
             {
               blockType: Scratch.BlockType.LABEL,
-              text: 'Login and regeneration'
+              text: 'Login'
             }, {
               opcode: "isLogin",
               blockType: Scratch.BlockType.BOOLEAN,
@@ -28,7 +32,7 @@
               arguments: {}
             }, {
               blockType: Scratch.BlockType.LABEL,
-              text: 'Session'
+              text: 'Session and my info'
             }, {
               opcode: "getMyUsername",
               blockType: Scratch.BlockType.REPORTER,
@@ -49,10 +53,100 @@
               blockType: Scratch.BlockType.REPORTER,
               text: "avatar url",
               arguments: {}
+            }, {
+              blockType: Scratch.BlockType.LABEL,
+              text: "Get info"
+            }, {
+              blockType: Scratch.BlockType.LABEL,
+              text: "1. Users"
+            }, {
+              opcode: "getIdUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get id of [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getUsernameUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get username of id [user]",
+              arguments: {
+                user: {
+                  defaultValue: 7,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "getColvoProjectsUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get the number of projects of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getProjectsUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get array of projects of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getRoleUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get role of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getDescriptionUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get description of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getScratchUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get scratch username of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              opcode: "getAvatarUser",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get link of avatar of user [user]",
+              arguments: {
+                user: {
+                  defaultValue: "polzovatel_8787",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
+              blockType: Scratch.BlockType.LABEL,
+              text: "2. Projects"
             }
           ],
         };
       }
+// Login
 async isLogin() {
   const req = await fetch('https://dashblocks-server.vercel.app/session', {
     credentials: 'include'
@@ -63,6 +157,7 @@ async isLogin() {
   }
   return ret
 }
+// get my info
 async getMyUsername() {
   async isLogin() {
     const req = await fetch('https://dashblocks-server.vercel.app/session', {
@@ -146,6 +241,63 @@ async getMyAvatar() {
     ret = `https://dashblocks-server.vercel.app/users/avatars/${res.profile.avatarId}`
   }
   return ret
+}
+// get user data
+async getIdUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.id
+}
+async getIdUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.username
+}
+async getColvoProjectsUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.projects.length
+}
+async getProjectsUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.projects
+}
+async getRoleUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.role
+}
+async getDescriptionUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.profile.description
+}
+async getScratchUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return res.user.profile.scratchUsername || 'unknown'
+}
+async getAvatarUser(args) {
+  const req = await fetch(`https://dashblocks-server.vercel.app/users/${args.user}`, {
+    credentials: 'include'
+  })
+  const res = await req.json()
+  return `https://dashblocks-server.vercel.app/users/avatars/${res.user.profile.avatarId}`
 }
     }
     Scratch.extensions.register(new polzovatel_8787_dashApi());
