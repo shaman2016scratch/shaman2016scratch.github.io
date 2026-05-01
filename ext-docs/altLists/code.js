@@ -98,6 +98,16 @@
                 }
               }
             }, {
+              opcode: "getRandItemList",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "get random item in list [list]",
+              arguments: {
+                 list: {
+                  defaultValue: "my list",
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
               opcode: "getLengthList",
               blockType: Scratch.BlockType.REPORTER,
               text: "get length list [list]",
@@ -306,6 +316,10 @@
       }
       deleteSelectedList() {
         delete this.lists[this.selectedList]
+      }
+      getRandItemList(args) {
+        const randomValue = Math.floor(Math.random() * this.lists[args.list].value.length);
+        return this.lists[args.list].value[randomValue]
       }
     }
     Scratch.extensions.register(new shaman2016list());
