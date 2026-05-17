@@ -39,8 +39,8 @@
       9: 'official',
       15: 'official, Dash creator, Main developer dash',
       17: 'official',
-      18: 'official',
-      20: 'official',
+      18: 'official, Dash developer',
+      20: 'official, Scratch_Craft_2, Dash developer',
       21: 'official, MiCloud Creator',
       22: 'official',
       28: 'official',
@@ -71,7 +71,7 @@
           } else if (metadata.user.profile.description === '') {
             return '<i>Пусто.</i>'
           } else {
-            return metadata.user.profile.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>@${match}</a>`)
+            return metadata.user.profile.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>${match}</a>`)
           }
         }
         root.innerHTML = `
