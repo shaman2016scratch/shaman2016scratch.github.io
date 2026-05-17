@@ -41,10 +41,13 @@
       };
       async function getProjData() {
         await getMeta();
+        function getDescription() {
+          return metadata.project.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>${match}</a>`)
+        }
         root.innerHTML = `
           <h1>${metadata.project.name}</h1>
           <iframe src='https://dashblocks.github.io/scratch-gui/embed.html?project=https://shaman2016-trampline.vercel.app/dashImage/get-project/${uid}' width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
-          <p class="message"><b>Description</b><br>${metadata.project.description}</p>
+          <p class="message"><b>Description</b><br>${getDescription()}</p>
           <p class="message">${metadata.project.stats.fires}🔥</p>
         `
       };
