@@ -55,23 +55,21 @@
         <tr>
       `
       for(i = 0; i < metaUser.user.projects.length || i < 20; i++) {
-        let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.user.projects[i].id}`)
-        projectMeta = await projectMeta.json()
-        projectMeta = projectMeta.project
-        fakeRoot += `
-          <th class="message">
-            <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${projectMeta.thumbnailId}' width="100" height="60">
-            <p>
-              <b>${projectMeta.name}</b>
-              <br>by 
-              <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
-                ${projectMeta.author.username}
-              </a>
-              <br>
-              ${projectMeta.stats.fires}🔥
-            </p>
-          </th>
-        `
+        if (i < 20) {
+          let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.user.projects[i].id}`)
+          projectMeta = await projectMeta.json()
+          projectMeta = projectMeta.project
+          fakeRoot += `
+            <th class="message">
+              <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${projectMeta.thumbnailId}' width="100" height="60">
+              <p>
+                <b>${projectMeta.name}</b><br>by <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
+                  ${projectMeta.author.username}
+                </a><br>${projectMeta.stats.fires}🔥
+              </p>
+            </th>
+          `
+        }
       }
       fakeRoot += `
         </tr>
