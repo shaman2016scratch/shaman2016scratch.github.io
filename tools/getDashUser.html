@@ -80,7 +80,7 @@
           <p class="message">${getDesc()}</p>
           <div class="message">
             <h2>Projects (${metadata.user.projects.length}) <a href='https://dashblocks.github.io/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
-            <iframe src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
+            <iframe id='projects' src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
           </div>
         `
       };
