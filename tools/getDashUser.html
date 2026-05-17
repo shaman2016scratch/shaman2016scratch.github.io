@@ -71,7 +71,7 @@
           } else if (metadata.user.profile.description === '') {
             return '<i>Пусто.</i>'
           } else {
-            return metadata.user.profile.description.replaceAll('\n', '<br>')
+            return metadata.user.profile.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>@${match}</a>`)
           }
         }
         root.innerHTML = `
