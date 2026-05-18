@@ -1,5 +1,7 @@
-while (true) {
-  if (document.getElementById('projects').src !== `/tools/getDashProjectByUser?id=${uid}`) {
-    window.location.href = document.getElementById('projects').src
+self.addEventListener('message', (event) => {
+  while (true) {
+    if (document.getElementById('projects').src !== `/tools/getDashProjectByUser?id=${event.payload.uid}`) {
+      event.payload.location.href = event.payload.projects.src
+    }
   }
-}
+});
