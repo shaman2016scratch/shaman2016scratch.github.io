@@ -88,8 +88,11 @@
       window.otherWorker = new Worker('/tools/js/getDashUser~urlUpd.js')
       window.otherWorker.postMessage({
         type: 'PROCESS',
-        payload: { location: window.location, projects: document.getElementById('projects'), uid }
+        payload: { projects: document.getElementById('projects'), uid }
       });
+      otherWorker.onmessage = (event) => {
+        window.location.href = event.src
+      };
     };
   </script>
 </html>
