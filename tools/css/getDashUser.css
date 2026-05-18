@@ -4,7 +4,23 @@ body {
  padding:0;
  }
 
-.message, .description, .projects {
+.message {
+  margin: 20px;
+  width: 80%;
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.description {
+  margin: 20px;
+  width: 80%;
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.projects {
   margin: 20px;
   width: 80%;
   background-color: gray;
