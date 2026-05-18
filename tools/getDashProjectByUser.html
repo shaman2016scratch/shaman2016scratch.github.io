@@ -55,7 +55,7 @@
         <tr>
       `
       for(i = 0; i < metaUser.user.projects.length; i++) {
-        if (i < 20) {
+        if (i < 30) {
           let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.user.projects[i].id}`)
           projectMeta = await projectMeta.json()
           projectMeta = projectMeta.project
