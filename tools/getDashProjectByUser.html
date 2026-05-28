@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Get Project in Dash By User</title>
+    <title>Get Projects in Dash By User</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="/tools/css/getDashUser.css">
@@ -19,7 +19,7 @@
 <!-- /Yandex.Metrika counter --> 
   </head>
   <body>
-    <h1>Get Dash Project By User</h1>
+    <h1>Get Dash Projects By User</h1>
     <p>User: <input type="number" id="userId"><button onclick="load()">Load</button></p>
     <p>Method: <button onclick="document.getElementById('userId').type = 'number'">ID</button><button onclick="document.getElementById('userId').type = 'text'">USERNAME</button></p>
   </body>
@@ -63,7 +63,7 @@
             <th class="message">
               <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${projectMeta.thumbnailId}' width="100" height="60">
               <p>
-                <a href='/tools/getDashProject?id=${uid}'><b>${projectMeta.name}</b></a><br>by <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
+                <a href='/tools/getDashProject?id=${metaUser.user.projects[i].id}'><b>${projectMeta.name}</b></a><br>by <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
                   ${projectMeta.author.username}
                 </a><br>${projectMeta.stats.fires}🔥
               </p>
