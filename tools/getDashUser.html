@@ -79,6 +79,10 @@
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b> | <b>Scratch Account: <a href="https://scratch.mit.edu/users/${metadata.user.profile.scratchUsername || 'griffpatch'}">${metadata.user.profile.scratchUsername || "There is no linked account"}</a></b></p>
           <p class="description">${getDesc()}</p>
           <div class="projects">
+            <img src="https://shaman2016-trampline.vercel.app/dashImage/projects/trumbnails/${metadata.user.profile.recommendedProject.trumbnailId}" width="30" height="50">
+            <h4><a href='https://dashblocks.github.io/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
+          </div>
+          <div class="projects">
             <h2>Projects (${metadata.user.projects.length}) <a href='https://dashblocks.github.io/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
             <iframe id='projects' src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
             <p><button onclick='UpdUrl()'>Open projects in this page</button></p>
