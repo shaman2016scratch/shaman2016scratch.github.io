@@ -293,7 +293,7 @@ async function start() {
     }
     chatsList.innerHTML += `
       <h3>Send a message to another chat</h3>
-      <input id="messageText"><input id="messageChatId"><button onclick="sendMessage(document.getElementById('messageChatId'))">send</button>
+      <input id="messageText"><input id="messageChatId"><button onclick="sendMessage(document.getElementById('messageChatId').input)">send</button>
     `
   }
   await addChats()
@@ -505,28 +505,14 @@ async function sendMessage(chat) {
       Site: ${getRes.headers.origin}
     `
   }
-  fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)
+  const request await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
-  realMessList.push(`-544${idlastbot}`)
+  realMessList.push(messages[messages.length].update_id)
   realMess.push({
-    "update_id": `-544${idlastbot}`,
-    "message": {
-      "message_id": "bot",
-      "from": {
-        "id": boteto.id,
-        "is_bot": true,
-        "first_name": boteto.first_name
-      },
-      "chat": {
-        "id": chat,
-        "name": chatInfo[chat].name,
-        "type": chatInfo[chat].type
-      },
-      "date": Date.now(),
-      "text": document.getElementById("messageText").value
-    }
+    update_id: messages[messages.length].update_id,
+    message: request
   })
   await getMess()
   Chat(chat)
