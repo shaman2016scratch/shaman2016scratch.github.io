@@ -92,7 +92,7 @@ let vosdCode = function() {
   idlastbot = conf.ilb
   lasupd = conf.upd
   console.log(conf.upd)
-  maxMess = conf.maxMess || maxMess
+  maxMessages = conf.maxMess || maxMessages
   lasupd++
   bs = conf.bs
 }
@@ -106,7 +106,7 @@ let vosdCodeLoc = function() {
   realMess = conf.mess
   idlastbot = conf.ilb
   lasupd = conf.upd
-  maxMess = conf.maxMess || 300
+  maxMessages = conf.maxMess || maxMessages
   lasupd++
   bs = conf.bs
 }
@@ -150,7 +150,7 @@ function save() {
     ilb: idlastbot,
     upd: lasupd,
     bs,
-    maxMess
+    maxMess: maxMessages
   })
 }
 function load() {
@@ -172,7 +172,7 @@ function saveLoc() {
     ilb: idlastbot,
     upd: lasupd,
     bs,
-    maxMess
+    maxMess: maxMessages
   }))
 }
 function loadLoc() {
