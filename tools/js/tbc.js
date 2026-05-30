@@ -505,14 +505,14 @@ async function sendMessage(chat) {
       Site: ${getRes.headers.origin}
     `
   }
-  const request (await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()).result
+  const requestToTG (await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()).result
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
   realMessList.push(messages[messages.length].update_id)
   realMess.push({
     update_id: messages[messages.length].update_id,
-    message: request
+    message: requestToTG
   })
   await getMess()
   Chat(chat)
