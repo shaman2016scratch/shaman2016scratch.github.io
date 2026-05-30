@@ -505,7 +505,7 @@ async function sendMessage(chat) {
       Site: ${getRes.headers.origin}
     `
   }
-  const request await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()
+  const request (await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()).result
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
