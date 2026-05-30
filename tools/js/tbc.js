@@ -510,9 +510,9 @@ async function sendMessage(chat) {
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
-  realMessList.push(messages[messages.length].update_id)
+  realMessList.push(messages[messages.length]?.update_id || `-bot${idlastbot}`)
   realMess.push({
-    update_id: messages[messages.length].update_id,
+    update_id: messages[messages.length]?.update_id || `-bot${idlastbot}`,
     message: requestToTG
   })
   await getMess()
