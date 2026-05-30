@@ -293,7 +293,7 @@ async function start() {
     }
     chatsList.innerHTML += `
       <h3>Send a message to another chat</h3>
-      <input id="messageText"><input id="messageChatId"><button onclick="sendMessage(document.getElementById('messageChatId').input)">send</button>
+      <input id="messageText"><input id="messageChatId"><button onclick="sendMessage(document.getElementById('messageChatId')?.input || 'ERROR')">send</button>
     `
   }
   await addChats()
