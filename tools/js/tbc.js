@@ -946,7 +946,7 @@ tbc = {
         screen.innerHTML = `
           <h1><div onclick='settingsTbc()'>Settings</div> > Utilities</h1>
           <p onclick='pluginSettings()'>Plugins</p>
-          <p onclick='tbc.settings.utilities.addons()'>Add-ons</p>
+          <p onclick='tbc.settings.utilites.addons()'>Add-ons</p>
           <p onclick='proxySettings()'>Proxy</p>
         `
       },
