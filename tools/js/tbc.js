@@ -92,6 +92,7 @@ let vosdCode = function() {
   idlastbot = conf.ilb
   lasupd = conf.upd
   console.log(conf.upd)
+  maxMess = conf.maxMess || maxMess
   lasupd++
   bs = conf.bs
 }
@@ -105,6 +106,7 @@ let vosdCodeLoc = function() {
   realMess = conf.mess
   idlastbot = conf.ilb
   lasupd = conf.upd
+  maxMess = conf.maxMess || 300
   lasupd++
   bs = conf.bs
 }
@@ -139,15 +141,16 @@ let windowBs = {
 function save() {
   alert("Log in to the console and copy the latest log.")
   console.log({
-    "token": token.value,
-    "chats": chats,
-    "chatInfo": chatInfo,
-    "openChat": openChat,
-    "messList": realMessList,
-    "mess": realMess,
-    "ilb": idlastbot,
-    "upd": lasupd,
-    "bs": bs
+    token: token.value,
+    chats,
+    chatInfo,
+    openChat,
+    messList: realMessList,
+    mess: realMess,
+    ilb: idlastbot,
+    upd: lasupd,
+    bs,
+    maxMess
   })
 }
 function load() {
@@ -160,15 +163,16 @@ function load() {
 }
 function saveLoc() {
   localStorage.set("tools-tbc", toString({
-    "token": token.value,
-    "chats": chats,
-    "chatInfo": chatInfo,
-    "openChat": openChat,
-    "messList": realMessList,
-    "mess": realMess,
-    "ilb": idlastbot,
-    "upd": lasupd,
-    "bs": bs
+    token: token.value,
+    chats,
+    chatInfo,
+    openChat,
+    messList: realMessList,
+    mess: realMess,
+    ilb: idlastbot,
+    upd: lasupd,
+    bs,
+    maxMess
   }))
 }
 function loadLoc() {
