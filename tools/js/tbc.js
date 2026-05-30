@@ -504,6 +504,17 @@ async function sendMessage(chat) {
       Version: ${version}
       Site: ${getRes.headers.origin}
     `
+  } else if (text.split('|jsCode')[0] === '.jsStart' && addons[1].enabled) {
+    text = `
+      <b>JavaScript Runner</b>
+      <pre language='JavaScript'>
+        ${text.split('|jsCode')[1]}
+      </pre>
+      <b>Result</b>
+      <pre>
+        ${eval(text.split('|jsCode')[1])}
+      </pre>
+    `
   }
   let requestToTG = await (await fetch(`${proxyHttp}bot${token.value}/sendMessage?text=${text}&chat_id=${chat}&parse_mode=HTML`)).json()
   requestToTG = requestToTG.result
@@ -961,11 +972,16 @@ tbc = {
         screen.innerHTML = `
           <h1 onclick='tbc.settings.utilities.index()'>Utilities</h1>
           <h2>Add-ons</h2>
-          <div class='projects'>
-            <div class='project'>
+          <div class='messages'>
+            <div class='message'>
               <p><b>botFetch</b></p>
               <p>Write ".botFetch" to get information about the client and yourself.</p>
-              <p><button onclick='onoffaddons(0)>${getEnable(0)}</button></p>
+              <p><button onclick='onoffaddons(0)'>${getEnable(0)}</button></p>
+            </div>
+            <div class='message'>
+              <p><b>JavaScript Runner</b></p>
+              <p>Write ".jsStart|jsCode{your code}" to run JavaScript code.</p>
+              <p><button onclick='onoffaddons(1)'>${getEnable(1)}</button></p>
             </div>
           </div>
         `
@@ -1000,6 +1016,12 @@ tbc = {
   }
 }
 let addons = [
+  {
+    enabled: false,
+    settings: {
+      ip: false
+    }
+  },
   {
     enabled: false,
     settings: {}
