@@ -1,5 +1,6 @@
 let screen = document.getElementById("content")
 let version = null
+let maxMessages = 300
 const baseProxy = "https://shaman2016-trampline.vercel.app/tg/"
 const baseImageProxy = "https://shaman2016-trampline.vercel.app/tgImg/"
 let proxyHttp = baseProxy
@@ -304,7 +305,10 @@ async function Chat(id) {
   let messList = document.getElementById("messages")
   async function getMesss() {
     let i = 0
-    for(i = 0; i < realMess.length; i++) {
+    if (realMess.length > maxMessages) {
+      let i = realMess.length-maxMessages
+    }
+    for(i = i; i < realMess.length; i++) {
       if (realMess[i].message) {
         messHead = "message"
       } else if (realMess[i].channel_post) {
@@ -943,7 +947,8 @@ window.tbcImport = async function(from, module, par) {
   }
 }
 async function getChatInfo(id) {}
-let tbc = {
+let tbc = {}
+tbc = {
   settings: {
     utilites: {
       index: function() {
@@ -981,6 +986,9 @@ let tbc = {
         <h2>Using</h2>
         <p>${chats.length} chats <button onclick='chats = []; chatInfo = {}; openChat = {}'>Clear</button></p>
         <p>${realMessList.length} messages <button onclick='realMess = {}; realMessList = []'>Clear</button></p>
+        <h2>Performance</h2>
+        <p>Max messages: ${maxMessages}</p>
+        <label for='maxMess'>Limit messages: </label><input id='maxMess' type='number'><button onclick='tbc.settings.dataObj.maxMess.set()'>set</button>
         <h2>Proxy</h2>
         <p onclick='proxySettings()'>Proxy Settings</p>
       `
@@ -989,6 +997,14 @@ let tbc = {
       screen.innerHTML = `
         <h1>Privacy and safety</h1>
       `
+    },
+    dataObj: {
+      maxMess: {
+        set: function() {
+          maxMessages = document.getElementById('maxMess').input
+          tbc.settings.data()
+        }
+      }
     }
   }
 }
