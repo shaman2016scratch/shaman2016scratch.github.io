@@ -495,7 +495,7 @@ async function sendMessage(chat) {
   let getRes = await fetch('https://api-shaman2016.vercel.app/getMe')
   getRes = await getRes.json()
   getRes = getRes.result
-  let text = document.getElementById("messageText").value
+  let text = encodeURIComponent(document.getElementById("messageText").value)
   if (text === '.botFetch' && addons[0].enabled) {
     text = `
       <b>botFetch</b>
@@ -527,7 +527,7 @@ async function getMess() {
   }
 }
 async function sendReply(chat, mess) {
-  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${document.getElementById("messageText").value}&reply_to_message_id=${mess}&parse_mode=HTML`)
+  fetch(`${proxyHttp}bot${token.value}/sendMessage?chat_id=${chat}&text=${encodeURIComponent(document.getElementById("messageText").value)}&reply_to_message_id=${mess}&parse_mode=HTML`)
   messages = await (await fetch(`${proxyHttp}bot${token.value}/getUpdates`)).json()
   messages = messages.result
   idlastbot++
