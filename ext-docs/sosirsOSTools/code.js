@@ -1,4 +1,4 @@
-// Name: Request Information
+// Name: sosirsOS Tools
 // ID: sosirsostoolsShaman2016
 // Description: 
 // By: SHAMAN2016 <https://scratch.mit.edu/users/SHAMAN2016/>
