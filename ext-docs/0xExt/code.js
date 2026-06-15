@@ -55,6 +55,26 @@
                 }
               }
             }, {
+              opcode: "hex0xcodeof",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "hex code of [num] with start 0x",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "numberofhex",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "number of hex code [num]",
+              arguments: {
+                num: {
+                  defaultValue: '0xff',
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
+            }, {
               blockType: Scratch.BlockType.LABEL,
               text: 'binary numbers'
             }, {
@@ -62,6 +82,16 @@
               blockType: Scratch.BlockType.ARRAY,
               text: "bin numbers",
               arguments: {}
+            }, {
+              opcode: "bincodeof",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "bin code of [num]",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
             }
           ],
         };
@@ -75,9 +105,18 @@
       hexcodeof(args) {
         return args.num.toString(16)
       }
+      hex0xcodeof(args) {
+        return `0x${args.num.toString(16)}`
+      }
+      numberofhex(args) {
+        return +args.num
+      }
       binlist() {
         return this.binnums
       }
+      bincodeof (args) {
+        return args.num.toString(2)
+      } 
     }
     Scratch.extensions.register(new numsPlusBypolzovatel8787());
   })(Scratch);
