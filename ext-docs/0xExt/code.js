@@ -13,6 +13,7 @@
     class numsPlusBypolzovatel8787 {
       constructor () {
         this.hexnums = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f']
+        this.binnums = [0,1]
       }
       getInfo() {
         return {
@@ -23,7 +24,7 @@
           blocks: [
             {
               opcode: "n10toOtherNum",
-              blockType: Scratch.BlockType.ARRAY,
+              blockType: Scratch.BlockType.REPORTER,
               text: "number [num] using [sym] characters",
               arguments: {
                 num: {
@@ -53,6 +54,14 @@
                   type: Scratch.ArgumentType.NUMBER,
                 }
               }
+            }, {
+              blockType: Scratch.BlockType.LABEL,
+              text: 'binary numbers'
+            }, {
+              opcode: "binlist",
+              blockType: Scratch.BlockType.ARRAY,
+              text: "bin numbers",
+              arguments: {}
             }
           ],
         };
@@ -65,6 +74,9 @@
       }
       hexcodeof(args) {
         return args.num.toString(16)
+      }
+      binlist() {
+        return this.binnums
       }
     }
     Scratch.extensions.register(new numsPlusBypolzovatel8787());
