@@ -57,7 +57,7 @@
           ],
         };
       }
-      n10toOtherNum() {
+      n10toOtherNum(args) {
         return args.num.toString(args.sym)
       }
       hexlist() {
