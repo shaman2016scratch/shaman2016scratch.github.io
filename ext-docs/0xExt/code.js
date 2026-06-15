@@ -55,12 +55,40 @@
                 }
               }
             }, {
+              opcode: "hexcodeoflength",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "hex code of length [length], number [num]",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                },
+                length: {
+                  defaultValue: 2,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
               opcode: "hex0xcodeof",
               blockType: Scratch.BlockType.REPORTER,
               text: "hex code of [num] with start 0x",
               arguments: {
                 num: {
                   defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
+              opcode: "hex0xcodeoflength",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "hex code of length [length], number [num] with start 0x",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                },
+                length: {
+                  defaultValue: 2,
                   type: Scratch.ArgumentType.NUMBER,
                 }
               }
@@ -92,6 +120,20 @@
                   type: Scratch.ArgumentType.NUMBER,
                 }
               }
+            }, {
+              opcode: "bincodeoflength",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "bin code of length [length], number [num]",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                },
+                length: {
+                  defaultValue: 8,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
             }
           ],
         };
@@ -105,8 +147,14 @@
       hexcodeof(args) {
         return args.num.toString(16)
       }
+      hexcodeoflength(args) {
+        return args.num.toString(16).padStart(args.length, '0')
+      }
       hex0xcodeof(args) {
         return `0x${args.num.toString(16)}`
+      }
+      hex0xcodeoflength(args) {
+        return `0x${args.num.toString(16).padStart(args.length, '0')}`
       }
       numberofhex(args) {
         return +args.num
@@ -114,9 +162,12 @@
       binlist() {
         return this.binnums
       }
-      bincodeof (args) {
+      bincodeof(args) {
         return args.num.toString(2)
-      } 
+      }
+      bincodeoflength(args) {
+        return args.num.toString(2).padStart(args.length, '0')
+      }
     }
     Scratch.extensions.register(new numsPlusBypolzovatel8787());
   })(Scratch);
