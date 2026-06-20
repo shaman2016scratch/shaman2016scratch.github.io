@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>random colors</title>
+    <style id='css'></style>
+  </head>
+  <body>
+    <h1>Random colors</h1>
+    <div class='result'>color</div>
+    <script>
+      let i = 0; const HexNums = []; while (i < 255) { i++; HexNums.push(i.toString(16).padStart(2, 0)) }; const random = function(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) };
+      const hexColor = `#${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}`
+      document.getElementById('css').textContent = `
+        .color {
+          color: ${hexColor};
+          background-color: ${hexColor};
+        }
+      `
+    </script>
+  </body>
+</html>
