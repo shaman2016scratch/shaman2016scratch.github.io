@@ -5,16 +5,32 @@
   </head>
   <body>
     <h1>Random colors</h1>
-    <div class='color'>.</div>
+    <div class='color' id='hc'>#ffffff</div>
+    <div class='color2' id='hc2'>#ffffff</div>
+    <div class='color3' id='hc3'>#ffffff</div>
     <script>
       let i = 0; const HexNums = []; while (i < 255) { i++; HexNums.push(i.toString(16).padStart(2, 0)) }; const random = function(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) };
-      const hexColor = `#${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}`
+      const genHexColor = function() { return `#${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}` }
+      const hc = genHexCode()
+      const hc2 = genHexCode()
+      const hc3 = genHexCode()
       document.getElementById('css').textContent = `
         .color {
-          color: ${hexColor};
-          background-color: ${hexColor};
+          color: #000000;
+          background-color: ${hc};
+        }
+        .color2 {
+          color: #000000;
+          background-color: ${hc2};
+        }
+        .color3 {
+          color: #000000;
+          background-color: ${hc3};
         }
       `
+      document.getElementById('hc').textContent = hc
+      document.getElementById('hc2').textContent = hc2
+      document.getElementById('hc3').textContent = hc3
     </script>
   </body>
 </html>
