@@ -18,7 +18,7 @@
     <div class='color11' id='hc11'>#ffffff</div>
     <div class='color12' id='hc12'>#ffffff</div>
     <script>
-      let i = 0; const HexNums = []; while (i < 255) { i++; HexNums.push(i.toString(16).padStart(2, 0)) }; const random = function(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) };
+      let i = 0; const HexNums = []; while (i <= 255) { i++; HexNums.push(i.toString(16).padStart(2, 0)) }; const random = function(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) };
       const genHexColor = function() { return `#${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}` }
       const hc = genHexColor()
       const hc2 = genHexColor()
