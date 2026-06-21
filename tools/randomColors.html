@@ -14,6 +14,9 @@
     <div class='color7' id='hc7'>#ffffff</div>
     <div class='color8' id='hc8'>#ffffff</div>
     <div class='color9' id='hc9'>#ffffff</div>
+    <div class='color10' id='hc10'>#ffffff</div>
+    <div class='color11' id='hc11'>#ffffff</div>
+    <div class='color12' id='hc12'>#ffffff</div>
     <script>
       let i = 0; const HexNums = []; while (i < 255) { i++; HexNums.push(i.toString(16).padStart(2, 0)) }; const random = function(min, max) { return Math.floor(Math.random() * (max - min + 1) + min) };
       const genHexColor = function() { return `#${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}${HexNums[random(0, 255)]}` }
@@ -26,6 +29,9 @@
       const hc7 = genHexColor()
       const hc8 = genHexColor()
       const hc9 = genHexColor()
+      const hc10 = genHexColor()
+      const hc11 = genHexColor()
+      const hc12 = genHexColor()
       document.getElementById('css').textContent = `
         .color {
           color: #000000;
@@ -63,6 +69,18 @@
           color: #000000;
           background-color: ${hc9};
         }
+        .color10 {
+          color: #000000;
+          background-color: ${hc10};
+        }
+        .color11 {
+          color: #000000;
+          background-color: ${hc11};
+        }
+        .color12 {
+          color: #000000;
+          background-color: ${hc12};
+        }
       `
       document.getElementById('hc').textContent = hc
       document.getElementById('hc2').textContent = hc2
@@ -73,6 +91,9 @@
       document.getElementById('hc7').textContent = hc7
       document.getElementById('hc8').textContent = hc8
       document.getElementById('hc9').textContent = hc9
+      document.getElementById('hc10').textContent = hc10
+      document.getElementById('hc11').textContent = hc11
+      document.getElementById('hc12').textContent = hc12
     </script>
   </body>
 </html>
