@@ -36,6 +36,20 @@
                   type: Scratch.ArgumentType.NUMBER,
                 }
               }
+           }, { 
+              opcode: "otherNumTo10",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "10-number from [number] using [sym]",
+              arguments: {
+                num: {
+                  defaultValue: 11111111,
+                  type: Scratch.ArgumentType.STRING,
+                },
+                sym: {
+                  defaultValue: 2,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
             }, {
               blockType: Scratch.BlockType.LABEL,
               text: 'hexadecimal numbers'
@@ -140,6 +154,9 @@
       }
       n10toOtherNum(args) {
         return args.num.toString(args.sym)
+      }
+      otherNumTo10(args) {
+        return parseInt(args.num, args.sym)
       }
       hexlist() {
         return this.hexnums
