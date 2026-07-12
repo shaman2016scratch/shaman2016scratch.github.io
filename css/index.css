@@ -214,3 +214,12 @@ div.tutorial {
   user-select: none;
   font-size: 30px;
 }
+
+div.content-warp {
+  margin: 20px;
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
