@@ -138,3 +138,26 @@ div.content_group.contributors-list > .button.contributor-type1 > img {
     width: 40px;
     height: 40px;
 }
+
+div.content_group.image-and-text {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+div.content_group.image-and-text.left {
+  flex-direction: row;
+}
+
+div.content_group.image-and-text.right {
+  flex-direction: row-reverse;
+}
+
+div.content_group.image-and-text > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 900px;
+  width: 50%;
+}
