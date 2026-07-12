@@ -45,7 +45,7 @@ header {
     background: #fff;
 }
 
-div.element {
+div.content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,7 +53,32 @@ div.element {
     gap: 20px;
 }
 
-.part {
+.whatsnews {
+    align-items: center;
+    gap: 20px;
+    background-color: #f1f5f9;
+    border: 3.5px solid #575e75;
+    border-radius: 10px;
+    padding: 20px;
+    align-content: flex-start;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.whatsnews {
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+    @media (min-width: 801px) {
+        flex-direction: row;
+    }
+    @media (max-width: 700px) {
+        border: none;
+    }
+}
+
+.whatsnews .part {
     width: 200px;
     padding: 15px;
     background: #fff;
@@ -64,5 +89,6 @@ div.element {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    height: 172px;
     transition: transform 0.3s ease;
 }
