@@ -44,7 +44,7 @@
       } else {
         uid = sp.get("id")
       }
-      metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}`)
+      metaUser = await fetch(`https://shaman2016-trampline.vercel.app/dash/users/${uid}/projects`)
       metaUser = await metaUser.json()
       root.innerHTML = `
         <p>Loading projects list</p>
@@ -54,16 +54,16 @@
         <tbody>
         <tr>
       `
-      for(i = 0; i < metaUser.user.projects.length; i++) {
+      for(i = 0; i < metaUser.projects.length; i++) {
         if (i < 30) {
-          let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.user.projects[i].id}`)
+          let projectMeta = await fetch(`https://shaman2016-trampline.vercel.app/dash/projects/${metaUser.projects[i].id}`)
           projectMeta = await projectMeta.json()
           projectMeta = projectMeta.project
           fakeRoot += `
             <th class="message">
               <img src='https://dashblocks-server.vercel.app/projects/thumbnails/${projectMeta.thumbnailId}' width="100" height="60">
               <p>
-                <a href='/tools/getDashProject?id=${metaUser.user.projects[i].id}'><b>${projectMeta.name}</b></a><br>by <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
+                <a href='/tools/getDashProject?id=${metaUser.projects[i].id}'><b>${projectMeta.name}</b></a><br>by <a href="https://shaman2016scratch.github.io/tools/getDashUser?id=${projectMeta.author.username}">
                   ${projectMeta.author.username}
                 </a><br>${projectMeta.stats.fires}🔥
               </p>
