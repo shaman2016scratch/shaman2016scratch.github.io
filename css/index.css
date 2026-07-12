@@ -98,21 +98,6 @@ div.content {
     transition: transform 0.3s ease;
 }
 
-.whatsnews2 .part {
-    width: 300px;
-    padding: 15px;
-    background: #fff;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 172px;
-    transition: transform 0.3s ease;
-}
-
 div.content_group.contributors-list {
     display: flex;
     align-items: center;
