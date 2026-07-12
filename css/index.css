@@ -194,3 +194,23 @@ div.control-cont div.tutorial {
         transform: scale(0.6);
     }
 }
+
+div.tutorial {
+  border-color: #575e75;
+  border-width: 3.3px;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: 0.3s;
+  border-style: solid;
+  width: calc(45% - 20px);
+  min-width: 450px;
+  max-width: 450px;
+  height: 200px;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 30px;
+}
