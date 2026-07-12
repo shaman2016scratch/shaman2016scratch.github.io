@@ -64,6 +64,5 @@ div.element {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 172px;
     transition: transform 0.3s ease;
 }
