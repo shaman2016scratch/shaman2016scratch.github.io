@@ -184,7 +184,7 @@
         return `0x${args.num.toString(16).padStart(args.length, '0')}`
       }
       numberofhex(args) {
-        return 0+args.num
+        return +args.num
       }
       binlist() {
         return this.binnums
