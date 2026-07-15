@@ -148,6 +148,16 @@
                   type: Scratch.ArgumentType.NUMBER,
                 }
               }
+            }, {
+              opcode: "numberofbin",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "number of bin code [num]",
+              arguments: {
+                num: {
+                  defaultValue: 10111010,
+                  type: Scratch.ArgumentType.STRING,
+                }
+              }
             }
           ],
         };
@@ -174,7 +184,7 @@
         return `0x${args.num.toString(16).padStart(args.length, '0')}`
       }
       numberofhex(args) {
-        return +args.num
+        return 0+args.num
       }
       binlist() {
         return this.binnums
@@ -184,6 +194,9 @@
       }
       bincodeoflength(args) {
         return args.num.toString(2).padStart(args.length, '0')
+      }
+      numberofbin(args) {
+        return parseInt(args.num, 2)
       }
     }
     Scratch.extensions.register(new numsPlusBypolzovatel8787());
