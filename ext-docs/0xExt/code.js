@@ -39,7 +39,7 @@
            }, { 
               opcode: "otherNumTo10",
               blockType: Scratch.BlockType.REPORTER,
-              text: "10-number from [number] using [sym]",
+              text: "10-number from [num] using [sym]",
               arguments: {
                 num: {
                   defaultValue: 11111111,
