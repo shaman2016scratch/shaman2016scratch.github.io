@@ -87,9 +87,9 @@
                 const res = await req.json()
                 const repo = new RepoContent()
                 repo.commit = `
-                    <div>${res.commits[res.commits.length].title}</div>
-                    <div>${res.commits[res.commits.length].id}</div>
-                    <div>${new Date(res.commits[res.commits.length].date)}</div>
+                    <div>${res.commits[res.commits.length - 1].title}</div>
+                    <div>${res.commits[res.commits.length - 1].id}</div>
+                    <div>${new Date(res.commits[res.commits.length - 1].date)}</div>
                 `
                 let files = []
                 for (let i = 0; i < res.files; i++) {
