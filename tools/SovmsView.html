@@ -58,7 +58,7 @@
                 }
 
                 render () {
-                    if (this.isFilesList) {
+                    if (this.isFilesList === true) {
                         this.dom = `
                             <div class="container">
                                 <div class="box">
@@ -68,7 +68,7 @@
                             <h3 style='text-align: center'>Файлы</h3>
                             ${this.filesBar}
                         `
-                    } else if (this.isFileContent) {
+                    } else if (this.isFileContent === true) {
                         this.dom = `
                             <div class="container">
                                 <div class="box">
