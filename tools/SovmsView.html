@@ -1,6 +1,11 @@
 <html>
     <head>
         <title>SovmsView - Просмотр SOVMS-репозиториев!</title>
+        <style>
+            .container{overflow:hidden;width:200px}
+            .box{white-space:nowrap}
+            .box div{display:inline-block}
+        </style>
     </head>
     <body>
         <h1 style="text-aling: center">SovmsView - Просмотр SOVMS-репозиториев!</h1>
@@ -10,7 +15,106 @@
         <h2 style="text-aling: center">Использование</h2>
         <label style="text-aling: center" for="repoURL">URL репозитория: </label>
         <input id="repoURL">
-        <button style="text-align: center">Загрузить</button>
+        <button style="text-align: center" onclick="loadRepo()">Загрузить</button>
         <div class="repo"></div>
+        <script>
+            class RepoContent {
+                constructor () {
+                    this.dom = document.getElementById("repo")
+                    this.commitBar = ''
+                    this.filesBar = ''
+                    this.isFilesList = false
+                    this.isFileContent = false
+                    this.fileContent = ''
+                }
+
+                get commit () {
+                    return this.commitBar
+                }
+
+                set commit (value) {
+                    this.commitBar = value
+                }
+
+                get files () {
+                    return this.filesBar
+                }
+
+                set files (value) {
+                    this.filesBar = value
+                }
+
+                get file () {
+                    return this.fileContent
+                }
+
+                set file (value) {
+                    this.fileContent = value
+                }
+
+                setMode (mode) {
+                    this.isFilesList = mode === 'files'
+                    this.isFileContent = mode === 'file'
+                }
+
+                render () {
+                    if (this.isFilesList) {
+                        this.dom = `
+                            <div class="container">
+                                <div class="box">
+                                    ${this.commitBar}
+                                </div>
+                            </div>
+                            <h3 style='text-align: center'>Файлы</h3>
+                            ${this.filesBar}
+                        `
+                    } else if (this.isFileContent) {
+                        this.dom = `
+                            <div class="container">
+                                <div class="box">
+                                    ${this.commitBar}
+                                </div>
+                            </div>
+                            <h3 style='text-align: center'>Файлы</h3>
+                            ${this.filesBar}
+                        `
+                    }
+                }
+            }
+            asnyc function loadRepo() {
+                const URL = document.getElementById("repoURL").value
+                const req = await fetch(URL)
+                const res = await req.json()
+                const repo = new RepoContent()
+                repo.commit = `
+                    <div>${res.commits[res.commits.length].title}</div>
+                    <div>${res.commits[res.commits.length].id}</div>
+                    <div>${new Date(res.commits[res.commits.length].date)}</div>
+                `
+                let files = []
+                for (let i = 0; i < res.files; i++) {
+                    files.push({
+                        name: res.files[i],
+                        type: res.files[i+1],
+                        path: res.files[i+2]
+                    })
+                    i = i+2
+                    if (typeof res.files[i+2] !=== number) {
+                        i++
+                    }
+                }
+                repo.files = files.map((file) => `
+                    <div class="container">
+                        <div class="box">
+                            <div>Тип: ${file.type}</div>
+                            <div>${file.name}</div>
+                            <div>${file.path}</div>
+                        </div>
+                    </div>
+                `)
+                repo.setMode('files')
+                repo.render()
+            }
+        </script>
     </body>
 </html>
