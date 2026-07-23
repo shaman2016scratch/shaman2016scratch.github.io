@@ -53,8 +53,8 @@
                 }
 
                 setMode (mode) {
-                    this.isFilesList = mode === 'file'
-                    this.isFileContent = mode === 'files'
+                    this.isFilesList = mode === 'files'
+                    this.isFileContent = mode === 'file'
                 }
 
                 render () {
@@ -75,8 +75,6 @@
                                     ${this.commitBar}
                                 </div>
                             </div>
-                            <h3 style='text-align: center'>Файлы</h3>
-                            ${this.filesBar}
                         `
                     }
                 }
