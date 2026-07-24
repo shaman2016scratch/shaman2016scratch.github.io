@@ -84,20 +84,44 @@
                 const req = await fetch(URL)
                 const res = await req.json()
                 const repo = new RepoContent()
+                const periods = [
+                    { time: 31536000, name1: 'год', name2: 'года', name5: 'лет' },
+                    { time: 2592000, name1: 'месяц', name2: 'месяца', name5: 'месяцев' },
+                    { time: 86400, name1: 'день', name2: 'дня', name5: 'дней' },
+                    { time: 3600, name1: 'час', name2: 'часа', name5: 'часов' },
+                    { time: 60, name1: 'минута', name2: 'минуты', name5: 'минут' },
+                    { time: 1, name1: 'секунда', name2: 'секунды', name5: 'секунд' }
+                ]
+                const elapsed = Math.floor(Date.now() - (new Date(res.commits[res.commits.length - 1].date)).getTime())
+                let lastCommitDate = ""
+                for (let { time, name1, name2, name5 } of periods) {
+                    if (elapsed >= time) {
+                        let count = Math.floor(elapsed / time)
+                        let name = name1
+                        if (count > 1 && count < 5) {
+                            name = name2
+                        }
+                        if (count > 4) {
+                            name = name5
+                        }
+                        lastCommitDate = `${count} ${name} назад`
+                        break
+                    }
+                }
                 repo.commit = `
-                    <div>${res.commits[res.commits.length - 1].title}</div>
+                    <div>${res.commits[res.commits.length - 1].title}<br><br><br></div>
                     <div>${res.commits[res.commits.length - 1].id}</div>
-                    <div>${new Date(res.commits[res.commits.length - 1].date)}</div>
+                    <div><br><br>${lastCommitDate}</div>
                 `
                 let files = []
-                for (let i = 0; i < res.files; i++) {
+                for (let i = 0; i < res.files.length; i++) {
                     files.push({
                         name: res.files[i],
                         type: res.files[i+1],
                         path: res.files[i+2]
                     })
                     i = i+2
-                    if (typeof res.files[i+2] !== number) {
+                    if (typeof res.files[i+2] !== "number") {
                         i++
                     }
                 }
