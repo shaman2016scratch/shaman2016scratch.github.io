@@ -2,7 +2,7 @@
     <head>
         <title>SovmsView - Просмотр SOVMS-репозиториев!</title>
         <style>
-            .container{overflow:hidden;width:200px}
+            .container{overflow:hidden;width:550px}
             .box{white-space:nowrap}
             .box div{display:inline-block}
         </style>
@@ -109,7 +109,7 @@
                     }
                 }
                 repo.commit = `
-                    <div>${res.commits[res.commits.length - 1].title}<br><br><br></div>
+                    <div>${res.commits[res.commits.length - 1].title}<br><br></div>
                     <div>${res.commits[res.commits.length - 1].id}</div>
                     <div><br><br>${lastCommitDate}</div>
                 `
