@@ -24,4 +24,5 @@ Disallow: /shaman2016.github.io/testing/%D0%9E%D0%BA%D0%BD%D0%B0/
 Disallow: /Shaman2016News/index
 Sitemap: https://shaman2016scratch.github.io/shaman2016.github.io/sitemap.txt
 Sitemap: https://shaman2016scratch.github.io/Shaman2016News/sitemap.txt
+Sitemap: https://shaman2016scratch.github.io/sosirsOS/sitemap.txt
 Clean-param: _ym_status-check&_ym_lang&_ym_debug /shaman2016.github.io/
