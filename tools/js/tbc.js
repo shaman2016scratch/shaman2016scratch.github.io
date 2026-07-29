@@ -1044,8 +1044,20 @@ async function myprofile() {
     <p>${proinfo.type}</p>
   `
 }
-function settingsProfile() {
+async function settingsProfile() {
+  let proinfo = await fetch(`${proxyHttp}bot${token.value}/getChat?id=${boteto.id}`)
+  proinfo = await proinfo.json()
+  proinfo = proinfo.result
   screen.innerHTML = `
     <h1><div onclick='settingsTbc()'>Settings</div> > Profile settings</h1>
+    <h2><input id="name"> <code>id${proinfo.id}</code></h2>
+    <p>@${proinfo.username}</p>
+    <p>${proinfo.type}</p>
+    <p><button onclick="updBotProfile()">Upd</button></p>
   `
+  document.getElementById("name").value = proinfo.first_name
+}
+
+async function updBotProfile() {
+  await fetch(`${proxyHttp}bot${token.value}/setMyName?name=${document.getElementById("name").value}`)
 }
