@@ -475,7 +475,7 @@ async function Chat(id) {
       }
     } 
     screen.innerHTML += `
-      <button onclick="plusSend(${id})">plus</button><input id="messageText"><button onclick="sendMessage(${id})">send</button>
+      <button onclick="plusSend(${id})">plus</button><textarea id="messageText"></textarea><button onclick="sendMessage(${id})">send</button>
     `
   }
   async function getAnswer(ansData) {
@@ -504,15 +504,15 @@ async function sendMessage(chat) {
       Version: ${version}
       Site: ${getRes.headers.origin}
     `
-  } else if (text.split('|jsCode')[0] === '.jsStart' && addons[1].enabled) {
+  } else if (text.split(' ')[0] === '.jsStart' && addons[1].enabled) {
     text = `
       <b>JavaScript Runner</b>
       <pre language='JavaScript'>
-        ${text.split('|jsCode')[1]}
+        ${text.split(' ')[1]}
       </pre>
       <b>Result</b>
       <pre>
-        ${eval(text.split('|jsCode')[1])}
+        ${eval(text.split(' ')[1])}
       </pre>
     `
   }
