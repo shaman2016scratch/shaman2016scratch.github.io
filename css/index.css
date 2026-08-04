@@ -223,3 +223,34 @@ div.content-warp {
   justify-content: center;
   padding: 20px;
 }
+.projects {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ }
+        
+ .project {
+ margin: 20px;
+ width: 80%;
+ background-color: #c5c5c5;
+ border: 1px solid #000000;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ }
+        
+ .project img {
+ width: 100%;
+ height: 150px;
+ object-fit: cover;
+ border-radius: 10px 10px 0 0;
+ }
+        
+ .project h3 {
+ margin: 10px;
+ text-align: center;
+ }
+        
+ .project p {
+ margin: 10px;
+ text-align: center;
+ }
