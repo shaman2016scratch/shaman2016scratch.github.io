@@ -75,23 +75,26 @@
                                     ${this.commitBar}
                                 </div>
                             </div>
+                            <div style="background-color: black; color: white">
+                                ${this.fileContent}
+                            </div>
                         `
                     }
                 }
             }
+            const periods = [
+                { time: 31536000, name1: 'год', name2: 'года', name5: 'лет' },
+                { time: 2592000, name1: 'месяц', name2: 'месяца', name5: 'месяцев' },
+                { time: 86400, name1: 'день', name2: 'дня', name5: 'дней' },
+                { time: 3600, name1: 'час', name2: 'часа', name5: 'часов' },
+                { time: 60, name1: 'минута', name2: 'минуты', name5: 'минут' },
+                { time: 1, name1: 'секунда', name2: 'секунды', name5: 'секунд' }
+            ]
+            const repo = new RepoContent()
             async function loadRepo() {
                 const URL = document.getElementById("repoURL").value
                 const req = await fetch(URL)
                 const res = await req.json()
-                const repo = new RepoContent()
-                const periods = [
-                    { time: 31536000, name1: 'год', name2: 'года', name5: 'лет' },
-                    { time: 2592000, name1: 'месяц', name2: 'месяца', name5: 'месяцев' },
-                    { time: 86400, name1: 'день', name2: 'дня', name5: 'дней' },
-                    { time: 3600, name1: 'час', name2: 'часа', name5: 'часов' },
-                    { time: 60, name1: 'минута', name2: 'минуты', name5: 'минут' },
-                    { time: 1, name1: 'секунда', name2: 'секунды', name5: 'секунд' }
-                ]
                 const elapsed = Math.floor(Date.now() - (new Date(res.commits[res.commits.length - 1].date)).getTime())
                 let lastCommitDate = ""
                 for (let { time, name1, name2, name5 } of periods) {
@@ -118,7 +121,8 @@
                     files.push({
                         name: res.files[i],
                         type: res.files[i+1],
-                        path: res.files[i+2]
+                        path: res.files[i+2],
+                        id: i
                     })
                     i = i+2
                     if (typeof res.files[i+2] !== "number") {
@@ -126,7 +130,7 @@
                     }
                 }
                 repo.files = files.map((file) => `
-                    <div class="container">
+                    <div class="container" onclick="viewFile(${file.id})">
                         <div class="box">
                             <div>Тип: ${file.type}</div>
                             <div>${file.name}</div>
@@ -135,6 +139,34 @@
                     </div>
                 `)
                 repo.setMode('files')
+                repo.render()
+            }
+            async function viewFile(id) {
+                const URL = document.getElementById("repoURL").value
+                const req = await fetch(URL)
+                const res = await req.json()
+                repo.setMode('file')
+                repo.file = res.files[i+4]
+                    .replaceAll("\n", "<br>")
+                    .replaceAll("const ", "<span style='color: red'>const </span>")
+                    .replaceAll("let ", "<span style='color: red'>let </span>")
+                    .replaceAll("var ", "<span style='color: red'>var </span>")
+                    .replaceAll("await ", "<span style='color: red'>await </span>")
+                    .replaceAll("async ", "<span style='color: red'>async </span>")
+                    .replaceAll("if", "<span style='color: red'>if</span>")
+                    .replaceAll("else", "<span style='color: red'>else</span>")
+                    .replaceAll("typeof ", "<span style='color: red'>typeof </span>")
+                    .replaceAll("for ", "<span style='color: red'>for </span>")
+                    .replaceAll("for(", "<span style='color: red'>for</span>(")
+                    .replaceAll("break", "<span style='color: red'>break</span>")
+                    .replaceAll(" of ", "<span style='color: red'> of </span>")
+                    .replaceAll("new ", "<span style='color: red'>new </span>")
+                    .replaceAll("function ", "<span style='color: red'>function </span>")
+                    .replaceAll("class ", "<span style='color: red'>class </span>")
+                    .replaceAll("true", "<span style='color: blue'>true</span>")
+                    .replaceAll("false", "<span style='color: blue'>false</span>")
+                    .replaceAll("this.", "<span style='color: red'>this.</span>")
+                    .replaceAll("constructor", "<span style='color: blue'>constructor</span>")
                 repo.render()
             }
         </script>
