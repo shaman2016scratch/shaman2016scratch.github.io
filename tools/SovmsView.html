@@ -146,7 +146,7 @@
                 const req = await fetch(URL)
                 const res = await req.json()
                 repo.setMode('file')
-                repo.file = res.files[id+4]
+                repo.file = res.files[id+3]
                     .replaceAll("\n", "<br>")
                     .replaceAll("const ", "<span style='color: red'>const </span>")
                     .replaceAll("let ", "<span style='color: red'>let </span>")
