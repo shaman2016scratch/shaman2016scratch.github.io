@@ -67,15 +67,15 @@
         switch (this.type) {
           case 'github':
             return `
-              <a href="${this.link}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1280px-Octicons-mark-github.svg.png" width="25" height="25">${this.label}</a>
+              <a href="${this.link}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1280px-Octicons-mark-github.svg.png" width="10" height="10">${this.label}</a>
             `
           case 'scratch':
             return `
-              <a href="${this.link}"><img src="https://scratch-craft-2.github.io/files/img/scratch.svg">${this.label}</a>
+              <a href="${this.link}"><img src="https://scratch-craft-2.github.io/files/img/scratch.svg" width="10" height="10">${this.label}</a>
             `
           case 'dash':
             return `
-              <a href="${this.link}"><img src="https://dashblocks.org/favicon.ico">${this.label}</a>
+              <a href="${this.link}"><img src="https://dashblocks.org/favicon.ico" width="10" height="10">${this.label}</a>
             `
         }
       }
