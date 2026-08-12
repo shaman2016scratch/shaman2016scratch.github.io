@@ -133,8 +133,8 @@
             return metadata.user.profile.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>${match}</a>`)
           }
         }
-        let achievements = (metadata.user.profile.achievements).map((data) => new Acievement(data).render())
-        let links = (metadata.user.profile.links).map((data) => `${new Link(data).render()}<br>`)
+        let achievements = (metadata.user.profile.achievements).map((data) => new Acievement(data).render()).join('')
+        let links = (metadata.user.profile.links).map((data) => `${new Link(data).render()}<br>`).join('')
         document.title = `${metadata.user.username} - Get Dash User`
         root.innerHTML = `
           <h1><img src='https://shaman2016-trampline.vercel.app/dashImage/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
