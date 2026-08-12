@@ -77,6 +77,10 @@
             return `
               <a href="${this.link}"><img src="https://dashblocks.org/favicon.ico" width="10" height="10">${this.label}</a>
             `
+          default:
+            return `
+              <a href="${this.link}">${this.label}</a>
+            `
         }
       }
     }
