@@ -148,7 +148,7 @@
             <h4><a href='https://dashblocks.org/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
           </div>
           <div class="projects">
-            <h2>Projects (${metadata.user.projects.length}) <a href='https://dashblocks.org/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
+            <h2>Projects (${metadata.user.profile.stats.projects}) <a href='https://dashblocks.org/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
             <iframe id='projects' src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
             <p><button onclick='UpdUrl()'>Open projects in this page</button></p>
           </div>
