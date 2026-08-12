@@ -77,14 +77,14 @@
         document.title = `${metadata.user.username} - Get Dash User`
         root.innerHTML = `
           <h1><img src='https://shaman2016-trampline.vercel.app/dashImage/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
-          <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b> | <b>Scratch Account: <a href="https://scratch.mit.edu/users/${metadata.user.profile.scratchUsername || 'griffpatch'}">${metadata.user.profile.scratchUsername || "There is no linked account"}</a></b></p>
+          <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b></p>
           <p class="description">${getDesc()}</p>
           <div class="projects">
             <img src="https://shaman2016-trampline.vercel.app/dashImage/projects/thumbnails/${metadata.user.profile.recommendedProject.thumbnailId}" width="150" height="130">
-            <h4><a href='https://dashblocks.github.io/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
+            <h4><a href='https://dashblocks.org/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
           </div>
           <div class="projects">
-            <h2>Projects (${metadata.user.projects.length}) <a href='https://dashblocks.github.io/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
+            <h2>Projects (${metadata.user.projects.length}) <a href='https://dashblocks.org/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
             <iframe id='projects' src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
             <p><button onclick='UpdUrl()'>Open projects in this page</button></p>
           </div>
