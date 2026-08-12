@@ -25,6 +25,61 @@
     <div id="root" class="messages">Loading...</div>
   </body>
   <script>
+    class Acievement {
+      constructor (meta) {
+        this.type = meta.type
+        this.date = new Date(meta.date)
+        this.meta = meta
+      }
+
+      render () {
+        switch (this.type) {
+          case 'first-project':
+            return `
+              <b>First project</b><br>
+              User created first project "<a href="https://dashblocks.org/#${this.meta.project.id}">${this.meta.project.name}</a>"<br>
+              ${this.date.toISOString()}<br>
+            `
+          case 'reached-followers-count':
+            return `
+              <b>${this.meta.count} Followers Reached</b><br>
+              ${this.date.toISOString()}<br>
+            `
+          default:
+            return `
+              <b>Unknown type</b><br>
+              ${this.date.toISOString()}<br>
+            `
+        }
+      }
+    }
+    class Link {
+      constructor (meta) {
+        this.link = meta.link || "https://example.com"
+        this.label = meta.label || "Link"
+        this.type = (this.link.startsWith("https://github.com") || this.link.startsWith("github.com") || this.link.startsWith("http://github.com")) ? "github" : (
+          (this.link.startsWith("https://scratch.mit.edu") || this.link.startsWith("scratch.mit.edu") || this.link.startsWith("http://scratch.mit.edu")) ? "scratch" : (
+            (this.link.startsWith("https://dashblocks.org") || this.link.startsWith("dashblocks.org")) ? "dash" : "unknown"
+          )
+        )
+      }
+      render () {
+        switch (this.type) {
+          case 'github':
+            return `
+              <a href="${this.link}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1280px-Octicons-mark-github.svg.png">${this.label}</a>
+            `
+          case 'scratch':
+            return `
+              <a href="${this.link}"><img src="https://scratch-craft-2.github.io/files/img/scratch.svg">${this.label}</a>
+            `
+          case 'dash':
+            return `
+              <a href="${this.link}"><img src="https://dashblocks.org/favicon.ico">${this.label}</a>
+            `
+        }
+      }
+    }
     let metadata = undefined;
     const url = new URL(window.location)
     const sp = url.searchParams
@@ -34,13 +89,13 @@
     }
     let root = document.body
     let verified = {
-      7: 'official, Creator of this tool',
+      7: 'official, Creator of this tool, Junior Dash Developer',
       8: 'official',
       9: 'official',
       15: 'official, Dash creator, Main developer dash',
       17: 'official',
       18: 'official, Dash developer',
-      20: 'official, Scratch_Craft_2, Dash developer',
+      20: 'official, Scratch_Craft_2, Junior Dash Developer',
       21: 'official, MiCloud Creator',
       22: 'official',
       28: 'official',
@@ -74,11 +129,20 @@
             return metadata.user.profile.description.replaceAll('\n', '<br>').replaceAll(/@([\w-]+)/g, (match, group) => `<a href='?id=${group.replace(/\s/g, '')}'>${match}</a>`)
           }
         }
+        let achievements = (metadata.user.profile.achievements).map((data) => new Acievement(data).render())
+        let links = (metadata.user.profile.links).map((data) => new Link(data).render())
         document.title = `${metadata.user.username} - Get Dash User`
         root.innerHTML = `
           <h1><img src='https://shaman2016-trampline.vercel.app/dashImage/users/avatars/${metadata.user.profile.avatarId}'  width='30' height='30'>${metadata.user.username} (${metadata.user.id}) [${metadata.user.role}, ${verified[metadata.user.id] || 'account not verified'}]</h1>
           <p><b>Joined: ${getDate(metadata.user.joinedAt)}</b> | <b>Last Active: ${getDate(metadata.user.lastActive)}</b></p>
-          <p class="description">${getDesc()}</p>
+          <p class="description">
+            <b>Description</b><br>
+            ${getDesc()}
+            <b>Achievements</b><br>
+            ${achievements}
+            <b>Links</b><br>
+            ${links}
+          </p>
           <div class="projects">
             <img src="https://shaman2016-trampline.vercel.app/dashImage/projects/thumbnails/${metadata.user.profile.recommendedProject.thumbnailId}" width="150" height="130">
             <h4><a href='https://dashblocks.org/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
