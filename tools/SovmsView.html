@@ -83,12 +83,12 @@
                 }
             }
             const periods = [
-                { time: 31536000, name1: 'год', name2: 'года', name5: 'лет' },
-                { time: 2592000, name1: 'месяц', name2: 'месяца', name5: 'месяцев' },
-                { time: 86400, name1: 'день', name2: 'дня', name5: 'дней' },
-                { time: 3600, name1: 'час', name2: 'часа', name5: 'часов' },
-                { time: 60, name1: 'минута', name2: 'минуты', name5: 'минут' },
-                { time: 1, name1: 'секунда', name2: 'секунды', name5: 'секунд' }
+                { time: 31536000 * 1000, name1: 'год', name2: 'года', name5: 'лет' },
+                { time: 2592000 * 1000, name1: 'месяц', name2: 'месяца', name5: 'месяцев' },
+                { time: 86400 * 1000, name1: 'день', name2: 'дня', name5: 'дней' },
+                { time: 3600 * 1000, name1: 'час', name2: 'часа', name5: 'часов' },
+                { time: 60 * 1000, name1: 'минута', name2: 'минуты', name5: 'минут' },
+                { time: 1 * 1000, name1: 'секунда', name2: 'секунды', name5: 'секунд' }
             ]
             const repo = new RepoContent()
             async function loadRepo() {
