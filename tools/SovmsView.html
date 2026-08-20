@@ -183,10 +183,14 @@
                     .replaceAll("7", "<span style='color: green'>7</span>")
                     .replaceAll("8", "<span style='color: green'>8</span>")
                     .replaceAll("9", "<span style='color: green'>9</span>")
-                    .replaceAll(" + ", "<span style='color: #00ff42'>+</span>")
-                    .replaceAll(" - ", "<span style='color: #00ff42'>+</span>")
-                    .replaceAll(" * ", "<span style='color: #00ff42'>+</span>")
-                    .replaceAll(" / ", "<span style='color: #00ff42'>+</span>")
+                    .replaceAll(" + ", "<span style='color: #00ff42'> + </span>")
+                    .replaceAll(" - ", "<span style='color: #00ff42'> - </span>")
+                    .replaceAll(" * ", "<span style='color: #00ff42'> * </span>")
+                    .replaceAll(" / ", "<span style='color: #00ff42'> / </span>")
+                    .replaceAll("return", "<span style='color: red'>return</span>")
+                    .replaceAll("switch", "<span style='color: red'>switch</span>")
+                    .replaceAll("case", "<span style='color: red'>case</span>")
+                    .replaceAll("default:", "<span style='color: red'>default:</span>")
                 repo.render()
             }
         </script>
