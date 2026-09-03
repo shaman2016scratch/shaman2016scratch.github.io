@@ -135,6 +135,16 @@
                 }
               }
             }, {
+              opcode: "binbcodeof",
+              blockType: Scratch.BlockType.REPORTER,
+              text: "bin code of [num] with end 'B'",
+              arguments: {
+                num: {
+                  defaultValue: 255,
+                  type: Scratch.ArgumentType.NUMBER,
+                }
+              }
+            }, {
               opcode: "bincodeoflength",
               blockType: Scratch.BlockType.REPORTER,
               text: "bin code of length [length], number [num]",
@@ -191,6 +201,9 @@
       }
       bincodeof(args) {
         return args.num.toString(2)
+      }
+      binbcodeof(args) {
+        return `${args.num.toString(2)}B`
       }
       bincodeoflength(args) {
         return args.num.toString(2).padStart(args.length, '0')
