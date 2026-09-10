@@ -246,7 +246,7 @@ async function openDesktop() {
           </tr>
         </tbody>
       </table>
-      <iframe src="data:text/html;">
+      <iframe src="data:text/html;text,">
       <table class='message'>
         <tbody id='panel'>
           <tr>
