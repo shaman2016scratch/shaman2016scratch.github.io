@@ -152,8 +152,13 @@
             <h4><a href='https://dashblocks.org/scratch-gui/#${metadata.user.profile.recommendedProject.id}'>${metadata.user.profile.recommendedProject.name}</a></h4>
           </div>
           <div class="projects">
-            <h2>Projects (${metadata.user.profile.stats.projects}) <a href='https://dashblocks.org/scratch-gui/?user=${metadata.user.username}#169'>all</a></h2>
+            <h2>Projects (${metadata.user.profile.stats.projects}) <a href='https://dashblocks.org/scratch-gui/user-projects#${metadata.user.username}'>all</a></h2>
             <iframe id='projects' src='/tools/getDashProjectByUser?id=${uid}' width="810" height="190"></iframe>
+            <p><button onclick='UpdUrl()'>Open projects in this page</button></p>
+          </div>
+          <div class="projects">
+            <h2>Followers (${metadata.user.profile.stats.followers}) <a href='https://dashblocks.org/scratch-gui/user-followers#${metadata.user.username}'>all</a></h2>
+            <iframe id='projects' src='/tools/getDashFollowersByUser?id=${uid}' width="810" height="190"></iframe>
             <p><button onclick='UpdUrl()'>Open projects in this page</button></p>
           </div>
         `
@@ -162,6 +167,9 @@
     }
     function UpdUrl() {
       window.location.href = document.getElementById('projects').src
+    }
+    function UpdUrlF() {
+      window.location.href = document.getElementById('followers').src
     }
   </script>
 </html>
