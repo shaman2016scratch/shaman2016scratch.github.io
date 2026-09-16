@@ -206,7 +206,7 @@ async function openDesktop() {
         `
       } else {
         return `
-          <td class='message' onclick='open("openDesktop://app/", {
+          <td class='message' onclick='openComp("openDesktop://app/", {
             params: ${i},
             headers: {},
             body: {}
@@ -355,7 +355,7 @@ async function request(protocol, url, params, method) {
     }
   }
 }
-async function open(url, params) {
+async function openComp(url, params) {
   let protocolSplit = url.split('://')
   let protocol = protocolSplit[0]
   let path = protocolSplit[1]
