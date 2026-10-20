@@ -28,4 +28,4 @@ Sitemap: https://shaman2016scratch.github.io/sosirsOS/sitemap.txt
 Clean-param: _ym_status-check&_ym_lang&_ym_debug /shaman2016.github.io/
 Clean-param: id /tools/getDashUser
 Clean-param: id /tools/getDashProject
-Clean-param: id /tools/getDashUserProject
+Clean-param: id /tools/getDashProjectByUser
