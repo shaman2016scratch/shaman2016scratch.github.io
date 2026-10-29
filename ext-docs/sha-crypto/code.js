@@ -45,7 +45,7 @@ class ShaCrypto8787 {
                 {
                     opcode: 'sha1',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'encrypt [text] to sha-1',
+                    text: 'make hash [text] with sha-1',
                     arguments: {
                         text: {
                             type: Scratch.ArgumentType.STRING,
@@ -56,7 +56,7 @@ class ShaCrypto8787 {
                 {
                     opcode: 'sha256',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'encrypt [text] to sha-256',
+                    text: 'make hash [text] with sha-256',
                     arguments: {
                         text: {
                             type: Scratch.ArgumentType.STRING,
@@ -67,7 +67,7 @@ class ShaCrypto8787 {
                 {
                     opcode: 'sha384',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'encrypt [text] to sha-384',
+                    text: 'make hash [text] with sha-384',
                     arguments: {
                         text: {
                             type: Scratch.ArgumentType.STRING,
@@ -78,7 +78,7 @@ class ShaCrypto8787 {
                 {
                     opcode: 'sha512',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: 'encrypt [text] to sha-512',
+                    text: 'make hash [text] with sha-512',
                     arguments: {
                         text: {
                             type: Scratch.ArgumentType.STRING,
