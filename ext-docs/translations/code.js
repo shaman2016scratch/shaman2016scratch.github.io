@@ -6,21 +6,19 @@
 
 (function (Scratch) {
 
-  constructor () {
-    this.userLanguage = 'en'
-    this.defaultLanguage = 'en'
-    this.translations = {
-      ar: {},
-      ru: {}
-    }
-    this.messages = {}
-  }
-
   if (!Scratch.extensions.unsandboxed) {
     throw new Error("This Extension must run unsandboxed")
   }
 
     class polzovatel8787translations {
+      constructor () {
+        this.userLanguage = 'en'
+        this.defaultLanguage = 'en'
+        this.translations = {
+          ru: {}
+        }
+        this.messages = {}
+      }
       getInfo() {
         return {
           id: "polzovatel8787translations",
