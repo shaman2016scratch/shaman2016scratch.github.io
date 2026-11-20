@@ -1,3 +1,6 @@
+// Name: SHA Crypto
+// Description: Extension for make hash with sha-1 and sha-2 (sha-256, sha-384 and sha-512)
+// Atuhor: polzovatel_8787
 (function (Scratch) {
 
     if (!Scratch.extensions.unsandboxed) {
