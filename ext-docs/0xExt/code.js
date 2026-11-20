@@ -209,7 +209,7 @@
         return args.num.toString(2).padStart(args.length, '0')
       }
       numberofbin(args) {
-        return parseInt(args.num, 2)
+        return +`0b${args.num}`
       }
     }
     Scratch.extensions.register(new numsPlusBypolzovatel8787());
